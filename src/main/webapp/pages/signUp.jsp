@@ -21,7 +21,10 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <%--  main script  --%>
-    <script><%@ include file="../js/guestCookie.js"%></script>
+    <script>
+        <%@ include file="../js/guestCookie.js"%>
+        <%@ include file="../js/signUp.js"%>
+    </script>
 
 </head>
 <body>
@@ -48,7 +51,7 @@
                                     <div class="text-center text-md-center mb-4 mt-md-0">
                                         <h3 class="mb-0 font-bold font-secondary">Create Account </h3>
                                     </div>
-                                    <form action="${pageContext.request.contextPath}/sign-up" class="mt-4" method="post">
+                                    <form action="#" class="mt-4" method="post" id="signUpForm">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>
@@ -56,7 +59,7 @@
                                             <span class="input-group-text" id="basic-addon1">
                                                 <i class="bi bi-envelope-fill"></i>
                                             </span>
-                                                <input type="email" class="form-control" placeholder="example@gmail.com" id="email" autofocus required>
+                                                <input type="email" class="form-control" placeholder="example@gmail.com" id="email" name="email" autofocus required>
                                             </div>
                                         </div>
                                         <!-- End of Form -->
@@ -68,7 +71,7 @@
                                                 <span class="input-group-text">
                                                     <i class="bi bi-lock-fill"></i>
                                                 </span>
-                                                    <input type="password" placeholder="Password" class="form-control" id="password" required>
+                                                    <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
                                                 </div>
                                             </div>
                                             <!-- End of Form -->
@@ -79,14 +82,14 @@
                                                 <span class="input-group-text">
                                                     <i class="bi bi-lock-fill"></i>
                                                 </span>
-                                                    <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" required>
+                                                    <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" name="confirm_password" required>
                                                 </div>
                                             </div>
                                             <!-- End of Form -->
                                             <div class="mb-4">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=terms" id="terms" required>
-                                                    <label class="form-check-label fw-normal mb-0" for="terms">
+                                                    <input class="form-check-input" type="checkbox" value="c" id="account" name="account" required>
+                                                    <label class="form-check-label fw-normal mb-0" for="account">
                                                         I agree to the <a href="#T&C" id="t-c" class="fw-bold" data-bs-toggle="modal" data-bs-target="#t-c-modal"> terms and conditions</a>
                                                     </label>
                                                 </div>
@@ -108,6 +111,8 @@
                     </div>
                 </div>
                 <jsp:include page="../components/termsConditions.jsp" />
+                <jsp:include page="../components/successModal.jsp" />
+                <jsp:include page="../components/errorModal.jsp" />
             </div>
         </section>
     </main>

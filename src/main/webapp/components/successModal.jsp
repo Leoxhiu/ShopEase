@@ -11,17 +11,23 @@
                 <!-- Modal body -->
                 <div class="modal-body">
 
-                    <h1 style="text-align:center;">
+                    <h1 class="text-center pt-5">
                         <div class="checkmark-circle">
-                            <div class="background"></div>
+                            <div class="background bg-success"></div>
                             <div class="checkmark draw"></div>
                         </div>
                     </h1>
+
+                    <div class="message mt-5 font-primary text-center">
+<%--                        fetch message--%>
+                    </div>
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Sign in now</button>
+                <div class="modal-footer justify-content-center mt-5">
+                    <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal" id="success-button">
+<%--                        fetch button--%>
+                    </button>
                 </div>
 
             </div>

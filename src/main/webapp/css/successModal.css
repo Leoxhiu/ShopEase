@@ -9,7 +9,6 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    background: #1ab394;
     position: absolute;
 }
 #success-modal .checkmark-circle .checkmark {

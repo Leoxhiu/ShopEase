@@ -4,13 +4,13 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Root;
-import util.JpaEntityManagerFactory;
+import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
 public abstract class AbstractFacade<T> {
 
-    private EntityManager em = JpaEntityManagerFactory.getEntityManager();
+    protected EntityManager em = JpaEntityManagerFactory.getEntityManager();
     private Class<T> entityClass;
 
     public AbstractFacade(Class<T> entityClass) {
