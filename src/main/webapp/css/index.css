@@ -1,0 +1,30 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+lottie-player{
+    margin-left: 8vw;
+}
+
+.title{
+    margin-top: 2vh;
+    text-align: center;
+}
+
+.typing{
+    margin-left: 10px;
+}
+
+.buttons > button {
+
+    margin-left: 20px;
+}
+
+.guest{
+    margin-top: 20px;
+    font-size: 12px;
+    text-align: center;
+}

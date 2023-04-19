@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
+* {
+    font-family: 'DM Sans', sans-serif;
+}
+
+.font-primary{
+    color: #364146 !important;
+}
+
+.font-secondary{
+    color: #444444 !important;
+}
+
+.font-tertiary{
+    color: #7b909a !important;
+}
+
+.font-bold{
+    font-weight: bold !important;
+}

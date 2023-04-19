@@ -1,0 +1,14 @@
+theme-blue: #0D6EFD
+
+button:
+
+
+font:-
+    font-family: 'DM Sans', sans-serif;
+
+    primary: #364146
+    secondary: #444444
+    tertiary: #7b909a
+
+
+<img src="${pageContext.request.contextPath}/images/wenxuan.png"/>

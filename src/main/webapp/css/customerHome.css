@@ -1,0 +1,15 @@
+main{
+    margin-top: 10vh;
+}
+
+.carousel-inner > .carousel-item > a > img {
+    height:70vh;
+}
+
+.product{
+    margin-top: 7vh;
+}
+
+.seller{
+    margin-top: 7vh;
+}
