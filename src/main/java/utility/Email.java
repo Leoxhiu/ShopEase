@@ -16,8 +16,7 @@ public class Email {
         Pattern pattern = Pattern.compile("^(.*?)@");
         Matcher matcher = pattern.matcher(email);
         if (matcher.find()) {
-            String result = matcher.group(1);
-            return result;
+            return matcher.group(1);
         }
         return email;
     }
