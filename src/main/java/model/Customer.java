@@ -3,13 +3,13 @@ package model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.UuidGenerator;
+import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
+@UuidGenerator(name = "CUSTOMER_ID")
 public class Customer{
     @Id
-    @GeneratedValue
-    @UuidGenerator (style = UuidGenerator.Style.TIME)
+    @GeneratedValue(generator = "CUSTOMER_ID")
     private String id;
     private String member_id;
     private String image;
