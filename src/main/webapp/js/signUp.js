@@ -17,7 +17,7 @@ $(document).ready(function() {
                 $('#success-modal').find('.message').html('<h4>' + message + '</h4>');
                 $('#success-button').text(response.button);
                 $('#success-button').on('click', function() {
-                    window.location.href = "/shopease/customer/sign-in";
+                    window.location.href = response.url;
                 });
                 $('#success-modal').modal('show');
             },

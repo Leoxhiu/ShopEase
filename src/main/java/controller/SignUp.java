@@ -44,11 +44,14 @@ public class SignUp extends HttpServlet {
         Member new_member = new Member(name, email, confirm_password, user_type);
         memberService.signUp(new_member);
 
-
         // return success response
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        String responseString = "{\"message\": \"Registration success\", \"button\": \"Login now\"}";
+        String responseString = "{" +
+                "\"message\": \"Registration success\", " +
+                "\"button\": \"Login now\", " +
+                "\"url\": \"/shopease/customer/sign-in\"" +
+                "}";
         out.println(responseString);
         out.close();
 
