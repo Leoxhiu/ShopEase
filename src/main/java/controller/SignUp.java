@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Member;
 import service.MemberService;
+import utility.Email;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,7 +41,7 @@ public class SignUp extends HttpServlet {
             return;
         }
 
-        String name = memberService.getFrontEmail(email);
+        String name = Email.get_front(email);
         Member new_member = new Member(name, email, confirm_password, user_type);
         memberService.signUp(new_member);
 

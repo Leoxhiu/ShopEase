@@ -6,6 +6,5 @@ import model.Member;
 @Local
 public interface MemberServiceI {
 
-    String getFrontEmail(String email);
     void signUp(Member member);
 }
