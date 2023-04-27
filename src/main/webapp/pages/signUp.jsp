@@ -23,7 +23,7 @@
     <%--  main script  --%>
     <script>
         <%@ include file="../js/guestCookie.js"%>
-        <%@ include file="../js/signUp.js"%>
+<%--        <%@ include file="../js/signUp.js"%>--%>
     </script>
 
 </head>
@@ -51,7 +51,8 @@
                                     <div class="text-center text-md-center mb-4 mt-md-0">
                                         <h3 class="mb-0 font-bold font-secondary">Create Account </h3>
                                     </div>
-                                    <form action="#" class="mt-4" method="post" id="signUpForm">
+                                    <form action="/shopease/sign-up" class="mt-4" method="post" id="signUpForm">
+                                        <input type="hidden" name="from" value="signUp">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>

@@ -30,31 +30,40 @@ public class SignUp extends HttpServlet {
 
         char user_type = get_user_type.charAt(0);
 
-        // perform validation checks on the form data
-        if (!confirm_password.equals(password)) {
-            response.setContentType("application/json");
-            response.setStatus(400);
-            PrintWriter out = response.getWriter();
-            String responseString = "{\"message\": \"Password does not match\", \"button\": \"Understand\"}";
-            out.println(responseString);
-            out.close();
-            return;
+        PrintWriter out = response.getWriter();
+
+        try {
+            Email.sendCode();
+            out.println(user_type + " succcess");
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
 
-        String name = Email.get_front(email);
-        Member new_member = new Member(name, email, confirm_password, user_type);
-        memberService.signUp(new_member);
-
-        // return success response
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        String responseString = "{" +
-                "\"message\": \"Registration success\", " +
-                "\"button\": \"Login now\", " +
-                "\"url\": \"/shopease/customer/sign-in\"" +
-                "}";
-        out.println(responseString);
-        out.close();
+//        // perform validation checks on the form data
+//        if (!confirm_password.equals(password)) {
+//            response.setContentType("application/json");
+//            response.setStatus(400);
+//            PrintWriter out = response.getWriter();
+//            String responseString = "{\"message\": \"Password does not match\", \"button\": \"Understand\"}";
+//            out.println(responseString);
+//            out.close();
+//            return;
+//        }
+//
+//        String name = Email.get_front(email);
+//        Member new_member = new Member(name, email, confirm_password, user_type);
+//        memberService.signUp(new_member);
+//
+//        // return success response
+//        response.setContentType("application/json");
+//        PrintWriter out = response.getWriter();
+//        String responseString = "{" +
+//                "\"message\": \"Registration success\", " +
+//                "\"button\": \"Login now\", " +
+//                "\"url\": \"/shopease/customer/sign-in\"" +
+//                "}";
+//        out.println(responseString);
+//        out.close();
 
     }
 }
