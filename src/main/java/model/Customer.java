@@ -12,8 +12,9 @@ public class Customer{
     @GeneratedValue(generator = "CUSTOMER_ID")
     private String id;
     private String member_id;
-    private String image;
     private String address_id;
+    private String image;
+
     private double balance;
 
     public Customer() {
