@@ -36,24 +36,19 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
     public void removeCustomer(Customer customer){
         this.remove(customer);
     }
-    public List<Customer> getAllCustomers() {
+    public List<Customer> getAllCustomer() {
         return this.findAll();
     }
 
-    public List<Customer> getRangeCustomers(int[] range){
+    public List<Customer> getRangeCustomer(int[] range){
         return this.findRange(range);
     }
 
-    public Customer getCustomerbyId(String id) {
+    public Customer getCustomerById(String id) {
         return this.find(id);
     }
 
-    public int countCustomers(){
+    public int countCustomer(){
         return this.count();
-    }
-
-    @Override
-    public int add() {
-        return 5;
     }
 }

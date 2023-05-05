@@ -37,23 +37,23 @@ public class MemberFacade extends AbstractFacade<Member> implements MemberFacade
         this.remove(member);
     }
 
-    public List<Member> getAllMembers() {
+    public List<Member> getAllMember() {
         return this.findAll();
     }
 
-    public List<Member> getRangeMembers(int[] range){
+    public List<Member> getRangeMember(int[] range){
         return this.findRange(range);
     }
 
-    public Member getMemberbyId(String id) {
+    public Member getMemberById(String id) {
         return this.find(id);
     }
 
-    public int countMembers(){
+    public int countMember(){
         return this.count();
     }
 
-    public Member getMemberbyEmail(String email) {
+    public Member getMemberByEmail(String email) {
         Query query = super.em.createNativeQuery("SELECT * FROM member WHERE email = :email", Member.class);
         query.setParameter("email", email);
         List<Member> member = query.getResultList();
