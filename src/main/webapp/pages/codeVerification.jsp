@@ -27,7 +27,7 @@
 </head>
 <body>
     <%
-        String actualCode = (String) session.getAttribute("code");
+        String actualCode = (String) session.getAttribute("actualCode");
         if(actualCode == null){
             response.sendRedirect(JspPage.LANDING.getUrl());
         }

@@ -24,8 +24,8 @@
 </head>
 <body>
     <%
-        String member_id = (String) session.getAttribute("member_id");
-        if(!(member_id == null)){
+        String memberId = (String) session.getAttribute("memberId");
+        if(!(memberId == null)){
             response.sendRedirect(JspPage.HOME.getUrl());
         }
     %>

@@ -22,7 +22,7 @@ public class SignUp extends HttpServlet {
         String confirmPassword = request.getParameter("confirmPassword");
         String userType = request.getParameter("account");
 
-        String code = "";
+        String actualCode = "";
 
         // perform validation checks on the form data
         if (!confirmPassword.equals(password)) {
@@ -32,9 +32,7 @@ public class SignUp extends HttpServlet {
         }
 
         try {
-//            code = Email.sendCode(EmailSubject.REGISTRATION, email);
-            code = RandomCode.GENERATE();
-            System.out.println(code);
+            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
 
         } catch (Exception e) {
             MessageHandler.setMessage(request, Message.EMAIL_NOT_SEND, ButtonText.UNDERSTAND, "");
@@ -47,7 +45,7 @@ public class SignUp extends HttpServlet {
         session.setAttribute("email", email);
         session.setAttribute("password", password);
         session.setAttribute("userType", userType);
-        session.setAttribute("code", code);
+        session.setAttribute("actualCode", actualCode);
 
         ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
 

@@ -22,15 +22,15 @@ public class CodeVerification extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         // get form data
-        String code = request.getParameter("code");
+        String inputCode = request.getParameter("code");
 
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
         String password= (String) session.getAttribute("password");
         String userType= (String) session.getAttribute("userType");
-        String actualCode= (String) session.getAttribute("code");
+        String actualCode= (String) session.getAttribute("actualCode");
 
-        if(!code.equals(actualCode)){
+        if(!inputCode.equals(actualCode)){
             MessageHandler.setMessage(request, Message.CODE_NOT_MATCH, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
             return;
