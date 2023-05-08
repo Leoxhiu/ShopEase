@@ -12,14 +12,14 @@ public class Admin {
     @Id
     @GeneratedValue(generator = "ADMIN_ID")
     private String id;
-    private String member_id;
+    private String memberId;
 
     public Admin(){
 
     }
 
-    public Admin(String member_id) {
-        this.member_id = member_id;
+    public Admin(String memberId) {
+        this.memberId = memberId;
     }
 
     public void setId(String id) {
@@ -30,12 +30,12 @@ public class Admin {
         return id;
     }
 
-    public String getMember_id() {
-        return member_id;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setMember_id(String member_id) {
-        this.member_id = member_id;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
 }

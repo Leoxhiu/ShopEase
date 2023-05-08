@@ -15,17 +15,17 @@ public class Member {
     private String name;
     private String email;
     private String password;
-    private char user_type;
+    private char userType;
 
     public Member() {
     }
 
-    public Member(byte[] profile, String name, String email, String password, char user_type) {
+    public Member(byte[] profile, String name, String email, String password, char userType) {
         this.profile = profile;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.user_type = user_type;
+        this.userType = userType;
     }
 
     public String getId() {
@@ -68,11 +68,11 @@ public class Member {
         this.password = password;
     }
 
-    public char getUser_type() {
-        return user_type;
+    public char getUserType() {
+        return userType;
     }
 
-    public void setUser_type(char user_type) {
-        this.user_type = user_type;
+    public void setUserType(char userType) {
+        this.userType = userType;
     }
 }

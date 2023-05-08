@@ -12,7 +12,7 @@ public class Product {
     @Id
     @GeneratedValue(generator = "PRODUCT_ID")
     private String id;
-    private String seller_id;
+    private String sellerId;
     private int category;
     private String image;
     private String name;
@@ -24,8 +24,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(String seller_id, int category, String image, String name, String description, double price, int quantity, boolean discount) {
-        this.seller_id = seller_id;
+    public Product(String sellerId, int category, String image, String name, String description, double price, int quantity, boolean discount) {
+        this.sellerId = sellerId;
         this.category = category;
         this.image = image;
         this.name = name;
@@ -43,12 +43,12 @@ public class Product {
         return id;
     }
 
-    public String getSeller_id() {
-        return seller_id;
+    public String getSellerId() {
+        return sellerId;
     }
 
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
     public int getCategory() {

@@ -12,21 +12,21 @@ public class Seller {
     @Id
     @GeneratedValue(generator = "SELLER_ID")
     private String id;
-    private String address_id;
-    private String user_id;
+    private String addressId;
+    private String userId;
     private String image;
-    private String bank_account;
+    private String bankAccount;
     private double balance;
     private boolean status; // approved or not
 
     public Seller() {
     }
 
-    public Seller(String address_id, String user_id, String image, String bank_account, double balance, boolean status) {
-        this.address_id = address_id;
-        this.user_id = user_id;
+    public Seller(String addressId, String userId, String image, String bankAccount, double balance, boolean status) {
+        this.addressId = addressId;
+        this.userId = userId;
         this.image = image;
-        this.bank_account = bank_account;
+        this.bankAccount = bankAccount;
         this.balance = balance;
         this.status = status;
     }
@@ -39,20 +39,20 @@ public class Seller {
         return id;
     }
 
-    public String getAddress_id() {
-        return address_id;
+    public String getAddressId() {
+        return addressId;
     }
 
-    public void setAddress_id(String address_id) {
-        this.address_id = address_id;
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
-    public String getUser_id() {
-        return user_id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getImage() {
@@ -63,12 +63,12 @@ public class Seller {
         this.image = image;
     }
 
-    public String getBank_account() {
-        return bank_account;
+    public String getBankAccount() {
+        return bankAccount;
     }
 
-    public void setBank_account(String bank_account) {
-        this.bank_account = bank_account;
+    public void setBankAccount(String bankAccount) {
+        this.bankAccount = bankAccount;
     }
 
     public double getBalance() {

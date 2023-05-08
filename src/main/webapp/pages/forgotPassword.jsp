@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +9,7 @@
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/index.css"%>
+        <%@ include file="../css/main.css"%>
         <%@ include file="../css/forgotPassword.css"%>
     </style>
 
@@ -19,9 +20,6 @@
     <%--  vendor script  --%>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 
 </head>
 <body>
@@ -37,7 +35,7 @@
         <div class="col-lg-5">
 
           <div class="row justify-content-center">
-            <p class="text-center"><a href="/shopease/sign-in" class="d-flex align-items-center justify-content-center">
+            <p class="text-center"><a href="<%= JspPage.SIGN_IN.getUrl() %>" class="d-flex align-items-center justify-content-center">
               <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
               Back to log in
             </a>

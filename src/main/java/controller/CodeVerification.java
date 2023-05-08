@@ -32,7 +32,7 @@ public class CodeVerification extends HttpServlet {
 
         if(!code.equals(actualCode)){
             MessageHandler.setMessage(request, Message.CODE_NOT_MATCH, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getUrl());
+            ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
             return;
         }
 
@@ -47,13 +47,13 @@ public class CodeVerification extends HttpServlet {
 
             Member member = new Member(profile, Email.getFront(email), email, password, userType.charAt(0));
             if(memberService.signUp(member)){
-                MessageHandler.setMessage(request, Message.REGISTRATION_SUCCESS, ButtonText.LOGIN_NOW, "/shopease/customer/sign-in");
+                MessageHandler.setMessage(request, Message.REGISTRATION_SUCCESS, ButtonText.LOGIN_NOW, JspPage.SIGN_IN.getUrl());
                 CookieUtils.addCookie(response, "isUser", "true", -1, "/");
-                ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getUrl());
+                ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
                 session.invalidate();
             } else {
                 MessageHandler.setMessage(request, Message.REGISTRATION_FAILED, ButtonText.UNDERSTAND, "");
-                ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getUrl());
+                ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
             }
         }
     }

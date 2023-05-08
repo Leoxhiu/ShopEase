@@ -27,7 +27,7 @@ public class MemberService implements MemberServiceI{
     public boolean signUp(Member member) {
         boolean isSuccess = memberFacade.createMember(member);
 
-        if(member.getUser_type() == 'c' && isSuccess){
+        if(member.getUserType() == 'c' && isSuccess){
             // perform customer registration
             Address address = new Address("", "", "");
             isSuccess = addressFacade.createAddress(address);
@@ -37,11 +37,11 @@ public class MemberService implements MemberServiceI{
 
             return isSuccess;
 
-        } else if (member.getUser_type() == 's' && isSuccess){
+        } else if (member.getUserType() == 's' && isSuccess){
             // perform seller registration
             return isSuccess;
 
-        } else if (member.getUser_type() == 'a' && isSuccess){
+        } else if (member.getUserType() == 'a' && isSuccess){
             // perform admin registration
             return isSuccess;
         }

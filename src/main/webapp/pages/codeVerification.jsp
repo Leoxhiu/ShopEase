@@ -1,3 +1,6 @@
+<%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
+<%@ page import="utility.ServletNavigation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -21,14 +24,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 </head>
 <body>
     <%
         String actualCode = (String) session.getAttribute("code");
         if(actualCode == null){
-            response.sendRedirect("/shopease/welcome");
+            response.sendRedirect(JspPage.LANDING.getUrl());
         }
     %>
     <main>
@@ -43,7 +44,7 @@
                     <div class="col-lg-5">
 
                         <div class="row justify-content-center">
-                            <p class="text-center"><a href="/shopease/sign-in" class="d-flex align-items-center justify-content-center">
+                            <p class="text-center"><a href="<%= JspPage.SIGN_IN.getUrl() %>" class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
                                 Back to log in
                             </a>
@@ -66,7 +67,7 @@
                                             });
                                         </script>
                                     </c:if>
-                                    <form action="/shopease/s/code-verification" method="post">
+                                    <form action="<%= ServletPage.CODE_VERIFICATION.getUrl() %>" method="post">
                                         <!-- Form -->
                                         <div class="mb-4">
                                             <label for="code">Code</label>

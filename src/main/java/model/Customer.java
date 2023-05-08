@@ -11,8 +11,8 @@ public class Customer{
     @Id
     @GeneratedValue(generator = "CUSTOMER_ID")
     private String id;
-    private String member_id;
-    private String address_id;
+    private String memberId;
+    private String addressId;
 
     private double balance;
 
@@ -20,9 +20,9 @@ public class Customer{
 
     }
 
-    public Customer(String member_id, String address_id, double balance) {
-        this.member_id = member_id;
-        this.address_id = address_id;
+    public Customer(String memberId, String addressId, double balance) {
+        this.memberId = memberId;
+        this.addressId = addressId;
         this.balance = balance;
     }
 
@@ -34,20 +34,20 @@ public class Customer{
         this.id = id;
     }
 
-    public String getMember_id() {
-        return member_id;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setMember_id(String member_id) {
-        this.member_id = member_id;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
-    public String getAddress_id() {
-        return address_id;
+    public String getAddressId() {
+        return addressId;
     }
 
-    public void setAddress_id(String address_id) {
-        this.address_id = address_id;
+    public void setAddressId(String addressId) {
+        this.addressId = addressId;
     }
 
     public double getBalance() {

@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -16,7 +17,7 @@
     <div class="navigation_bar">
         <nav class="shadow-sm navbar navbar-expand-lg d-flex">
             <div class="container">
-                <a class="navbar-brand font-tertiary brand-text" href="/shopease/welcome">ShopEase</a>
+                <a class="navbar-brand font-tertiary brand-text" href="<%= JspPage.LANDING.getUrl() %>">ShopEase</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -35,15 +36,15 @@
                             <a class="nav-link" href="#market">Market</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/shopease/seller/join">Join as Seller</a>
+                            <a class="nav-link" href="">Join as Seller</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 main-buttons">
                         <li class="nav-but">
-                            <a class="btn btn-register" href="/shopease/sign-up">Sign Up</a>
+                            <a class="btn btn-register" href="<%= JspPage.SIGN_UP.getUrl() %>">Register</a>
                         </li>
                         <li class="nav-but">
-                            <a class="btn btn-primary" href="/shopease/sign-in">Login</a>
+                            <a class="btn btn-primary" href="<%= JspPage.SIGN_IN.getUrl() %>">Login</a>
                         </li>
                     </ul>
                 </div>

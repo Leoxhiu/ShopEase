@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,11 +20,14 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
-
 </head>
 <body>
+<%
+    String email = (String) session.getAttribute("email");
+    if(email == null){
+        response.sendRedirect(JspPage.LANDING.getUrl());
+    }
+%>
 <main>
     <!-- Section -->
     <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
@@ -31,7 +35,7 @@
             <div class="row justify-content-evenly">
 
                 <div class="col-lg-7 d-flex align-items-center justify-content-center">
-                    <img src="../images/others/password.svg" alt="sign-up-svg"/>
+                    <%@ include file="../images/others/password.svg" %>
                 </div>
 
                 <div class="col-lg-5">

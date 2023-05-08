@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,14 +21,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 </head>
 <body>
     <%
         String member_id = (String) session.getAttribute("member_id");
         if(!(member_id == null)){
-            response.sendRedirect("/shopease/customer/home");
+            response.sendRedirect(JspPage.HOME.getUrl());
         }
     %>
     <main>
@@ -42,7 +41,7 @@
 
                     <div class="col-lg-5">
                         <p class="text-center">
-                            <a href="/shopease/welcome" class="d-flex align-items-center justify-content-center">
+                            <a href="<%= JspPage.LANDING.getUrl() %>" class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
                                 Back to homepage
                             </a>
@@ -79,7 +78,7 @@
                                             </div>
                                             <!-- End of Form -->
                                             <div class="d-flex justify-content-end align-items-top mb-4">
-                                                <div><a href="/shopease/forgot-password" class="small text-right">Forgot password?</a></div>
+                                                <div><a href="<%= JspPage.FORGOT_PASSWORD.getUrl() %>" class="small text-right">Forgot password?</a></div>
                                             </div>
                                         </div>
                                         <div class="d-grid">
@@ -89,7 +88,7 @@
                                     <div class="d-flex justify-content-center align-items-center mt-4">
                                             <span class="fw-normal">
                                                 Not registered?
-                                                <a href="/shopease/sign-up" class="fw-bold">Create account</a>
+                                                <a href="<%= JspPage.SIGN_UP.getUrl() %>" class="fw-bold">Create account</a>
                                             </span>
                                     </div>
                                 </div>

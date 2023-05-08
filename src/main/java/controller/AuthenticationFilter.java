@@ -4,6 +4,7 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import utility.JspPage;
 
 import java.io.IOException;
 
@@ -16,7 +17,7 @@ public class AuthenticationFilter implements Filter {
         if (session == null || session.getAttribute("member_id") == null) {
             // User is not logged in, redirect to login page
             HttpServletResponse httpResponse = (HttpServletResponse) response;
-            httpResponse.sendRedirect("/shopease/sign-in");
+            httpResponse.sendRedirect(JspPage.SIGN_IN.getUrl());
             return;
         }
 

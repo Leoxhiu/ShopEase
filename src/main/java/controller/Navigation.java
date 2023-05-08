@@ -16,15 +16,15 @@ public class Navigation extends HttpServlet {
 
         // Define the mapping of URL paths to JSP pages
         Map<String, String> pathToJspMap = new HashMap<>();
-        pathToJspMap.put("/shopease/", JspPage.INDEX.getUrl());
-        pathToJspMap.put("/shopease/welcome", JspPage.LANDING.getUrl());
-        pathToJspMap.put("/shopease/sign-in", JspPage.SIGN_IN.getUrl());
-        pathToJspMap.put("/shopease/sign-up", JspPage.SIGN_UP.getUrl());
-        pathToJspMap.put("/shopease/forgot-password", JspPage.FORGOT_PASSWORD.getUrl());
-        pathToJspMap.put("/shopease/code-verification", JspPage.CODE_VERIFICATION.getUrl());
-        pathToJspMap.put("/shopease/reset-password", JspPage.RESET_PASSWORD.getUrl());
-        pathToJspMap.put("/shopease/customer/home", JspPage.HOME.getUrl());
-        pathToJspMap.put("/shopease/customer/market", JspPage.MARKET.getUrl());
+        pathToJspMap.put(JspPage.INDEX.getUrl(), JspPage.INDEX.getPath());
+        pathToJspMap.put(JspPage.LANDING.getUrl(), JspPage.LANDING.getPath());
+        pathToJspMap.put(JspPage.SIGN_IN.getUrl(), JspPage.SIGN_IN.getPath());
+        pathToJspMap.put(JspPage.SIGN_UP.getUrl(), JspPage.SIGN_UP.getPath());
+        pathToJspMap.put(JspPage.FORGOT_PASSWORD.getUrl(), JspPage.FORGOT_PASSWORD.getPath());
+        pathToJspMap.put(JspPage.CODE_VERIFICATION.getUrl(), JspPage.CODE_VERIFICATION.getPath());
+        pathToJspMap.put(JspPage.RESET_PASSWORD.getUrl(), JspPage.RESET_PASSWORD.getPath());
+        pathToJspMap.put(JspPage.HOME.getUrl(), JspPage.HOME.getPath());
+        pathToJspMap.put(JspPage.MARKET.getUrl(), JspPage.MARKET.getPath());
 
         // Get the requested URL path
         String path = request.getRequestURI();

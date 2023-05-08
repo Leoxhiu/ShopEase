@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,9 +22,6 @@
     <script src="https://kit.fontawesome.com/aec1025d0d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
-
 </head>
 <body>
 
@@ -37,7 +35,7 @@
                     <div class="col-lg-5 d-flex flex-column justify-content-evenly">
                         <h1 class="title font-primary font-bold">Your One-Stop Shop for Online Shopping</h1>
                         <h4 class="subtitle font-tertiary">Discover a Wide Range of Products at Unbeatable Prices - Shop Now and Enjoy Fast, Secure Shipping!</h4>
-                        <a class="btn btn-primary btn-lg w-50 explore-button" href="/shopease/sign-up">Explore</a>
+                        <a class="btn btn-primary btn-lg w-50 explore-button" href="<%= JspPage.SIGN_UP.getUrl() %>">Explore</a>
                     </div>
                     <div class="col-lg-5 d-flex align-items-center justify-content-center svg1">
                         <%@ include file="../images/shopping/web_shopping.svg"%>

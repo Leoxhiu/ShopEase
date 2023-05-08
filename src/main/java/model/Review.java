@@ -12,15 +12,15 @@ public class Review {
     @Id
     @GeneratedValue(generator = "REVIEW_ID")
     private String id;
-    private String product_id;
+    private String productId;
     private int rating;
     private String feedback;
 
     public Review() {
     }
 
-    public Review(String product_id, int rating, String feedback) {
-        this.product_id = product_id;
+    public Review(String productId, int rating, String feedback) {
+        this.productId = productId;
         this.rating = rating;
         this.feedback = feedback;
     }
@@ -33,12 +33,12 @@ public class Review {
         return id;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public int getRating() {

@@ -1,4 +1,5 @@
 <%@ page import="utility.CookieUtils" %>
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -24,15 +25,12 @@
     <!--  vendor script  -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
-
 </head>
 <body>
     <%
         if(CookieUtils.cookieExists(request, "isUser")){
            // New location to be redirected
-           String site = new String("/shopease/welcome");
+           String site = new String(JspPage.LANDING.getUrl());
            response.setStatus(response.SC_MOVED_TEMPORARILY);
            response.setHeader("Location", site);
         }
@@ -50,12 +48,12 @@
 
         <div class="container text-center">
             <div class="d-grid gap-2 btn-block d-md-block">
-                <a type="button" class="btn btn-secondary btn-lg mx-2" href="/shopease/sign-in">Login</a>
-                <a type="button" class="btn btn-primary btn-lg mx-2" href="/shopease/sign-up">Sign up</a>
+                <a type="button" class="btn btn-secondary btn-lg mx-2" href="<%= JspPage.SIGN_IN.getUrl() %>">Login</a>
+                <a type="button" class="btn btn-primary btn-lg mx-2" href="<%= JspPage.SIGN_UP.getUrl() %>">Sign up</a>
             </div>
         </div>
 
-        <p class="guest"><a href="/shopease/welcome" class="link-secondary">Explore as Guest</a></p>
+        <p class="guest"><a href="<%= JspPage.LANDING.getUrl() %>" class="link-secondary">Explore as Guest</a></p>
     </div>
 
 <%--    <script>--%>

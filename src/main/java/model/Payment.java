@@ -12,14 +12,14 @@ public class Payment {
     @Id
     @GeneratedValue(generator = "PAYMENT_ID")
     private String id;
-    private String order_id;
+    private String orderId;
     private double price;
 
     public Payment() {
     }
 
-    public Payment(String order_id, double price) {
-        this.order_id = order_id;
+    public Payment(String orderId, double price) {
+        this.orderId = orderId;
         this.price = price;
     }
 
@@ -31,12 +31,12 @@ public class Payment {
         return id;
     }
 
-    public String getOrder_id() {
-        return order_id;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public double getPrice() {

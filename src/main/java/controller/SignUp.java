@@ -27,7 +27,7 @@ public class SignUp extends HttpServlet {
         // perform validation checks on the form data
         if (!confirmPassword.equals(password)) {
             MessageHandler.setMessage(request, Message.PASSWORD_NOT_MATCH, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getUrl());
+            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getPath());
             return;
         }
 
@@ -38,7 +38,7 @@ public class SignUp extends HttpServlet {
 
         } catch (Exception e) {
             MessageHandler.setMessage(request, Message.EMAIL_NOT_SEND, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getUrl());
+            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getPath());
             return;
         }
 
@@ -49,7 +49,7 @@ public class SignUp extends HttpServlet {
         session.setAttribute("userType", userType);
         session.setAttribute("code", code);
 
-        ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getUrl());
+        ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
 
     }
 }

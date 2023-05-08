@@ -11,17 +11,17 @@ public class Cart {
     @Id
     @GeneratedValue(generator = "CART_ID")
     private String id;
-    private String customer_id;
-    private String product_id;
+    private String customerId;
+    private String productId;
     private int quantity;
     private double price;
 
     public Cart() {
     }
 
-    public Cart(String customer_id, String product_id, int quantity, double price) {
-        this.customer_id = customer_id;
-        this.product_id = product_id;
+    public Cart(String customerId, String productId, int quantity, double price) {
+        this.customerId = customerId;
+        this.productId = productId;
         this.quantity = quantity;
         this.price = price;
     }
@@ -34,20 +34,20 @@ public class Cart {
         return id;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public int getQuantity() {

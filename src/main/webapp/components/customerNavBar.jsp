@@ -1,3 +1,4 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
@@ -14,17 +15,17 @@
     <div class="navigation_bar">
         <nav class="shadow-sm navbar navbar-expand-lg d-flex">
             <div class="container">
-                <a class="navbar-brand font-tertiary brand-text" href="/shopease/customer/home">ShopEase</a>
+                <a class="navbar-brand font-tertiary brand-text" href="<%= JspPage.HOME.getUrl() %>">ShopEase</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse"  id="navbarNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item main-item">
-                            <a class="nav-link nav-direct" aria-current="page" href="/shopease/customer/home">Home</a>
+                            <a class="nav-link nav-direct" aria-current="page" href="<%= JspPage.HOME.getUrl() %>">Home</a>
                         </li>
                         <li class="nav-item main-item">
-                            <a class="nav-link nav-direct" href="/shopease/customer/market">Market</a>
+                            <a class="nav-link nav-direct" href="<%= JspPage.MARKET.getUrl() %>">Market</a>
                         </li>
                         <li class="nav-item main-item">
                             <a class="nav-link nav-direct" href="#seller">Seller</a>

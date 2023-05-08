@@ -12,16 +12,16 @@ public class CustomerOrder {
     @Id
     @GeneratedValue (generator = "CUSTOMERORDER_ID")
     private String id;
-    private String customer_id;
-    private String payment_id;
+    private String customerId;
+    private String paymentId;
     private String date;
 
     public CustomerOrder() {
     }
 
-    public CustomerOrder(String customer_id, String payment_id, String date) {
-        this.customer_id = customer_id;
-        this.payment_id = payment_id;
+    public CustomerOrder(String customerId, String paymentId, String date) {
+        this.customerId = customerId;
+        this.paymentId = paymentId;
         this.date = date;
     }
 
@@ -33,20 +33,20 @@ public class CustomerOrder {
         return id;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public String getPayment_id() {
-        return payment_id;
+    public String getPaymentId() {
+        return paymentId;
     }
 
-    public void setPayment_id(String payment_id) {
-        this.payment_id = payment_id;
+    public void setPaymentId(String paymentId) {
+        this.paymentId = paymentId;
     }
 
     public String getDate() {

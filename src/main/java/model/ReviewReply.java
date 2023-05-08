@@ -12,18 +12,18 @@ public class ReviewReply {
     @Id
     @GeneratedValue(generator = "REVIEWREPLY_ID")
     private String id;
-    private String review_id;
-    private String customer_id;
-    private String seller_id;
+    private String reviewId;
+    private String customerId;
+    private String sellerId;
     private String reply;
 
     public ReviewReply() {
     }
 
-    public ReviewReply(String review_id, String customer_id, String seller_id, String reply) {
-        this.review_id = review_id;
-        this.customer_id = customer_id;
-        this.seller_id = seller_id;
+    public ReviewReply(String reviewId, String customerId, String sellerId, String reply) {
+        this.reviewId = reviewId;
+        this.customerId = customerId;
+        this.sellerId = sellerId;
         this.reply = reply;
     }
 
@@ -35,28 +35,28 @@ public class ReviewReply {
         return id;
     }
 
-    public String getReview_id() {
-        return review_id;
+    public String getReviewId() {
+        return reviewId;
     }
 
-    public void setReview_id(String review_id) {
-        this.review_id = review_id;
+    public void setReviewId(String reviewId) {
+        this.reviewId = reviewId;
     }
 
-    public String getCustomer_id() {
-        return customer_id;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(String customer_id) {
-        this.customer_id = customer_id;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
-    public String getSeller_id() {
-        return seller_id;
+    public String getSellerId() {
+        return sellerId;
     }
 
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
     public String getReply() {

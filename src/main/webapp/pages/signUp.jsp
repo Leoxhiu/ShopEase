@@ -1,3 +1,5 @@
+<%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -21,11 +23,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <%--  main script  --%>
-    <script>
-<%--        <%@ include file="../js/guestCookie.js"%>--%>
-    </script>
-
 </head>
 <body>
     <main>
@@ -40,7 +37,7 @@
 
                     <div class="col-lg-5">
                         <p class="text-center">
-                            <a href="/shopease/welcome" class="d-flex align-items-center justify-content-center">
+                            <a href="<%= JspPage.LANDING.getUrl() %>" class="d-flex align-items-center justify-content-center">
                                 <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
                                 Back to homepage
                             </a>
@@ -65,7 +62,7 @@
                                             });
                                         </script>
                                     </c:if>
-                                    <form action="/shopease/s/sign-up" class="mt-4" method="post" id="signUpForm">
+                                    <form action="<%= ServletPage.SIGN_UP.getUrl() %>" class="mt-4" method="post" id="signUpForm">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>
@@ -116,7 +113,7 @@
                                     <div class="d-flex justify-content-center align-items-center mt-4">
                                     <span class="fw-normal">
                                         Already have an account?
-                                        <a href="/shopease/customer/sign-in" class="fw-bold">Login here</a>
+                                        <a href="<%= JspPage.SIGN_IN.getUrl() %>" class="fw-bold">Login here</a>
                                     </span>
                                     </div>
                                 </div>

@@ -13,19 +13,19 @@ public class OrderCart {
     @Id
     @GeneratedValue (generator = "ORDERCART_ID")
     private String id;
-    private String cart_id;
-    private String order_id;
+    private String cartId;
+    private String orderId;
     private double price;
-    private int delivery_status;
+    private int deliveryStatus;
 
     public OrderCart() {
     }
 
-    public OrderCart(String cart_id, String order_id, double price, int delivery_status) {
-        this.cart_id = cart_id;
-        this.order_id = order_id;
+    public OrderCart(String cartId, String orderId, double price, int deliveryStatus) {
+        this.cartId = cartId;
+        this.orderId = orderId;
         this.price = price;
-        this.delivery_status = delivery_status;
+        this.deliveryStatus = deliveryStatus;
     }
 
     public void setId(String id) {
@@ -36,20 +36,20 @@ public class OrderCart {
         return id;
     }
 
-    public String getCart_id() {
-        return cart_id;
+    public String getCartId() {
+        return cartId;
     }
 
-    public void setCart_id(String cart_id) {
-        this.cart_id = cart_id;
+    public void setCartId(String cartId) {
+        this.cartId = cartId;
     }
 
-    public String getOrder_id() {
-        return order_id;
+    public String getOrderId() {
+        return orderId;
     }
 
-    public void setOrder_id(String order_id) {
-        this.order_id = order_id;
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
     }
 
     public double getPrice() {
@@ -60,11 +60,11 @@ public class OrderCart {
         this.price = price;
     }
 
-    public int getDelivery_status() {
-        return delivery_status;
+    public int getDeliveryStatus() {
+        return deliveryStatus;
     }
 
-    public void setDelivery_status(int delivery_status) {
-        this.delivery_status = delivery_status;
+    public void setDeliveryStatus(int deliveryStatus) {
+        this.deliveryStatus = deliveryStatus;
     }
 }

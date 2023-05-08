@@ -11,19 +11,19 @@ public class Discount {
     @Id
     @GeneratedValue(generator = "DISCOUNT_ID")
     private String id;
-    private String seller_id;
-    private String product_id;
+    private String sellerId;
+    private String productId;
     private int percentage;
-    private String expiry_date;
+    private String expiryDate;
 
     public Discount() {
     }
 
-    public Discount(String seller_id, String product_id, int percentage, String expiry_date) {
-        this.seller_id = seller_id;
-        this.product_id = product_id;
+    public Discount(String sellerId, String productId, int percentage, String expiryDate) {
+        this.sellerId = sellerId;
+        this.productId = productId;
         this.percentage = percentage;
-        this.expiry_date = expiry_date;
+        this.expiryDate = expiryDate;
     }
 
     public void setId(String id) {
@@ -34,20 +34,20 @@ public class Discount {
         return id;
     }
 
-    public String getSeller_id() {
-        return seller_id;
+    public String getSellerId() {
+        return sellerId;
     }
 
-    public void setSeller_id(String seller_id) {
-        this.seller_id = seller_id;
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId;
     }
 
-    public String getProduct_id() {
-        return product_id;
+    public String getProductId() {
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public int getPercentage() {
@@ -58,11 +58,11 @@ public class Discount {
         this.percentage = percentage;
     }
 
-    public String getExpiry_date() {
-        return expiry_date;
+    public String getExpiryDate() {
+        return expiryDate;
     }
 
-    public void setExpiry_date(String expiry_date) {
-        this.expiry_date = expiry_date;
+    public void setExpiryDate(String expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }
