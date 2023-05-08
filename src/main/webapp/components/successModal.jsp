@@ -19,15 +19,15 @@
                     </h1>
 
                     <div class="message mt-5 font-primary text-center">
-<%--                        fetch message--%>
+                        ${successMessage}
                     </div>
                 </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer justify-content-center mt-5">
-                    <button type="button" class="btn btn-primary btn-lg" data-bs-dismiss="modal" id="success-button">
-<%--                        fetch button--%>
-                    </button>
+                    <a href="${url}" type="button" class="btn btn-primary btn-lg" id="success-button">
+                        ${buttonText}
+                    </a>
                 </div>
 
             </div>

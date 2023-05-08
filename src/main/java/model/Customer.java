@@ -13,7 +13,6 @@ public class Customer{
     private String id;
     private String member_id;
     private String address_id;
-    private String image;
 
     private double balance;
 
@@ -21,9 +20,8 @@ public class Customer{
 
     }
 
-    public Customer(String member_id, String image, String address_id, double balance) {
+    public Customer(String member_id, String address_id, double balance) {
         this.member_id = member_id;
-        this.image = image;
         this.address_id = address_id;
         this.balance = balance;
     }
@@ -42,14 +40,6 @@ public class Customer{
 
     public void setMember_id(String member_id) {
         this.member_id = member_id;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getAddress_id() {

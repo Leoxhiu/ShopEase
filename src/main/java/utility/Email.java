@@ -39,7 +39,7 @@ public class Email {
 
     }
 
-    public static String get_front(String email){
+    public static String getFront(String email){
         Pattern pattern = Pattern.compile("^(.*?)@");
         Matcher matcher = pattern.matcher(email);
         if (matcher.find()) {
@@ -48,7 +48,7 @@ public class Email {
         return email;
     }
 
-    public static boolean check_internet_connection() {
+    public static boolean checkInternetConnection() {
         try {
             URL url = new URL("https://www.google.com/");
             URLConnection connection = url.openConnection();
@@ -61,19 +61,23 @@ public class Email {
 
     }
 
-    public static void sendCode() throws Exception {
-        String code = "SHOPEASE";
-        sendEmail("hiuwenxuan@gmail.com",
-                "Testing", """
+    public static String sendCode(EmailSubject emailSubject, String email) throws Exception {
+        String code = RandomCode.GENERATE();
+        sendEmail(email, emailSubject.getSubject(), """
 
-                Dear reader,
+                Dear user,
 
                 This is your code.
                 %s
                 
+                
+                
+                Thank you for using our service.
                 Sincerely,
                 ShopEase
                 """.formatted(code));
+
+        return code;
     }
 
     private static Credential getCredentials(final NetHttpTransport httpTransport, GsonFactory jsonFactory)

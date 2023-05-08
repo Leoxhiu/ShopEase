@@ -11,6 +11,7 @@ public class Member {
     @Id
     @GeneratedValue(generator = "MEMBER_ID")
     private String id;
+    private byte[] profile;
     private String name;
     private String email;
     private String password;
@@ -19,19 +20,28 @@ public class Member {
     public Member() {
     }
 
-    public Member(String name, String email, String password, char user_type) {
+    public Member(byte[] profile, String name, String email, String password, char user_type) {
+        this.profile = profile;
         this.name = name;
         this.email = email;
         this.password = password;
         this.user_type = user_type;
     }
 
+    public String getId() {
+        return id;
+    }
+
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getId() {
-        return id;
+    public byte[] getProfile() {
+        return profile;
+    }
+
+    public void setProfile(byte[] profile) {
+        this.profile = profile;
     }
 
     public String getName() {

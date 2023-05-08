@@ -35,15 +35,15 @@
                             <a class="nav-link" href="#market">Market</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/shopease/seller/sign-up">Join as Seller</a>
+                            <a class="nav-link" href="/shopease/seller/join">Join as Seller</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 main-buttons">
                         <li class="nav-but">
-                            <a class="btn btn-register" href="/shopease/customer/sign-up">Sign Up</a>
+                            <a class="btn btn-register" href="/shopease/sign-up">Sign Up</a>
                         </li>
                         <li class="nav-but">
-                            <a class="btn btn-primary" href="/shopease/customer/sign-in">Login</a>
+                            <a class="btn btn-primary" href="/shopease/sign-in">Login</a>
                         </li>
                     </ul>
                 </div>

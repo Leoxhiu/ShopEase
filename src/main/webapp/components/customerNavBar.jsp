@@ -35,7 +35,7 @@
                             <a class="nav-link" href="#cart">
                                 <i class="bi bi-cart-fill fa-lg"></i>
                                 <span class="position-absolute top-5 start-5 translate-middle badge rounded-pill bg-danger">
-                                    5
+                                    ${sessionScope.cart_items}
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
                             </a>
@@ -45,7 +45,7 @@
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
                                         <a id="customerName" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            Hiu Wen Xuan
+                                            ${sessionScope.name}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
                                             <li><a class="dropdown-item" href="#profile">Profile</a></li>

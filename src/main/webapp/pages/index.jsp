@@ -1,3 +1,4 @@
+<%@ page import="utility.CookieUtils" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 
 <!DOCTYPE html>
@@ -24,26 +25,16 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <%--  main script  --%>
-    <script><%@ include file="../js/guestCookie.js"%></script>
+<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 
 </head>
 <body>
     <%
-        // Get an array of Cookies associated with this domain
-        Cookie[] cookies = null;
-        cookies = request.getCookies();
-
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("isGuest")) {
-                   if (cookie.getValue().equals("0")){
-                       // New location to be redirected
-                       String site = new String("landing.jsp");
-                       response.setStatus(response.SC_MOVED_TEMPORARILY);
-                       response.setHeader("Location", site);
-                    }
-                }
-            }
+        if(CookieUtils.cookieExists(request, "isUser")){
+           // New location to be redirected
+           String site = new String("/shopease/welcome");
+           response.setStatus(response.SC_MOVED_TEMPORARILY);
+           response.setHeader("Location", site);
         }
     %>
 
@@ -59,8 +50,8 @@
 
         <div class="container text-center">
             <div class="d-grid gap-2 btn-block d-md-block">
-                <button type="button" class="btn btn-secondary btn-lg mx-2" onclick="window.location.href='/shopease/customer/sign-in'">Login</button>
-                <button type="button" class="btn btn-primary btn-lg mx-2" onclick="window.location.href='/shopease/customer/sign-up'">Sign up</button>
+                <a type="button" class="btn btn-secondary btn-lg mx-2" href="/shopease/sign-in">Login</a>
+                <a type="button" class="btn btn-primary btn-lg mx-2" href="/shopease/sign-up">Sign up</a>
             </div>
         </div>
 

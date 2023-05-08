@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,8 +23,7 @@
 
     <%--  main script  --%>
     <script>
-        <%@ include file="../js/guestCookie.js"%>
-<%--        <%@ include file="../js/signUp.js"%>--%>
+<%--        <%@ include file="../js/guestCookie.js"%>--%>
     </script>
 
 </head>
@@ -51,8 +51,21 @@
                                     <div class="text-center text-md-center mb-4 mt-md-0">
                                         <h3 class="mb-0 font-bold font-secondary">Create Account </h3>
                                     </div>
-                                    <form action="/shopease/sign-up" class="mt-4" method="post" id="signUpForm">
-                                        <input type="hidden" name="from" value="signUp">
+                                    <c:if test="${not empty errorMessage}">
+                                        <script>
+                                            $(function() {
+                                                $('#error-modal').modal('show');
+                                            });
+                                        </script>
+                                    </c:if>
+                                    <c:if test="${not empty successMessage}">
+                                        <script>
+                                            $(function() {
+                                                $('#success-modal').modal('show');
+                                            });
+                                        </script>
+                                    </c:if>
+                                    <form action="/shopease/s/sign-up" class="mt-4" method="post" id="signUpForm">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>
@@ -83,7 +96,7 @@
                                                 <span class="input-group-text">
                                                     <i class="bi bi-lock-fill"></i>
                                                 </span>
-                                                    <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                                    <input type="password" placeholder="Confirm Password" class="form-control" id="confirm_password" name="confirmPassword" required>
                                                 </div>
                                             </div>
                                             <!-- End of Form -->
@@ -112,7 +125,6 @@
                     </div>
                 </div>
                 <jsp:include page="../components/termsConditions.jsp" />
-                <jsp:include page="../components/successModal.jsp" />
                 <jsp:include page="../components/errorModal.jsp" />
             </div>
         </section>

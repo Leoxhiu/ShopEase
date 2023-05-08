@@ -21,7 +21,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <%--  main script  --%>
-    <script><%@ include file="../js/guestCookie.js"%></script>
+<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 
 </head>
 <body>
@@ -37,7 +37,7 @@
         <div class="col-lg-5">
 
           <div class="row justify-content-center">
-            <p class="text-center"><a href="../pages/signIn.jsp" class="d-flex align-items-center justify-content-center">
+            <p class="text-center"><a href="/shopease/sign-in" class="d-flex align-items-center justify-content-center">
               <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
               Back to log in
             </a>

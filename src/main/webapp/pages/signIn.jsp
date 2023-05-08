@@ -21,10 +21,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <%--  main script  --%>
-    <script><%@ include file="../js/guestCookie.js"%></script>
+<%--    <script><%@ include file="../js/guestCookie.js"%></script>--%>
 </head>
 <body>
-
+    <%
+        String member_id = (String) session.getAttribute("member_id");
+        if(!(member_id == null)){
+            response.sendRedirect("/shopease/customer/home");
+        }
+    %>
     <main>
         <!-- Section -->
         <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">
@@ -74,7 +79,7 @@
                                             </div>
                                             <!-- End of Form -->
                                             <div class="d-flex justify-content-end align-items-top mb-4">
-                                                <div><a href="/shopease/customer/forgot-password" class="small text-right">Forgot password?</a></div>
+                                                <div><a href="/shopease/forgot-password" class="small text-right">Forgot password?</a></div>
                                             </div>
                                         </div>
                                         <div class="d-grid">
@@ -84,7 +89,7 @@
                                     <div class="d-flex justify-content-center align-items-center mt-4">
                                             <span class="fw-normal">
                                                 Not registered?
-                                                <a href="/shopease/customer/sign-up" class="fw-bold">Create account</a>
+                                                <a href="/shopease/sign-up" class="fw-bold">Create account</a>
                                             </span>
                                     </div>
                                 </div>

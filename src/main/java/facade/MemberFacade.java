@@ -54,7 +54,7 @@ public class MemberFacade extends AbstractFacade<Member> implements MemberFacade
     }
 
     public Member getMemberByEmail(String email) {
-        Query query = super.em.createNativeQuery("SELECT * FROM member WHERE email = :email", Member.class);
+        Query query = super.em.createNativeQuery("SELECT * FROM member WHERE email = email", Member.class);
         query.setParameter("email", email);
         List<Member> member = query.getResultList();
         if (member.isEmpty()) {

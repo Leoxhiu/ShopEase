@@ -6,5 +6,5 @@ import model.Member;
 @Local
 public interface MemberServiceI {
 
-    void signUp(Member member);
+    boolean signUp(Member member);
 }
