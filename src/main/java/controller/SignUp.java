@@ -22,7 +22,7 @@ public class SignUp extends HttpServlet {
         String confirmPassword = request.getParameter("confirmPassword");
         String userType = request.getParameter("account");
 
-        String actualCode = "";
+        String actualCode;
 
         // perform validation checks on the form data
         if (!confirmPassword.equals(password)) {
