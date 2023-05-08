@@ -3,13 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ShopEase</title>
+
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Welcome</title>
 
     <!--    main css-->
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/landing.css"%>
         <%@ include file="../css/categoryCard.css"%>
     </style>
@@ -24,9 +23,7 @@
 
 </head>
 <body>
-
     <jsp:include page="/components/guestNavBar.jsp" />
-
     <main id="main">
         <section id="home" class="home">
 
@@ -118,7 +115,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/2kePJmX.jpg" />
                         <jsp:param name="title" value="Laptops" />
                         <jsp:param name="price" value="Starting from RM 1999" />
-                        <jsp:param name="link" value="/shopease/customer/sign-up" />
+                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
                     </jsp:include>
                     <jsp:include page="/components/categoryCard.jsp">
                         <jsp:param name="imageUrl1" value="https://i.imgur.com/uRgdVY1.jpg" />
@@ -126,7 +123,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/gTvZ2H5.jpg" />
                         <jsp:param name="title" value="Mobiles" />
                         <jsp:param name="price" value="Starting from RM 999" />
-                        <jsp:param name="link" value="/shopease/customer/sign-up" />
+                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
                     </jsp:include>
                     <jsp:include page="/components/categoryCard.jsp">
                         <jsp:param name="imageUrl1" value="https://i.imgur.com/0jO40CF.jpg" />
@@ -134,7 +131,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/5oQEZSC.jpg" />
                         <jsp:param name="title" value="Accesories" />
                         <jsp:param name="price" value="Starting from RM 49" />
-                        <jsp:param name="link" value="/shopease/customer/sign-up" />
+                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
                     </jsp:include>
                 </div>
             </div>

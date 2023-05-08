@@ -3,13 +3,11 @@
 
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ShopEase</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Customer Home</title>
 
     <!--    main css-->
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/customerHome.css"%>
     </style>
 

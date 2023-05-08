@@ -12,7 +12,7 @@ import utility.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-@WebServlet(name = "code-verification", value = "/s/code-verification")
+@WebServlet(name = "code/verification", value = "/s/code/verification")
 public class CodeVerification extends HttpServlet {
 
     @EJB

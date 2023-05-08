@@ -10,7 +10,7 @@ import utility.*;
 
 import java.io.*;
 
-@WebServlet(name = "sign-up", value = "/s/sign-up")
+@WebServlet(name = "sign/up", value = "/s/sign/up")
 public class SignUp extends HttpServlet {
 
     @Override
@@ -32,7 +32,9 @@ public class SignUp extends HttpServlet {
         }
 
         try {
-            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
+//            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
+            actualCode = RandomCode.GENERATE();
+            System.out.println(actualCode);
 
         } catch (Exception e) {
             MessageHandler.setMessage(request, Message.EMAIL_NOT_SEND, ButtonText.UNDERSTAND, "");

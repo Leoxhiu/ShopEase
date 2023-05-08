@@ -36,15 +36,15 @@
                             <a class="nav-link" href="#market">Market</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Join as Seller</a>
+                            <a class="nav-link" href="<%= JspPage.SELLER_SIGN_UP.getUrl() %>">Join as Seller</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 main-buttons">
                         <li class="nav-but">
-                            <a class="btn btn-register" href="<%= JspPage.SIGN_UP.getUrl() %>">Register</a>
+                            <a class="btn btn-register" href="<%= JspPage.SIGN_UP.getUrl() %>">Sign Up</a>
                         </li>
                         <li class="nav-but">
-                            <a class="btn btn-primary" href="<%= JspPage.SIGN_IN.getUrl() %>">Login</a>
+                            <a class="btn btn-primary" href="<%= JspPage.SIGN_IN.getUrl() %>">Sign In</a>
                         </li>
                     </ul>
                 </div>

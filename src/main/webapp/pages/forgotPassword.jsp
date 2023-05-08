@@ -3,13 +3,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign In</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Forgot Password</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/forgotPassword.css"%>
     </style>
 
@@ -30,7 +28,7 @@
 
       <div class="row justify-content-evenly">
         <div class="col-lg-7 d-flex align-items-center justify-content-center">
-          <%@include file="../images/others/forgot_password.svg" %>
+          <%@include file="../images/others/forgotPassword.svg" %>
         </div>
         <div class="col-lg-5">
 

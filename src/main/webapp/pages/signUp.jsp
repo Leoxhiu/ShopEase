@@ -5,13 +5,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign Up</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Sign Up</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/signUp.css"%>
     </style>
 
@@ -52,13 +50,6 @@
                                         <script>
                                             $(function() {
                                                 $('#error-modal').modal('show');
-                                            });
-                                        </script>
-                                    </c:if>
-                                    <c:if test="${not empty successMessage}">
-                                        <script>
-                                            $(function() {
-                                                $('#success-modal').modal('show');
                                             });
                                         </script>
                                     </c:if>

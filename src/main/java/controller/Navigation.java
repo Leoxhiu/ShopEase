@@ -16,15 +16,31 @@ public class Navigation extends HttpServlet {
 
         // Define the mapping of URL paths to JSP pages
         Map<String, String> pathToJspMap = new HashMap<>();
+
+        // Error pages
+        pathToJspMap.put(JspPage.PAGE_NOT_FOUND.getUrl(), JspPage.PAGE_NOT_FOUND.getPath());
+        pathToJspMap.put(JspPage.ACCESS_DENIED.getUrl(), JspPage.ACCESS_DENIED.getPath());
+
+        // Guest pages
         pathToJspMap.put(JspPage.INDEX.getUrl(), JspPage.INDEX.getPath());
         pathToJspMap.put(JspPage.LANDING.getUrl(), JspPage.LANDING.getPath());
         pathToJspMap.put(JspPage.SIGN_IN.getUrl(), JspPage.SIGN_IN.getPath());
         pathToJspMap.put(JspPage.SIGN_UP.getUrl(), JspPage.SIGN_UP.getPath());
+        pathToJspMap.put(JspPage.SELLER_SIGN_UP.getUrl(), JspPage.SELLER_SIGN_UP.getPath());
         pathToJspMap.put(JspPage.FORGOT_PASSWORD.getUrl(), JspPage.FORGOT_PASSWORD.getPath());
         pathToJspMap.put(JspPage.CODE_VERIFICATION.getUrl(), JspPage.CODE_VERIFICATION.getPath());
         pathToJspMap.put(JspPage.RESET_PASSWORD.getUrl(), JspPage.RESET_PASSWORD.getPath());
-        pathToJspMap.put(JspPage.HOME.getUrl(), JspPage.HOME.getPath());
+
+        // Customer pages
+        pathToJspMap.put(JspPage.CUSTOMER_HOME.getUrl(), JspPage.CUSTOMER_HOME.getPath());
         pathToJspMap.put(JspPage.MARKET.getUrl(), JspPage.MARKET.getPath());
+
+        // Seller pages
+        pathToJspMap.put(JspPage.SELLER_HOME.getUrl(), JspPage.SELLER_HOME.getPath());
+
+        // Admin pages
+        pathToJspMap.put(JspPage.ADMIN_LOGIN.getUrl(), JspPage.ADMIN_LOGIN.getPath());
+        pathToJspMap.put(JspPage.ADMIN_HOME.getUrl(), JspPage.ADMIN_HOME.getPath());
 
         // Get the requested URL path
         String path = request.getRequestURI();
@@ -37,7 +53,7 @@ public class Navigation extends HttpServlet {
             request.getRequestDispatcher(jspPage).forward(request, response);
         } else {
             // Handle invalid URLs (404 page not found)
-            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            response.sendRedirect(JspPage.PAGE_NOT_FOUND.getUrl());
         }
     }
 }

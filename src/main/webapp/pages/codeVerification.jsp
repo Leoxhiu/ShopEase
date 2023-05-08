@@ -1,18 +1,15 @@
 <%@ page import="utility.JspPage" %>
 <%@ page import="utility.ServletPage" %>
-<%@ page import="utility.ServletNavigation" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Code Verification</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Code Verification</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/codeVerification.css"%>
     </style>
 

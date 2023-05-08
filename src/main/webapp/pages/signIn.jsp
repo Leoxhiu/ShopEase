@@ -1,15 +1,14 @@
 <%@ page import="utility.JspPage" %>
+<%@ page import="model.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head lang="en">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sign In</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Sign In</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/signIn.css"%>
     </style>
 
@@ -23,12 +22,6 @@
 
 </head>
 <body>
-    <%
-        String memberId = (String) session.getAttribute("memberId");
-        if(!(memberId == null)){
-            response.sendRedirect(JspPage.HOME.getUrl());
-        }
-    %>
     <main>
         <!-- Section -->
         <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex align-items-center">

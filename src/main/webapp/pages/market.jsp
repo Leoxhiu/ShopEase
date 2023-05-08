@@ -1,13 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ShopEase</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Market</title>
 
     <!--    main css-->
     <style>
-      <%@ include file="../css/main.css"%>
       <%@ include file="../css/market.css"%>
     </style>
 

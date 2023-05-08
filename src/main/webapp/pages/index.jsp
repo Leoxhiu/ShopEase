@@ -1,17 +1,15 @@
 <%@ page import="utility.CookieUtils" %>
 <%@ page import="utility.JspPage" %>
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome</title>
+    <%@ include file="../components/mainHeader.jsp"%>
+    <title>ShopEase - Welcome</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/main.css"%>
         <%@ include file="../css/index.css"%>
     </style>
 
