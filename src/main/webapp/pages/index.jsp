@@ -28,7 +28,7 @@
     <%
         if(CookieUtils.cookieExists(request, "isUser")){
            // New location to be redirected
-           String site = new String(JspPage.LANDING.getUrl());
+           String site = JspPage.LANDING.getUrl();
            response.setStatus(response.SC_MOVED_TEMPORARILY);
            response.setHeader("Location", site);
         }

@@ -145,7 +145,7 @@
                     Copyright © 2023 <strong><span>ShopEase</span></strong>. All Rights Reserved
                 </div>
                 <div class="credits">
-                    Designed by Hiu Wen Xuan</a>
+                    Designed by Hiu Wen Xuan
                 </div>
             </div>
         </div>

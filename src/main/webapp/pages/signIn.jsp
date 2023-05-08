@@ -1,5 +1,4 @@
 <%@ page import="utility.JspPage" %>
-<%@ page import="model.Member" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
