@@ -36,8 +36,6 @@ public class CodeVerification extends HttpServlet {
             return;
         }
 
-        // TODO handle both customer and seller
-
         if(userType == null){
             // perform account recovery
 

@@ -9,6 +9,7 @@ import jakarta.ejb.Stateless;
 import model.Address;
 import model.Customer;
 import model.Member;
+import model.Seller;
 
 @Stateless(name = "MemberService")
 @LocalBean
@@ -39,6 +40,8 @@ public class MemberService implements MemberServiceI{
 
         } else if (member.getUserType() == 's' && isSuccess){
             // perform seller registration
+            Address address = new Address("", "", "");
+
             return isSuccess;
 
         } else if (member.getUserType() == 'a' && isSuccess){

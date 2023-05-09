@@ -41,6 +41,8 @@ public class SignIn extends HttpServlet {
 
         // TODO Customer Sign in and Seller Sign in
 
+
+
         HttpSession session = request.getSession();
         // member details
         session.setAttribute("memberId", member.getId());

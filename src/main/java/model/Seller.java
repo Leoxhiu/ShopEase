@@ -16,7 +16,6 @@ public class Seller {
     @OneToOne // A seller can have an address
     @JoinColumn(name = "addressId", referencedColumnName = "id")
     private Address address;
-    private String image;
     private String bankAccount;
     private double balance;
     private boolean status; // approved or not
@@ -24,10 +23,9 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(Member member, Address address, String image, String bankAccount, double balance, boolean status) {
+    public Seller(Member member, Address address, String bankAccount, double balance, boolean status) {
         this.member = member;
         this.address = address;
-        this.image = image;
         this.bankAccount = bankAccount;
         this.balance = balance;
         this.status = status;
@@ -55,14 +53,6 @@ public class Seller {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     public String getBankAccount() {
