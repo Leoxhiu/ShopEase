@@ -25,13 +25,17 @@ public class SignUp extends HttpServlet {
         String actualCode;
 
         // perform validation checks on the form data
+        if(password.length() < 8) {
+            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_ERROR, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getPath());
+            return;
+        }
+
         if (!confirmPassword.equals(password)) {
             MessageHandler.setMessage(request, Message.PASSWORD_NOT_MATCH, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_UP.getPath());
             return;
         }
-
-        // TODO Validation on password length
 
         try {
 //            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);

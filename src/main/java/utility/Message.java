@@ -3,6 +3,7 @@ package utility;
 public enum Message{
 
     // Failed
+    PASSWORD_LENGTH_ERROR("Password should have a minimum length of 8 characters", MessageType.ERROR),
     PASSWORD_NOT_MATCH("Password does not match.", MessageType.ERROR),
     EMAIL_NOT_SEND("Something went wrong when sending email, please try again.", MessageType.ERROR),
     CODE_NOT_MATCH("The code provided is wrong, please try again.", MessageType.ERROR),

@@ -16,9 +16,13 @@ public class CustomerMarket extends HttpServlet {
 
         // TODO Generate product list
 
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+        // TODO Filter product list
 
     }
 
-    // doPost might not work
 }
