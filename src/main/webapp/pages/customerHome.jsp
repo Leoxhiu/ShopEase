@@ -37,18 +37,18 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
-                                <img src="${pageContext.request.contextPath}/images/deals/deals1.png" class="d-block w-100" alt="deals">
+                                <img src="/shopease/images/deals/deals1.png" class="d-block w-100" alt="deals">
                             </a>
                         </div>
                         <div class="carousel-item">
                             <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
-                                <img src="${pageContext.request.contextPath}/images/deals/deals2.png" class="d-block w-100" alt="deals">
+                                <img src="/shopease/images/deals/deals2.png" class="d-block w-100" alt="deals">
                             </a>
 
                         </div>
                         <div class="carousel-item">
                             <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
-                                <img src="${pageContext.request.contextPath}/images/deals/deals3.png" class="d-block w-100" alt="deals">
+                                <img src="/shopease/images/deals/deals3.png" class="d-block w-100" alt="deals">
                             </a>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
 
                 <div class="product-cards row mt-4">
                     <jsp:include page="/components/productCard.jsp">
-                        <jsp:param name="image" value="${pageContext.request.contextPath}/images?memberId=${sessionScope.memberId}"/>
+                        <jsp:param name="image" value="/shopease/images?memberId=${sessionScope.memberId}"/>
                         <jsp:param name="name" value="First product"/>
                         <jsp:param name="description" value="Some quick example text to build on the card title and make up the bulk of the card's content"/>
                         <jsp:param name="rating" value="5"/>
@@ -83,7 +83,7 @@
                         <jsp:param name="discount" value="50%"/>
                     </jsp:include>
                     <jsp:include page="/components/productCard.jsp">
-                        <jsp:param name="image" value="${pageContext.request.contextPath}/images/product/beauty3.jpg"/>
+                        <jsp:param name="image" value="/shopease/images/product/beauty3.jpg"/>
                         <jsp:param name="name" value="Second product"/>
                         <jsp:param name="description" value="Some quick example text to build on the card title and make up the bulk of the card's content"/>
                         <jsp:param name="rating" value="4"/>
@@ -91,7 +91,7 @@
                         <jsp:param name="discount" value="50%"/>
                     </jsp:include>
                     <jsp:include page="/components/productCard.jsp">
-                        <jsp:param name="image" value="${pageContext.request.contextPath}/images/product/beauty1.jpg"/>
+                        <jsp:param name="image" value="/shopease/images/product/beauty1.jpg"/>
                         <jsp:param name="name" value="Third product"/>
                         <jsp:param name="description" value="Some quick example text to build on the card title and make up the bulk of the card's content"/>
                         <jsp:param name="rating" value="2"/>
@@ -99,7 +99,7 @@
                         <jsp:param name="discount" value="20%"/>
                     </jsp:include>
                     <jsp:include page="/components/productCard.jsp">
-                        <jsp:param name="image" value="${pageContext.request.contextPath}/images/product/beauty2.jpg"/>
+                        <jsp:param name="image" value="/shopease/images/product/beauty2.jpg"/>
                         <jsp:param name="name" value="Fourth product"/>
                         <jsp:param name="description" value="Introducing the all-new 'LuxeGlo' Wireless Earbuds! These sleek and stylish earbuds are designed for the modern music lover who demands high-quality audio and seamless connectivity. With advanced Bluetooth 5.0 technology, the 'LuxeGlo' Earbuds provide crystal-clear sound and deep bass, allowing you to immerse yourself in your favorite tunes like never before."/>
                         <jsp:param name="rating" value="1"/>

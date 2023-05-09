@@ -37,7 +37,7 @@ public class CodeVerification extends HttpServlet {
         }
 
         if(userType == null){
-            // perform account recovery
+            // TODO perform account recovery
 
         } else {
 
