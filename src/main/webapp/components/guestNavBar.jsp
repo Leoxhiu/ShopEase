@@ -41,7 +41,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 main-buttons">
                         <li class="nav-but">
-                            <a class="btn btn-register" href="<%= JspPage.SIGN_UP.getUrl() %>">Sign Up</a>
+                            <a class="btn btn-register" href="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>">Sign Up</a>
                         </li>
                         <li class="nav-but">
                             <a class="btn btn-primary" href="<%= JspPage.SIGN_IN.getUrl() %>">Sign In</a>

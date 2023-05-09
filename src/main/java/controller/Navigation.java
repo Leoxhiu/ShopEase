@@ -25,7 +25,7 @@ public class Navigation extends HttpServlet {
         pathToJspMap.put(JspPage.INDEX.getUrl(), JspPage.INDEX.getPath());
         pathToJspMap.put(JspPage.LANDING.getUrl(), JspPage.LANDING.getPath());
         pathToJspMap.put(JspPage.SIGN_IN.getUrl(), JspPage.SIGN_IN.getPath());
-        pathToJspMap.put(JspPage.SIGN_UP.getUrl(), JspPage.SIGN_UP.getPath());
+        pathToJspMap.put(JspPage.CUSTOMER_SIGN_UP.getUrl(), JspPage.CUSTOMER_SIGN_UP.getPath());
         pathToJspMap.put(JspPage.SELLER_SIGN_UP.getUrl(), JspPage.SELLER_SIGN_UP.getPath());
         pathToJspMap.put(JspPage.FORGOT_PASSWORD.getUrl(), JspPage.FORGOT_PASSWORD.getPath());
         pathToJspMap.put(JspPage.CODE_VERIFICATION.getUrl(), JspPage.CODE_VERIFICATION.getPath());

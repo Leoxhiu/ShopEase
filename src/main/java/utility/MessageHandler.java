@@ -10,7 +10,7 @@ public class MessageHandler {
                 request.setAttribute("successMessage", message.getMessage());
                 request.setAttribute("url", url);
             }
-            case ERROR -> request.setAttribute("errorMessage", message.getMessage());
+            case ERROR -> request.setAttribute("errorMessage", message.getMessage()); //TODO Add Option Modal
             default -> {
             }
         }

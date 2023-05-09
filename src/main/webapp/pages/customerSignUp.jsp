@@ -53,7 +53,7 @@
                                             });
                                         </script>
                                     </c:if>
-                                    <form action="<%= ServletPage.SIGN_UP.getUrl() %>" class="mt-4" method="post" id="signUpForm">
+                                    <form action="<%= ServletPage.CUSTOMER_SIGN_UP.getUrl() %>" class="mt-4" method="post" id="signUpForm">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>

@@ -89,7 +89,7 @@
                                     <div class="d-flex justify-content-center align-items-center mt-4">
                                             <span class="fw-normal">
                                                 Not registered?
-                                                <a href="<%= JspPage.SIGN_UP.getUrl() %>" class="fw-bold">Create account</a>
+                                                <a href="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>" class="fw-bold">Create account</a>
                                             </span>
                                     </div>
                                 </div>

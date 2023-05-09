@@ -47,7 +47,7 @@
         <div class="container text-center">
             <div class="d-grid gap-2 btn-block d-md-block">
                 <a type="button" class="btn btn-secondary btn-lg mx-2" href="<%= JspPage.SIGN_IN.getUrl() %>">Login</a>
-                <a type="button" class="btn btn-primary btn-lg mx-2" href="<%= JspPage.SIGN_UP.getUrl() %>">Sign up</a>
+                <a type="button" class="btn btn-primary btn-lg mx-2" href="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>">Sign up</a>
             </div>
         </div>
 

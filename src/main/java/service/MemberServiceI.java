@@ -6,5 +6,7 @@ import model.Member;
 @Local
 public interface MemberServiceI {
 
+    boolean isExist(String email);
     boolean signUp(Member member);
+
 }

@@ -26,15 +26,17 @@ public class SignIn extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
+        // TODO Remove usage of Facade
+
         Member member = memberFacade.getMemberByEmail(email);
         if(member == null){
-            MessageHandler.setMessage(request, Message.LOGIN_FAILED, ButtonText.UNDERSTAND, "");
+            MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
         }
 
         if(!password.equals(member.getPassword())){
-            MessageHandler.setMessage(request, Message.LOGIN_FAILED, ButtonText.UNDERSTAND, "");
+            MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
         }

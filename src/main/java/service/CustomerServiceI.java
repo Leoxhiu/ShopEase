@@ -1,10 +1,10 @@
 package service;
 
 import jakarta.ejb.Local;
-import model.Customer;
+import model.Member;
 
 @Local
 public interface CustomerServiceI {
 
-    void signUp(Customer customer);
+    boolean signUp(Member member);
 }

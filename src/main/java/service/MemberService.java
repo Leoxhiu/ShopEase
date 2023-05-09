@@ -1,15 +1,10 @@
 package service;
 
-import facade.AddressFacade;
-import facade.CustomerFacade;
 import facade.MemberFacade;
 import jakarta.ejb.EJB;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
-import model.Address;
-import model.Customer;
 import model.Member;
-import model.Seller;
 
 @Stateless(name = "MemberService")
 @LocalBean
@@ -19,36 +14,40 @@ public class MemberService implements MemberServiceI{
     private MemberFacade memberFacade;
 
     @EJB
-    private CustomerFacade customerFacade;
+    private CustomerService customerService;
 
     @EJB
-    private AddressFacade addressFacade;
+    private SellerService sellerService;
+
+
+    @Override
+    public boolean isExist(String email) {
+
+        Member member = memberFacade.getMemberByEmail(email);
+        if(member != null){
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public boolean signUp(Member member) {
-        boolean isSuccess = memberFacade.createMember(member);
 
-        if(member.getUserType() == 'c' && isSuccess){
-            // perform customer registration
-            Address address = new Address("", "", "");
-            isSuccess = addressFacade.createAddress(address);
+        if(memberFacade.createMember(member)){
+            if(member.getUserType() == 'c'){
+                // perform customer registration
+                return customerService.signUp(member);
 
-            Customer customer = new Customer(member, address, 0);
-            isSuccess = customerFacade.createCustomer(customer);
+            } else if (member.getUserType() == 's'){
+                // perform seller registration
+                return sellerService.signUp(member);
 
-            return isSuccess;
-
-        } else if (member.getUserType() == 's' && isSuccess){
-            // perform seller registration
-            Address address = new Address("", "", "");
-
-            return isSuccess;
-
-        } else if (member.getUserType() == 'a' && isSuccess){
-            // perform admin registration
-            return isSuccess;
+            } else if (member.getUserType() == 'a'){
+                // perform admin registration
+                //return isSuccess;
+            }
         }
 
-        return isSuccess;
+        return false;
     }
 }

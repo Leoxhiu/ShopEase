@@ -47,12 +47,19 @@ public class CodeVerification extends HttpServlet {
 
             Member member = new Member(profile, Email.getFront(email), email, password, userType.charAt(0));
             if(memberService.signUp(member)){
-                MessageHandler.setMessage(request, Message.REGISTRATION_SUCCESS, ButtonText.LOGIN_NOW, JspPage.SIGN_IN.getUrl());
-                CookieUtils.addCookie(response, "isUser", "true", -1, "/");
+
+                if(userType.equals("c")){
+                    MessageHandler.setMessage(request, Message.SIGN_UP_SUCCESS, ButtonText.LOGIN_NOW, JspPage.SIGN_IN.getUrl());
+                    CookieUtils.addCookie(response, "isUser", "true", -1, "/");
+                } else if(userType.equals("s")){
+                    MessageHandler.setMessage(request, Message.SELLER_SIGN_UP_SUCCESS, ButtonText.UNDERSTAND, JspPage.LANDING.getUrl());
+                    CookieUtils.addCookie(response, "isUser", "true", -1, "/");
+                }
                 ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
                 session.invalidate();
+
             } else {
-                MessageHandler.setMessage(request, Message.REGISTRATION_FAILED, ButtonText.UNDERSTAND, "");
+                MessageHandler.setMessage(request, Message.SIGN_UP_FAILED, ButtonText.UNDERSTAND, "");
                 ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
             }
         }

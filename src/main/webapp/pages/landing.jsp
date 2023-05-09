@@ -32,7 +32,7 @@
                     <div class="col-lg-5 d-flex flex-column justify-content-evenly">
                         <h1 class="title font-primary font-bold">Your One-Stop Shop for Online Shopping</h1>
                         <h4 class="subtitle font-tertiary">Discover a Wide Range of Products at Unbeatable Prices - Shop Now and Enjoy Fast, Secure Shipping!</h4>
-                        <a class="btn btn-primary btn-lg w-50 explore-button" href="<%= JspPage.SIGN_UP.getUrl() %>">Explore</a>
+                        <a class="btn btn-primary btn-lg w-50 explore-button" href="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>">Explore</a>
                     </div>
                     <div class="col-lg-5 d-flex align-items-center justify-content-center svg1">
                         <%@ include file="../images/shopping/web_shopping.svg"%>
@@ -115,7 +115,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/2kePJmX.jpg" />
                         <jsp:param name="title" value="Laptops" />
                         <jsp:param name="price" value="Starting from RM 1999" />
-                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
+                        <jsp:param name="link" value="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>" />
                     </jsp:include>
                     <jsp:include page="/components/categoryCard.jsp">
                         <jsp:param name="imageUrl1" value="https://i.imgur.com/uRgdVY1.jpg" />
@@ -123,7 +123,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/gTvZ2H5.jpg" />
                         <jsp:param name="title" value="Mobiles" />
                         <jsp:param name="price" value="Starting from RM 999" />
-                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
+                        <jsp:param name="link" value="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>" />
                     </jsp:include>
                     <jsp:include page="/components/categoryCard.jsp">
                         <jsp:param name="imageUrl1" value="https://i.imgur.com/0jO40CF.jpg" />
@@ -131,7 +131,7 @@
                         <jsp:param name="imageUrl3" value="https://i.imgur.com/5oQEZSC.jpg" />
                         <jsp:param name="title" value="Accesories" />
                         <jsp:param name="price" value="Starting from RM 49" />
-                        <jsp:param name="link" value="<%= JspPage.SIGN_UP.getUrl() %>" />
+                        <jsp:param name="link" value="<%= JspPage.CUSTOMER_SIGN_UP.getUrl() %>" />
                     </jsp:include>
                 </div>
             </div>
