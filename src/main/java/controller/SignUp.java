@@ -31,6 +31,8 @@ public class SignUp extends HttpServlet {
             return;
         }
 
+        // TODO Validation on password length
+
         try {
 //            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
             actualCode = RandomCode.GENERATE();
