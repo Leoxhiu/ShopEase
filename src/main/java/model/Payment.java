@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,31 +10,33 @@ public class Payment {
     @Id
     @GeneratedValue(generator = "PAYMENT_ID")
     private String id;
-    private String orderId;
+    @OneToOne // An order can have one payment
+    @JoinColumn(name = "orderId", referencedColumnName = "id")
+    private CustomerOrder customerOrder;
     private double price;
 
     public Payment() {
     }
 
-    public Payment(String orderId, double price) {
-        this.orderId = orderId;
+    public Payment(CustomerOrder customerOrder, double price) {
+        this.customerOrder = customerOrder;
         this.price = price;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getOrderId() {
-        return orderId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setOrderId(String orderId) {
-        this.orderId = orderId;
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
     }
 
     public double getPrice() {

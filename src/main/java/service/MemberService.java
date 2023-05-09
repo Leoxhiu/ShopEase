@@ -32,7 +32,7 @@ public class MemberService implements MemberServiceI{
             Address address = new Address("", "", "");
             isSuccess = addressFacade.createAddress(address);
 
-            Customer customer = new Customer(member.getId(), address.getId(), 0);
+            Customer customer = new Customer(member, address, 0);
             isSuccess = customerFacade.createCustomer(customer);
 
             return isSuccess;

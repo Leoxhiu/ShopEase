@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -11,8 +9,12 @@ public class Customer{
     @Id
     @GeneratedValue(generator = "CUSTOMER_ID")
     private String id;
-    private String memberId;
-    private String addressId;
+    @OneToOne // A member can be a customer
+    @JoinColumn(name = "memberId", referencedColumnName = "id")
+    private Member member;
+    @OneToOne // A customer can only have an address
+    @JoinColumn(name = "addressId", referencedColumnName = "id")
+    private Address address;
 
     private double balance;
 
@@ -20,9 +22,9 @@ public class Customer{
 
     }
 
-    public Customer(String memberId, String addressId, double balance) {
-        this.memberId = memberId;
-        this.addressId = addressId;
+    public Customer(Member member, Address address, double balance) {
+        this.member = member;
+        this.address = address;
         this.balance = balance;
     }
 
@@ -34,20 +36,20 @@ public class Customer{
         this.id = id;
     }
 
-    public String getMemberId() {
-        return memberId;
+    public Member getMember() {
+        return member;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
-    public String getAddressId() {
-        return addressId;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public double getBalance() {

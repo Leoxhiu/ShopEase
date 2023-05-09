@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,33 +10,35 @@ public class Review {
     @Id
     @GeneratedValue(generator = "REVIEW_ID")
     private String id;
-    private String productId;
+    @ManyToOne // A product can have many review
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    private Product product;
     private int rating;
     private String feedback;
 
     public Review() {
     }
 
-    public Review(String productId, int rating, String feedback) {
-        this.productId = productId;
+    public Review(Product product, int rating, String feedback) {
+        this.product = product;
         this.rating = rating;
         this.feedback = feedback;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getProductId() {
-        return productId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getRating() {

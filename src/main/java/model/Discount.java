@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -11,43 +9,47 @@ public class Discount {
     @Id
     @GeneratedValue(generator = "DISCOUNT_ID")
     private String id;
-    private String sellerId;
-    private String productId;
+    @ManyToOne // A seller can give many discount
+    @JoinColumn(name = "sellerId", referencedColumnName = "id")
+    private Seller seller;
+    @OneToOne // A discount only for a product
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    private Product product;
     private int percentage;
     private String expiryDate;
 
     public Discount() {
     }
 
-    public Discount(String sellerId, String productId, int percentage, String expiryDate) {
-        this.sellerId = sellerId;
-        this.productId = productId;
+    public Discount(Seller seller, Product product, int percentage, String expiryDate) {
+        this.seller = seller;
+        this.product = product;
         this.percentage = percentage;
         this.expiryDate = expiryDate;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getSellerId() {
-        return sellerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
+    public Seller getSeller() {
+        return seller;
     }
 
-    public String getProductId() {
-        return productId;
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getPercentage() {

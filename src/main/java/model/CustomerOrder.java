@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,41 +10,45 @@ public class CustomerOrder {
     @Id
     @GeneratedValue (generator = "CUSTOMERORDER_ID")
     private String id;
-    private String customerId;
-    private String paymentId;
+    @ManyToOne // A customer can have many order
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
+    private Customer customer;
+    @OneToOne // An order can have only one payment
+    @JoinColumn(name = "paymentId", referencedColumnName = "id")
+    private Payment payment;
     private String date;
 
     public CustomerOrder() {
     }
 
-    public CustomerOrder(String customerId, String paymentId, String date) {
-        this.customerId = customerId;
-        this.paymentId = paymentId;
+    public CustomerOrder(Customer customer, Payment payment, String date) {
+        this.customer = customer;
+        this.payment = payment;
         this.date = date;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public String getPaymentId() {
-        return paymentId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setPaymentId(String paymentId) {
-        this.paymentId = paymentId;
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     public String getDate() {

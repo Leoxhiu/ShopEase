@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,30 +10,31 @@ public class Admin {
     @Id
     @GeneratedValue(generator = "ADMIN_ID")
     private String id;
-    private String memberId;
+    @OneToOne // A member can be an admin
+    @JoinColumn(name = "memberId", referencedColumnName = "id")
+    private Member member;
 
     public Admin(){
 
     }
 
-    public Admin(String memberId) {
-        this.memberId = memberId;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Admin(Member member) {
+        this.member = member;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getMemberId() {
-        return memberId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setMemberId(String memberId) {
-        this.memberId = memberId;
+    public Member getMember() {
+        return member;
     }
 
+    public void setMember(Member member) {
+        this.member = member;
+    }
 }

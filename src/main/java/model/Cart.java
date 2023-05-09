@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -11,43 +9,50 @@ public class Cart {
     @Id
     @GeneratedValue(generator = "CART_ID")
     private String id;
-    private String customerId;
-    private String productId;
+    @ManyToOne // A customer can have many cart
+    @JoinColumn(name = "customerId", referencedColumnName = "id")
+    private Customer customer;
+    @ManyToOne // A product can be in many cart
+    @JoinColumn(name = "productId", referencedColumnName = "id")
+    private Product product;
     private int quantity;
     private double price;
+
+    private boolean isPurchased; // is the cart purchased
 
     public Cart() {
     }
 
-    public Cart(String customerId, String productId, int quantity, double price) {
-        this.customerId = customerId;
-        this.productId = productId;
+    public Cart(Customer customer, Product product, int quantity, double price, boolean isPurchased) {
+        this.customer = customer;
+        this.product = product;
         this.quantity = quantity;
         this.price = price;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.isPurchased = isPurchased;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getCustomerId() {
-        return customerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
+    public Customer getCustomer() {
+        return customer;
     }
 
-    public String getProductId() {
-        return productId;
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getQuantity() {
@@ -64,5 +69,13 @@ public class Cart {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public boolean isPurchased() {
+        return isPurchased;
+    }
+
+    public void setPurchased(boolean purchased) {
+        isPurchased = purchased;
     }
 }

@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,20 +10,23 @@ public class Product {
     @Id
     @GeneratedValue(generator = "PRODUCT_ID")
     private String id;
-    private String sellerId;
+    @OneToOne // A member can be a seller
+    @JoinColumn(name = "sellerId", referencedColumnName = "id")
+    private Seller seller;
     private int category;
     private byte[] image;
     private String name;
     private String description;
     private double price;
     private int quantity;
-    private boolean discount; //
+    private boolean discount; // got discount or not
+    private boolean isDeleted; // is deleted or not
 
     public Product() {
     }
 
-    public Product(String sellerId, int category, byte[] image, String name, String description, double price, int quantity, boolean discount) {
-        this.sellerId = sellerId;
+    public Product(Seller seller, int category, byte[] image, String name, String description, double price, int quantity, boolean discount, boolean isDeleted) {
+        this.seller = seller;
         this.category = category;
         this.image = image;
         this.name = name;
@@ -33,22 +34,23 @@ public class Product {
         this.price = price;
         this.quantity = quantity;
         this.discount = discount;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+        this.isDeleted = isDeleted;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getSellerId() {
-        return sellerId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setSellerId(String sellerId) {
-        this.sellerId = sellerId;
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public int getCategory() {
@@ -105,5 +107,13 @@ public class Product {
 
     public void setDiscount(boolean discount) {
         this.discount = discount;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

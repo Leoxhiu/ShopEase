@@ -1,8 +1,6 @@
 package model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
@@ -12,8 +10,12 @@ public class Seller {
     @Id
     @GeneratedValue(generator = "SELLER_ID")
     private String id;
-    private String addressId;
-    private String userId;
+    @OneToOne // A member can be a seller
+    @JoinColumn(name = "memberId", referencedColumnName = "id")
+    private Member member;
+    @OneToOne // A seller can have an address
+    @JoinColumn(name = "addressId", referencedColumnName = "id")
+    private Address address;
     private String image;
     private String bankAccount;
     private double balance;
@@ -22,37 +24,37 @@ public class Seller {
     public Seller() {
     }
 
-    public Seller(String addressId, String userId, String image, String bankAccount, double balance, boolean status) {
-        this.addressId = addressId;
-        this.userId = userId;
+    public Seller(Member member, Address address, String image, String bankAccount, double balance, boolean status) {
+        this.member = member;
+        this.address = address;
         this.image = image;
         this.bankAccount = bankAccount;
         this.balance = balance;
         this.status = status;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
     public String getId() {
         return id;
     }
 
-    public String getAddressId() {
-        return addressId;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setAddressId(String addressId) {
-        this.addressId = addressId;
+    public Member getMember() {
+        return member;
     }
 
-    public String getUserId() {
-        return userId;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
     public String getImage() {
@@ -79,7 +81,7 @@ public class Seller {
         this.balance = balance;
     }
 
-    public boolean getStatus() {
+    public boolean isStatus() {
         return status;
     }
 
