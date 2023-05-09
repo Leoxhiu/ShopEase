@@ -69,7 +69,7 @@
                                         <div class="mb-4">
                                             <label for="code">Code</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="code" name="code" placeholder="######" required autofocus>
+                                                <input type="text" class="form-control" id="code" name="code" placeholder="#######" required autofocus>
                                             </div>
                                         </div>
                                         <!-- End of Form -->

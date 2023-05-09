@@ -36,7 +36,7 @@
                             <a class="nav-link" href="#cart">
                                 <i class="bi bi-cart-fill fa-lg"></i>
                                 <span class="position-absolute top-5 start-5 translate-middle badge rounded-pill bg-danger">
-                                    ${sessionScope.cart_items}
+                                    ${sessionScope.cartQuantity}
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
                             </a>
@@ -53,7 +53,7 @@
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
                                             <li><a class="dropdown-item" href="#history">History</a></li>
-                                            <li><a class="dropdown-item" href="/shopease/welcome">Logout</a></li>
+                                            <li><a class="dropdown-item" href="<%= JspPage.LANDING.getUrl() %>>">Logout</a></li>
                                         </ul>
                                     </li>
                                 </ul>

@@ -75,7 +75,7 @@
 
                 <div class="product-cards row mt-4">
                     <jsp:include page="/components/productCard.jsp">
-                        <jsp:param name="image" value="${pageContext.request.contextPath}/images/product/beauty1.jpg"/>
+                        <jsp:param name="image" value="${pageContext.request.contextPath}/images?memberId=${sessionScope.memberId}"/>
                         <jsp:param name="name" value="First product"/>
                         <jsp:param name="description" value="Some quick example text to build on the card title and make up the bulk of the card's content"/>
                         <jsp:param name="rating" value="5"/>

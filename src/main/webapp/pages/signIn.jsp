@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +47,14 @@
                                     <div class="text-center text-md-center mb-4 mt-md-0">
                                         <h3 class="mb-0 font-secondary font-bold">Sign in to our platform</h3>
                                     </div>
-                                    <form action="#" class="mt-4">
+                                    <c:if test="${not empty errorMessage}">
+                                        <script>
+                                            $(function() {
+                                                $('#error-modal').modal('show');
+                                            });
+                                        </script>
+                                    </c:if>
+                                    <form action="<%= ServletPage.SIGN_IN.getUrl() %>" method="post" class="mt-4">
                                         <!-- Form -->
                                         <div class="form-group mb-4">
                                             <label for="email">Your Email</label>
@@ -53,7 +62,7 @@
                                                     <span class="input-group-text" id="basic-addon1">
                                                         <i class="bi bi-envelope-fill"></i>
                                                      </span>
-                                                <input type="email" class="form-control" placeholder="example@gmail.com" id="email" autofocus required>
+                                                <input type="email" class="form-control" placeholder="example@gmail.com" id="email" name="email" autofocus required>
                                             </div>
                                         </div>
                                         <!-- End of Form -->
@@ -65,7 +74,7 @@
                                                         <span class="input-group-text" id="basic-addon2">
                                                             <i class="bi bi-lock-fill"></i>
                                                         </span>
-                                                    <input type="password" placeholder="Password" class="form-control" id="password" required>
+                                                    <input type="password" placeholder="Password" class="form-control" id="password" name="password" required>
                                                 </div>
                                             </div>
                                             <!-- End of Form -->
@@ -91,6 +100,6 @@
             </div>
         </section>
     </main>
-
+    <jsp:include page="../components/errorModal.jsp" />
 </body>
 </html>

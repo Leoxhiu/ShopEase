@@ -4,7 +4,6 @@ import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Member;
 import utility.JspPage;
 
 import java.io.IOException;
@@ -23,17 +22,17 @@ public class AuthenticationFilter implements Filter {
         }
 
         // Check if the user has the required role
-        Member member = (Member) session.getAttribute("member");
+        char userType = (char) session.getAttribute("userType");
         String requestedPath = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
-        if (requestedPath.startsWith("/customer") && !(member.getUserType() == 'c')) {
+        if (requestedPath.startsWith("/customer") && !(userType == 'c')) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
-        } else if (requestedPath.startsWith("/seller") && !(member.getUserType() == 's')) {
+        } else if (requestedPath.startsWith("/seller") && !(userType == 's')) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
-        } else if (requestedPath.startsWith("/admin") && !(member.getUserType() == 'a')) {
+        } else if (requestedPath.startsWith("/admin") && !(userType == 'a')) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;

@@ -3,6 +3,7 @@ package facade;
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import model.Member;
 
 import java.util.List;
@@ -54,14 +55,11 @@ public class MemberFacade extends AbstractFacade<Member> implements MemberFacade
     }
 
     public Member getMemberByEmail(String email) {
-        Query query = super.em.createNativeQuery("SELECT * FROM member WHERE email = email", Member.class);
+        TypedQuery<Member> query = super.em.createQuery(
+                "SELECT m FROM Member m WHERE m.email = :email", Member.class);
         query.setParameter("email", email);
-        List<Member> member = query.getResultList();
-        if (member.isEmpty()) {
-            return null;
-        } else {
-            return member.get(0);
-        }
+        List<Member> members = query.getResultList();
+        return members.isEmpty() ? null : members.get(0);
     }
 
 }

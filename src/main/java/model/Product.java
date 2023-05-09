@@ -14,7 +14,7 @@ public class Product {
     private String id;
     private String sellerId;
     private int category;
-    private String image;
+    private byte[] image;
     private String name;
     private String description;
     private double price;
@@ -24,7 +24,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String sellerId, int category, String image, String name, String description, double price, int quantity, boolean discount) {
+    public Product(String sellerId, int category, byte[] image, String name, String description, double price, int quantity, boolean discount) {
         this.sellerId = sellerId;
         this.category = category;
         this.image = image;
@@ -59,11 +59,11 @@ public class Product {
         this.category = category;
     }
 
-    public String getImage() {
+    public byte[] getImage() {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(byte[] image) {
         this.image = image;
     }
 
