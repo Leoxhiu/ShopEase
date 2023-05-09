@@ -2,7 +2,6 @@ package facade;
 
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
-import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import model.Member;
 
