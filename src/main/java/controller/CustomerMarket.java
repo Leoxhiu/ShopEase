@@ -19,4 +19,6 @@ public class CustomerMarket extends HttpServlet {
 
 
     }
+
+    // doPost might not work
 }

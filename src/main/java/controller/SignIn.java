@@ -49,8 +49,7 @@ public class SignIn extends HttpServlet {
         session.setAttribute("userType", member.getUserType());
 
         // cart details
-        // session.setAttribute("cartId", cart.getId());
-        // session.setAttribute("cartQuantity", cart.getId())
+        // session.setAttribute("cartTotal", cartTotal)
 
         response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
     }

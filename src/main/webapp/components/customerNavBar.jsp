@@ -36,7 +36,7 @@
                             <a class="nav-link" href="#cart">
                                 <i class="bi bi-cart-fill fa-lg"></i>
                                 <span class="position-absolute top-5 start-5 translate-middle badge rounded-pill bg-danger">
-                                    ${sessionScope.cartQuantity}
+                                    ${sessionScope.cartTotal}
                                     <span class="visually-hidden">unread messages</span>
                                 </span>
                             </a>

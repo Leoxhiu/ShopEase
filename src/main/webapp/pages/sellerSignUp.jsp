@@ -53,7 +53,7 @@
                                         });
                                     </script>
                                 </c:if>
-                                <form action="<%= ServletPage.SELLER_SIGN_UP.getUrl() %>" class="mt-4" method="post" id="signUpForm">
+                                <form action="<%= ServletPage.SIGN_UP.getUrl() %>" class="mt-4" method="post" id="signUpForm">
                                     <!-- Form -->
                                     <div class="form-group mb-4">
                                         <label for="email">Your Email</label>
@@ -90,7 +90,7 @@
                                         <!-- End of Form -->
                                         <div class="mb-4">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="c" id="account" name="account" required>
+                                                <input class="form-check-input" type="checkbox" value="s" id="account" name="account" required>
                                                 <label class="form-check-label fw-normal mb-0" for="account">
                                                     I agree to the <a href="#T&C" id="t-c" class="fw-bold" data-bs-toggle="modal" data-bs-target="#t-c-modal"> terms and conditions</a>
                                                 </label>

@@ -5,7 +5,6 @@ public enum ServletPage {
     SIGN_UP("/shopease/s/sign/up"),
     SIGN_IN("/shopease/s/sign/in"),
     CODE_VERIFICATION("/shopease/s/code/verification"),
-    SELLER_SIGN_UP("/shopease/s/join/as/seller")
     ;
 
     private final String url;
