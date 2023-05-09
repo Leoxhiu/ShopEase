@@ -51,7 +51,7 @@ public class SignUp extends HttpServlet {
         session.setAttribute("userType", userType);
         session.setAttribute("actualCode", actualCode);
 
-        ServletNavigation.forwardRequest(request, response, JspPage.CODE_VERIFICATION.getPath());
+        response.sendRedirect(JspPage.CODE_VERIFICATION.getUrl());
 
     }
 }

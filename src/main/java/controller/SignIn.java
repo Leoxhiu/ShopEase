@@ -52,6 +52,6 @@ public class SignIn extends HttpServlet {
         // session.setAttribute("cartId", cart.getId());
         // session.setAttribute("cartQuantity", cart.getId())
 
-        ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_HOME.getPath());
+        response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
     }
 }
