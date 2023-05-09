@@ -42,8 +42,8 @@ public class SignIn extends HttpServlet {
         HttpSession session = request.getSession();
         // member details
         session.setAttribute("memberId", member.getId());
-        session.setAttribute("name", member.getName());
-        session.setAttribute("email", member.getEmail());
+        session.setAttribute("memberName", member.getName());
+        session.setAttribute("memberEmail", member.getEmail());
         session.setAttribute("userType", member.getUserType());
 
         // cart details

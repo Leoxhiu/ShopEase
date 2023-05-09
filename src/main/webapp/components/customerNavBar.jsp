@@ -46,7 +46,7 @@
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
                                         <a id="customerName" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                            ${sessionScope.name}
+                                            ${sessionScope.memberName}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
                                             <li><a class="dropdown-item" href="#profile">Profile</a></li>
