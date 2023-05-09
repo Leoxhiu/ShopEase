@@ -10,7 +10,7 @@ import utility.*;
 
 import java.io.*;
 
-@WebServlet(name = "sign/up", value = "/s/sign/up")
+@WebServlet(name = "sign/up", value = "/guest/s/sign/up")
 public class SignUp extends HttpServlet {
 
     @Override

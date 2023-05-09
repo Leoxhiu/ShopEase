@@ -13,7 +13,7 @@ import utility.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "sign/in", value = "/s/sign/in")
+@WebServlet(name = "sign/in", value = "/guest/s/sign/in")
 public class SignIn extends HttpServlet {
 
     @EJB

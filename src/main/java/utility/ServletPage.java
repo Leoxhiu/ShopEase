@@ -2,9 +2,10 @@ package utility;
 
 public enum ServletPage {
 
-    SIGN_UP("/shopease/s/sign/up"),
-    SIGN_IN("/shopease/s/sign/in"),
-    CODE_VERIFICATION("/shopease/s/code/verification"),
+    SIGN_UP("/shopease/guest/s/sign/up"),
+    SIGN_IN("/shopease/guest/s/sign/in"),
+    CODE_VERIFICATION("/shopease/guest/s/code/verification"),
+    CUSTOMER_MARKET("/shopease/customer/s/market"),
     ;
 
     private final String url;
