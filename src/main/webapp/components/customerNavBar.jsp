@@ -25,7 +25,7 @@
                             <a class="nav-link nav-direct" aria-current="page" href="<%= JspPage.CUSTOMER_HOME.getUrl() %>">Home</a>
                         </li>
                         <li class="nav-item main-item">
-                            <a class="nav-link nav-direct" href="<%= JspPage.MARKET.getUrl() %>">Market</a>
+                            <a class="nav-link nav-direct" href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">Market</a>
                         </li>
                         <li class="nav-item main-item">
                             <a class="nav-link nav-direct" href="#seller">Seller</a>

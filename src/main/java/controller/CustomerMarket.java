@@ -8,13 +8,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "market", value = "/customer/*/products")
-public class Market extends HttpServlet {
+@WebServlet(name = "CustomerMarket", value = "/customer/market")
+public class CustomerMarket extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         // TODO Generate product list
+
+
 
     }
 }

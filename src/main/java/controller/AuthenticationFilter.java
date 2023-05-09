@@ -1,6 +1,7 @@
 package controller;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
@@ -8,6 +9,7 @@ import utility.JspPage;
 
 import java.io.IOException;
 
+@WebFilter(filterName = "AuthenticationFilter", value = {"/customer/*", "/seller/*", "/admin/*"})
 public class AuthenticationFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {

@@ -36,18 +36,18 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            <a href="<%= JspPage.MARKET.getUrl() %>">
+                            <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
                                 <img src="${pageContext.request.contextPath}/images/deals/deals1.png" class="d-block w-100" alt="deals">
                             </a>
                         </div>
                         <div class="carousel-item">
-                            <a href="<%= JspPage.MARKET.getUrl() %>">
+                            <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
                                 <img src="${pageContext.request.contextPath}/images/deals/deals2.png" class="d-block w-100" alt="deals">
                             </a>
 
                         </div>
                         <div class="carousel-item">
-                            <a href="<%= JspPage.MARKET.getUrl() %>">
+                            <a href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">
                                 <img src="${pageContext.request.contextPath}/images/deals/deals3.png" class="d-block w-100" alt="deals">
                             </a>
                         </div>
