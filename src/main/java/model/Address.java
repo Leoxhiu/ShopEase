@@ -12,6 +12,7 @@ public class Address {
     @GeneratedValue(generator = "ADDRESS_ID")
     private String id;
     private String unit;
+    private String address;
     private String city;
     private String state;
     private String postal;
@@ -19,8 +20,9 @@ public class Address {
     public Address() {
     }
 
-    public Address(String unit, String city, String state, String postal) {
+    public Address(String unit, String address, String city, String state, String postal) {
         this.unit = unit;
+        this.address = address;
         this.city = city;
         this.state = state;
         this.postal = postal;
@@ -40,6 +42,14 @@ public class Address {
 
     public void setUnit(String unit) {
         this.unit = unit;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {

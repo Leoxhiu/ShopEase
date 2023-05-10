@@ -35,6 +35,7 @@ public class Navigation extends HttpServlet {
         pathToJspMap.put(JspPage.CUSTOMER_HOME.getUrl(), JspPage.CUSTOMER_HOME.getPath());
         pathToJspMap.put(JspPage.CUSTOMER_MARKET.getUrl(), JspPage.CUSTOMER_MARKET.getPath());
         pathToJspMap.put(JspPage.CUSTOMER_PRODUCT_DETAIL.getUrl(), JspPage.CUSTOMER_PRODUCT_DETAIL.getPath());
+        pathToJspMap.put(JspPage.CUSTOMER_PROFILE.getUrl(), JspPage.CUSTOMER_PROFILE.getPath());
 
         // Seller pages
         pathToJspMap.put(JspPage.SELLER_HOME.getUrl(), JspPage.SELLER_HOME.getPath());

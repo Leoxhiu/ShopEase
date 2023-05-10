@@ -20,6 +20,7 @@ public enum JspPage {
     CUSTOMER_HOME("/shopease/customer/home","/pages/customerHome.jsp"),
     CUSTOMER_MARKET("/shopease/customer/market","/pages/customerMarket.jsp"),
     CUSTOMER_PRODUCT_DETAIL("/shopease/customer/product/detail/comments","/pages/customerProductDetail.jsp"),
+    CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
 
     // Seller pages
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),
@@ -30,7 +31,6 @@ public enum JspPage {
     ADMIN_SIGN_IN("/shopease/auth/admin","/pages/adminSignIn.jsp"),
     ADMIN_HOME("/shopease/admin/home", "/pages/adminHome.jsp")
     ;
-
 
     private final String url;
     private final String path;

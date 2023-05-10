@@ -32,7 +32,7 @@
                     <ul class="navbar-nav mb-2 mb-lg-0 right-items">
                         <li class="nav-item">
                             <a class="nav-link" href="#cart">
-                                <i class="bi bi-cart-fill fa-lg"></i>
+                                <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
                                 <span class="position-absolute top-5 start-5 translate-middle badge rounded-pill bg-danger">
                                     ${sessionScope.cartTotal}
                                     <span class="visually-hidden">unread messages</span>
@@ -47,7 +47,7 @@
                                             ${sessionScope.memberName}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
-                                            <li><a class="dropdown-item" href="#profile">Profile</a></li>
+                                            <li><a class="dropdown-item" href="<%= JspPage.CUSTOMER_PROFILE.getUrl() %>">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
                                             <li><a class="dropdown-item" href="#history">Transaction</a></li>

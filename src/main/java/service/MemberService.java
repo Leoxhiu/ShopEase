@@ -49,9 +49,21 @@ public class MemberService implements MemberServiceI{
     }
 
     @Override
+    public boolean update(byte[] profile, String name, String email, String password) {
+        Member member = memberFacade.getMemberByEmail(email);
+        member.setProfile(profile);
+        member.setName(name);
+        member.setEmail(email);
+        member.setPassword(password);
+        return memberFacade.editMember(member);
+    }
+
+    @Override
     public boolean updatePassword(String email, String password) {
         Member member = memberFacade.getMemberByEmail(email);
         member.setPassword(password);
         return memberFacade.editMember(member);
     }
+
+
 }

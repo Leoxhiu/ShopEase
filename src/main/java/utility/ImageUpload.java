@@ -1,18 +1,14 @@
 package utility;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.Part;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
 public class ImageUpload {
-
-//    public static byte[] getImageAsByte(String filepath) throws IOException {
-//        File fi = new File("/profile.svg");
-//        System.out.println(new File(".").getAbsoluteFile());
-//        byte[] fileContent = Files.readAllBytes(fi.toPath());
-//
-//        return fileContent;
-//    }
 
     public static byte[] getImageAsByte(InputStream inputStream) throws IOException {
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
@@ -24,4 +20,20 @@ public class ImageUpload {
         return byteArrayOutputStream.toByteArray();
     }
 
+    public static byte[] getImageAsByte(HttpServletRequest request, String partName) throws IOException, ServletException {
+        InputStream inputStream = null;
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        Part filePart = request.getPart(partName);
+        if (filePart != null) {
+            inputStream = filePart.getInputStream();
+            byte[] buffer = new byte[1024];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+        }
+
+        return outputStream.toByteArray();
+    }
 }
