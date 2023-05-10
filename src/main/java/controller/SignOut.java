@@ -13,7 +13,6 @@ import java.io.IOException;
 @WebServlet(name = "SignOut", value = "/s/sign/out")
 public class SignOut extends HttpServlet {
 
-    //TODO Perform Sign out for users
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
