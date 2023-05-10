@@ -28,9 +28,6 @@
                         <li class="nav-item main-item">
                             <a class="nav-link nav-direct" href="<%= JspPage.CUSTOMER_MARKET.getUrl() %>">Market</a>
                         </li>
-                        <li class="nav-item main-item">
-                            <a class="nav-link nav-direct" href="#seller">Seller</a>
-                        </li>
                     </ul>
                     <ul class="navbar-nav mb-2 mb-lg-0 right-items">
                         <li class="nav-item">
@@ -46,14 +43,15 @@
                             <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                                 <ul class="navbar-nav">
                                     <li class="nav-item dropdown">
-                                        <a id="customerName" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a id="customerName" class="nav-link dropdown-toggle" href="#menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             ${sessionScope.memberName}
                                         </a>
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
                                             <li><a class="dropdown-item" href="#profile">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
-                                            <li><a class="dropdown-item" href="#history">History</a></li>
+                                            <li><a class="dropdown-item" href="#history">Transaction</a></li>
+                                            <li><a class="dropdown-item" href="#review">Review</a></li>
                                             <li>
                                                 <form action="<%= ServletPage.SIGN_OUT.getUrl() %>" method="post" class="logout">
                                                     <button class="dropdown-item" type="submit">Logout</button>
