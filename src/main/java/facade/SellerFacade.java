@@ -2,6 +2,7 @@ package facade;
 
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.Seller;
 
 import java.util.List;
@@ -58,5 +59,14 @@ public class SellerFacade extends AbstractFacade<Seller> implements SellerFacade
     @Override
     public int countSeller() {
         return this.count();
+    }
+
+    @Override
+    public Seller getSellerByMemberId(String memberId) {
+        TypedQuery<Seller> query = em.createQuery(
+                "SELECT s FROM Seller s WHERE s.member.id = :memberId", Seller.class);
+        query.setParameter("memberId", memberId);
+        List<Seller> sellers = query.getResultList();
+        return sellers.isEmpty() ? null : sellers.get(0);
     }
 }

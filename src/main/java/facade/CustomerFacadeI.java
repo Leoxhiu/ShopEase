@@ -15,4 +15,5 @@ public interface CustomerFacadeI {
     List<Customer> getRangeCustomer(int[] range);
     Customer getCustomerById(String id);
     int countCustomer();
+    Customer getCustomerByMemberId(String memberId);
 }

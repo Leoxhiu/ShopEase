@@ -2,6 +2,7 @@ package facade;
 
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.Cart;
 
 import java.util.List;
@@ -58,5 +59,14 @@ public class CartFacade extends AbstractFacade<Cart> implements CartFacadeI{
     @Override
     public int countCart() {
         return this.count();
+    }
+
+    @Override
+    public int countCartByCustomerId(String customerId) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(c) FROM Cart c WHERE c.customer.id = :customerId", Long.class);
+        query.setParameter("customerId", customerId);
+        Long count = query.getSingleResult();
+        return count.intValue();
     }
 }

@@ -18,17 +18,17 @@ public class Seller {
     private Address address;
     private String bankAccount;
     private double balance;
-    private boolean status; // approved or not
+    private boolean isApproved; // approved or not
 
     public Seller() {
     }
 
-    public Seller(Member member, Address address, String bankAccount, double balance, boolean status) {
+    public Seller(Member member, Address address, String bankAccount, double balance, boolean isApproved) {
         this.member = member;
         this.address = address;
         this.bankAccount = bankAccount;
         this.balance = balance;
-        this.status = status;
+        this.isApproved = isApproved;
     }
 
     public String getId() {
@@ -71,11 +71,11 @@ public class Seller {
         this.balance = balance;
     }
 
-    public boolean isStatus() {
-        return status;
+    public boolean isApproved() {
+        return isApproved;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setIsApproved(boolean isApproved) {
+        this.isApproved = isApproved;
     }
 }

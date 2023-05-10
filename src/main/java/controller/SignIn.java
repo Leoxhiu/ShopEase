@@ -1,6 +1,9 @@
 package controller;
 
+import facade.CartFacade;
+import facade.CustomerFacade;
 import facade.MemberFacade;
+import facade.SellerFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,7 +11,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Customer;
 import model.Member;
+import model.Seller;
+import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
@@ -19,6 +25,18 @@ public class SignIn extends HttpServlet {
     @EJB
     private MemberFacade memberFacade;
 
+    @EJB
+    private MemberService memberService;
+
+    @EJB
+    private CustomerFacade customerFacade;
+
+    @EJB
+    private CartFacade cartFacade;
+
+    @EJB
+    private SellerFacade sellerFacade;
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
@@ -26,24 +44,18 @@ public class SignIn extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        // TODO Remove usage of Facade
-
-        Member member = memberFacade.getMemberByEmail(email);
-        if(member == null){
-            MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
+        if(!memberService.isExist(email)){
+            MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
         }
 
+        Member member = memberFacade.getMemberByEmail(email);
         if(!password.equals(member.getPassword())){
             MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
         }
-
-        // TODO Customer Sign in and Seller Sign in
-
-
 
         HttpSession session = request.getSession();
         // member details
@@ -52,9 +64,28 @@ public class SignIn extends HttpServlet {
         session.setAttribute("memberEmail", member.getEmail());
         session.setAttribute("userType", member.getUserType());
 
-        // cart details
-        // session.setAttribute("cartTotal", cartTotal)
+        if(member.getUserType() == 'c'){
+            // customer details
+            Customer customer = customerFacade.getCustomerByMemberId(member.getId());
+            session.setAttribute("customerId", customer.getId());        // get customerId from database
+            // cart details
+            int cartTotal = cartFacade.countCartByCustomerId(customer.getId());
+            session.setAttribute("cartTotal", cartTotal);         // get cartTotal from database
 
-        response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
+            response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
+
+        } else if (member.getUserType() == 's'){
+            // seller details
+            Seller seller = sellerFacade.getSellerByMemberId(member.getId());
+            // check if seller is approved
+            if(!seller.isApproved()){
+                session.invalidate();
+                MessageHandler.setMessage(request, Message.ACCOUNT_NOT_APPROVED, ButtonText.UNDERSTAND, "");
+                ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
+                return;
+            }
+            session.setAttribute("sellerId", seller.getId());        // get sellerId from database
+            response.sendRedirect(JspPage.SELLER_HOME.getUrl());
+        }
     }
 }

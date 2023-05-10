@@ -14,4 +14,6 @@ public interface CartFacadeI {
     List<Cart> getRangeCart(int[] range);
     Cart getCartById(String id);
     int countCart();
+
+    int countCartByCustomerId(String customerId);
 }

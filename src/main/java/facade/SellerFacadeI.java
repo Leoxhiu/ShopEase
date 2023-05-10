@@ -14,4 +14,5 @@ public interface SellerFacadeI {
     List<Seller> getRangeSeller(int[] range);
     Seller getSellerById(String id);
     int countSeller();
+    Seller getSellerByMemberId(String memberId);
 }
