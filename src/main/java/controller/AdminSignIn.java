@@ -40,8 +40,15 @@ public class AdminSignIn extends HttpServlet {
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SIGN_IN.getPath());
             return;
         }
+
         Member member = memberFacade.getMemberByEmail(email);
-        if(!(member.getUserType() == 'a')){
+        if (member.isDeleted()) {
+            MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SIGN_IN.getPath());
+            return;
+        }
+
+        if (!(member.getUserType() == 'a')) {
             response.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
         }

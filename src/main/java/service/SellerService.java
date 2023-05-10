@@ -21,7 +21,7 @@ public class SellerService implements SellerServiceI {
 
     @Override
     public boolean signUp(Member member) {
-        Address address = new Address("", "", "");
+        Address address = new Address("", "", "", "");
         Seller seller = new Seller(member, address, "", 0, false);
         return addressFacade.createAddress(address) && sellerFacade.createSeller(seller);
     }

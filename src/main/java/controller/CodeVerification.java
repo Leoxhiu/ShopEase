@@ -45,7 +45,7 @@ public class CodeVerification extends HttpServlet {
             InputStream userFileStream = application.getResourceAsStream("/images/profile/profile.png");
             byte[] profile = ImageUpload.getImageAsByte(userFileStream);
 
-            Member member = new Member(profile, Email.getFront(email), email, password, userType.charAt(0));
+            Member member = new Member(profile, Email.getFront(email), email, password, userType.charAt(0), false);
             if(memberService.signUp(member)){
 
                 if(userType.equals("c")){

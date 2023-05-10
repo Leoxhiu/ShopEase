@@ -44,14 +44,20 @@ public class SignIn extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if(!memberService.isExist(email)){
+        if (!memberService.isExist(email)) {
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
         }
 
         Member member = memberFacade.getMemberByEmail(email);
-        if(!password.equals(member.getPassword())){
+        if (member.isDeleted()) {
+            MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
+            return;
+        }
+
+        if (!password.equals(member.getPassword())) {
             MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
@@ -64,7 +70,7 @@ public class SignIn extends HttpServlet {
         session.setAttribute("memberEmail", member.getEmail());
         session.setAttribute("userType", member.getUserType());
 
-        if(member.getUserType() == 'c'){
+        if (member.getUserType() == 'c') {
             // customer details
             Customer customer = customerFacade.getCustomerByMemberId(member.getId());
             session.setAttribute("customerId", customer.getId());        // get customerId from database
@@ -74,11 +80,11 @@ public class SignIn extends HttpServlet {
 
             response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
 
-        } else if (member.getUserType() == 's'){
+        } else if (member.getUserType() == 's') {
             // seller details
             Seller seller = sellerFacade.getSellerByMemberId(member.getId());
             // check if seller is approved
-            if(!seller.isApproved()){
+            if (!seller.isApproved()) {
                 session.invalidate();
                 MessageHandler.setMessage(request, Message.ACCOUNT_NOT_APPROVED, ButtonText.UNDERSTAND, "");
                 ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());

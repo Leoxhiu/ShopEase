@@ -16,16 +16,18 @@ public class Member {
     private String email;
     private String password;
     private char userType;
+    private boolean isDeleted;
 
     public Member() {
     }
 
-    public Member(byte[] profile, String name, String email, String password, char userType) {
+    public Member(byte[] profile, String name, String email, String password, char userType, boolean isDeleted) {
         this.profile = profile;
         this.name = name;
         this.email = email;
         this.password = password;
         this.userType = userType;
+        this.isDeleted = isDeleted;
     }
 
     public String getId() {
@@ -74,5 +76,13 @@ public class Member {
 
     public void setUserType(char userType) {
         this.userType = userType;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
     }
 }

@@ -11,48 +11,58 @@ public class Address {
     @Id
     @GeneratedValue(generator = "ADDRESS_ID")
     private String id;
-    private String latitude;
-    private String longitude;
-    private String address;
+    private String unit;
+    private String city;
+    private String state;
+    private String postal;
 
     public Address() {
     }
 
-    public Address(String latitude, String longitude, String address) {
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.address = address;
-    }
-
-    public void setId(String id) {
-        this.id = id;
+    public Address(String unit, String city, String state, String postal) {
+        this.unit = unit;
+        this.city = city;
+        this.state = state;
+        this.postal = postal;
     }
 
     public String getId() {
         return id;
     }
 
-    public String getLatitude() {
-        return latitude;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public void setLatitude(String latitude) {
-        this.latitude = latitude;
+    public String getUnit() {
+        return unit;
     }
 
-    public String getLongitude() {
-        return longitude;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public void setLongitude(String longitude) {
-        this.longitude = longitude;
+    public String getCity() {
+        return city;
     }
 
-    public String getAddress() {
-        return address;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public String getPostal() {
+        return postal;
+    }
+
+    public void setPostal(String postal) {
+        this.postal = postal;
     }
 }
