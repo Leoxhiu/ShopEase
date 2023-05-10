@@ -5,6 +5,6 @@
   <title>ShopeEase - Admin Auth</title>
 </head>
 <body>
-
+<%--  TODO admin sign in--%>
 </body>
 </html>

@@ -5,6 +5,8 @@ public enum ServletPage {
     CUSTOMER_SIGN_UP("/shopease/guest/s/customer/sign/up"),
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
     SIGN_IN("/shopease/guest/s/sign/in"),
+    FORGOT_PASSWORD("/shopease/guest/s/forgot/password"),
+    RESET_PASSWORD("/shopease/guest/s/reset/password"),
     CODE_VERIFICATION("/shopease/guest/s/code/verification"),
     CUSTOMER_MARKET("/shopease/customer/s/market"),
     ;

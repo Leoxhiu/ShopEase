@@ -9,4 +9,5 @@ public interface MemberServiceI {
     boolean isExist(String email);
     boolean signUp(Member member);
 
+    boolean updatePassword(String email, String password);
 }

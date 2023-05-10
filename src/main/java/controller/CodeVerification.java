@@ -12,7 +12,7 @@ import utility.*;
 import java.io.IOException;
 import java.io.InputStream;
 
-@WebServlet(name = "code/verification", value = "/guest/s/code/verification")
+@WebServlet(name = "CodeVerification", value = "/guest/s/code/verification")
 public class CodeVerification extends HttpServlet {
 
     @EJB
@@ -37,7 +37,7 @@ public class CodeVerification extends HttpServlet {
         }
 
         if(userType == null){
-            // TODO perform account recovery
+            response.sendRedirect(JspPage.RESET_PASSWORD.getUrl());
 
         } else {
 

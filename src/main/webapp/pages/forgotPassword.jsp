@@ -1,4 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,50 +23,57 @@
 
 </head>
 <body>
-<main>
-  <!-- Section -->
-  <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex justify-content-center align-items-center">
-    <div class="container">
+    <main>
+          <!-- Section -->
+          <section class="vh-lg-100 mt-5 mt-lg-0 bg-soft d-flex justify-content-center align-items-center">
+            <div class="container">
 
-      <div class="row justify-content-evenly">
-        <div class="col-lg-7 d-flex align-items-center justify-content-center">
-          <%@include file="../images/others/forgotPassword.svg" %>
-        </div>
-        <div class="col-lg-5">
+              <div class="row justify-content-evenly">
+                <div class="col-lg-7 d-flex align-items-center justify-content-center">
+                  <%@include file="../images/others/forgotPassword.svg" %>
+                </div>
+                <div class="col-lg-5">
 
-          <div class="row justify-content-center">
-            <p class="text-center"><a href="<%= JspPage.SIGN_IN.getUrl() %>" class="d-flex align-items-center justify-content-center">
-              <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
-              Back to log in
-            </a>
-            </p>
-            <div class="col-12 d-flex align-items-center justify-content-center">
-              <div class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
-                <h3 class="font-secondary font-bold">Forgot your password?</h3>
-                <p class="mb-4">Don't fret! Just type in your email and we will send you a code to reset your password!</p>
-                <form action="#">
-                  <!-- Form -->
-                  <div class="mb-4">
-                    <label for="email">Your Email</label>
-                    <div class="input-group">
-                      <input type="email" class="form-control" id="email" placeholder="example@gmail.com" required autofocus>
+                  <div class="row justify-content-center">
+                    <p class="text-center"><a href="<%= JspPage.SIGN_IN.getUrl() %>" class="d-flex align-items-center justify-content-center">
+                      <i class="bi bi-arrow-left text-primary" style="padding-right: 5px;"></i>
+                      Back to log in
+                    </a>
+                    </p>
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                      <div class="signin-inner my-3 my-lg-0 bg-white shadow border-0 rounded p-4 p-lg-5 w-100 fmxw-500">
+                        <h3 class="font-secondary font-bold">Forgot your password?</h3>
+                        <p class="mb-4">Don't fret! Just type in your email and we will send you a code to reset your password!</p>
+                          <c:if test="${not empty errorMessage}">
+                              <script>
+                                  $(function() {
+                                      $('#error-modal').modal('show');
+                                  });
+                              </script>
+                          </c:if>
+                        <form action="<%= ServletPage.FORGOT_PASSWORD.getUrl() %>" method="post">
+                          <!-- Form -->
+                          <div class="mb-4">
+                            <label for="email">Your Email</label>
+                            <div class="input-group">
+                              <input type="email" class="form-control" id="email" name="email" placeholder="example@gmail.com" required autofocus>
+                            </div>
+                          </div>
+                          <!-- End of Form -->
+                          <div class="d-grid">
+                            <button type="submit" class="btn btn-primary">Recover password</button>
+                          </div>
+                        </form>
+                      </div>
                     </div>
                   </div>
-                  <!-- End of Form -->
-                  <div class="d-grid">
-                    <button type="submit" class="btn btn-primary">Recover password</button>
-                  </div>
-                </form>
+
+                </div>
               </div>
+
             </div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-</main>
-
+          </section>
+    </main>
+    <jsp:include page="../components/errorModal.jsp" />
 </body>
 </html>

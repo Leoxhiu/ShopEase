@@ -50,4 +50,11 @@ public class MemberService implements MemberServiceI{
 
         return false;
     }
+
+    @Override
+    public boolean updatePassword(String email, String password) {
+        Member member = memberFacade.getMemberByEmail(email);
+        member.setPassword(password);
+        return memberFacade.editMember(member);
+    }
 }

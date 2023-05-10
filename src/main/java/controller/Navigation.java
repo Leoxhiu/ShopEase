@@ -9,7 +9,7 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 import utility.JspPage;
 
-@WebServlet(name = "navigation", value = "/")
+@WebServlet(name = "Navigation", value = "/")
 public class Navigation extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
