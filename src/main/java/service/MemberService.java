@@ -24,10 +24,7 @@ public class MemberService implements MemberServiceI{
     public boolean isExist(String email) {
 
         Member member = memberFacade.getMemberByEmail(email);
-        if(member != null){
-            return true;
-        }
-        return false;
+        return member != null;
     }
 
     @Override
