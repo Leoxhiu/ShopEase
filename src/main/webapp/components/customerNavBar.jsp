@@ -1,4 +1,5 @@
 <%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html lang="en">
@@ -53,7 +54,11 @@
                                             <li><hr class="dropdown-divider"></li>
                                             <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
                                             <li><a class="dropdown-item" href="#history">History</a></li>
-                                            <li><a class="dropdown-item" href="<%= JspPage.LANDING.getUrl() %>>">Logout</a></li>
+                                            <li>
+                                                <form action="<%= ServletPage.SIGN_OUT.getUrl() %>" method="post" class="logout">
+                                                    <button class="dropdown-item" type="submit">Logout</button>
+                                                </form>
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>

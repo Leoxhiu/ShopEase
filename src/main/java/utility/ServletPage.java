@@ -7,6 +7,7 @@ public enum ServletPage {
     FORGOT_PASSWORD("/shopease/guest/s/forgot/password"),
     RESET_PASSWORD("/shopease/guest/s/reset/password"),
     CODE_VERIFICATION("/shopease/guest/s/code/verification"),
+    SIGN_OUT("/shopease/s/sign/out"),
 
     // Customer
     CUSTOMER_SIGN_UP("/shopease/guest/s/customer/sign/up"),
@@ -16,8 +17,7 @@ public enum ServletPage {
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
 
     // Admin
-    ADMIN_SIGN_IN("/shopease/s/auth/admin")
-    ;
+    ADMIN_SIGN_IN("/shopease/s/auth/admin");
 
     private final String url;
 

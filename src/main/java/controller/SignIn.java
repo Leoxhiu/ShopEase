@@ -86,6 +86,9 @@ public class SignIn extends HttpServlet {
             }
             session.setAttribute("sellerId", seller.getId());        // get sellerId from database
             response.sendRedirect(JspPage.SELLER_HOME.getUrl());
+        } else if (member.getUserType() == 'a') {
+            session.invalidate();
+            response.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
         }
     }
 }
