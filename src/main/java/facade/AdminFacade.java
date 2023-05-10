@@ -2,13 +2,14 @@ package facade;
 
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.Admin;
 
 import java.util.List;
 
 @Stateless(name = "AdminFacade")
 @LocalBean
-public class AdminFacade extends AbstractFacade<Admin> implements AdminFacadeI{
+public class AdminFacade extends AbstractFacade<Admin> implements AdminFacadeI {
 
     public AdminFacade() {
         super(Admin.class);
@@ -16,11 +17,10 @@ public class AdminFacade extends AbstractFacade<Admin> implements AdminFacadeI{
 
     @Override
     public boolean createAdmin(Admin admin) {
-        try{
+        try {
             this.create(admin);
             return true;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -30,8 +30,7 @@ public class AdminFacade extends AbstractFacade<Admin> implements AdminFacadeI{
         try {
             this.edit(admin);
             return true;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
     }
@@ -59,5 +58,14 @@ public class AdminFacade extends AbstractFacade<Admin> implements AdminFacadeI{
     @Override
     public int countAdmin() {
         return this.count();
+    }
+
+    @Override
+    public Admin getAdminByMemberId(String memberId) {
+        TypedQuery<Admin> query = em.createQuery(
+                "SELECT a FROM Admin a WHERE a.member.id = :memberId", Admin.class);
+        query.setParameter("memberId", memberId);
+        List<Admin> admins = query.getResultList();
+        return admins.isEmpty() ? null : admins.get(0);
     }
 }

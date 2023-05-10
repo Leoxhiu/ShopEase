@@ -49,9 +49,7 @@ public class SellerSignUp extends HttpServlet {
         }
 
         try {
-//            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
-            actualCode = RandomCode.GENERATE();
-            System.out.println(actualCode);
+            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
 
         } catch (Exception e) {
             MessageHandler.setMessage(request, Message.EMAIL_NOT_SEND, ButtonText.UNDERSTAND, "");
