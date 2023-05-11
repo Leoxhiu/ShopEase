@@ -44,7 +44,7 @@
                                         ${sessionScope.memberName}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
-                                        <li><a class="dropdown-item" href="#profile">Profile</a></li>
+                                        <li><a class="dropdown-item" href="<%= JspPage.ADMIN_PROFILE.getUrl() %>">Profile</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li>
                                             <form action="<%= ServletPage.SIGN_OUT.getUrl() %>" method="post" class="logout">

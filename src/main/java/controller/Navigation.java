@@ -46,6 +46,7 @@ public class Navigation extends HttpServlet {
         // Admin pages
         pathToJspMap.put(JspPage.ADMIN_SIGN_IN.getUrl(), JspPage.ADMIN_SIGN_IN.getPath());
         pathToJspMap.put(JspPage.ADMIN_HOME.getUrl(), JspPage.ADMIN_HOME.getPath());
+        pathToJspMap.put(JspPage.ADMIN_PROFILE.getUrl(), JspPage.ADMIN_PROFILE.getPath());
 
         // Get the requested URL path
         String path = request.getRequestURI();

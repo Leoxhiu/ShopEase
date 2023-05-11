@@ -19,7 +19,9 @@ public enum ServletPage {
     SELLER_PROFILE("/shopease/seller/s/profile"),
 
     // Admin
-    ADMIN_SIGN_IN("/shopease/s/auth/admin");
+    ADMIN_SIGN_IN("/shopease/s/auth/admin"),
+    ADMIN_PROFILE("/shopease/admin/s/profile"),
+    ;
 
     private final String url;
 
