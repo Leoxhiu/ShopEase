@@ -55,7 +55,7 @@ public class Navigation extends HttpServlet {
         // Forward the request to the JSP page
         if (jspPage != null) {
             request.getRequestDispatcher(jspPage).forward(request, response);
-        } else {
+        } else if(jspPage == null) {
             // Handle invalid URLs (404 page not found)
             response.sendRedirect(JspPage.PAGE_NOT_FOUND.getUrl());
         }

@@ -1,9 +1,6 @@
 package controller;
 
-import facade.CartFacade;
-import facade.CustomerFacade;
-import facade.MemberFacade;
-import facade.SellerFacade;
+import facade.*;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -11,6 +8,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.Address;
 import model.Customer;
 import model.Member;
 import model.Seller;
@@ -30,6 +28,9 @@ public class SignIn extends HttpServlet {
 
     @EJB
     private CustomerFacade customerFacade;
+
+    @EJB
+    private AddressFacade addressFacade;
 
     @EJB
     private CartFacade cartFacade;
@@ -74,6 +75,8 @@ public class SignIn extends HttpServlet {
             // customer details
             Customer customer = customerFacade.getCustomerByMemberId(member.getId());
             session.setAttribute("customerId", customer.getId());        // get customerId from database
+            // address details
+            session.setAttribute("addressId", customer.getAddress().getId());   // get addressId from database
             // cart details
             int cartTotal = cartFacade.countCartByCustomerId(customer.getId());
             session.setAttribute("cartTotal", cartTotal);         // get cartTotal from database

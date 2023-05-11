@@ -44,7 +44,7 @@
                         <form action="<%= ServletPage.CUSTOMER_PROFILE.getUrl() %>" method="post" enctype="multipart/form-data">
                             <div class="text-center mb-4">
                                 <div class="avatar-upload">
-                                    <label for="memberProfile" >
+                                    <label for="memberProfile">
                                         <img src="/shopease/images?memberId=${sessionScope.memberId}" class="avatar rounded-circle" alt="Avatar" />
                                     </label>
                                     <input type="file" id="memberProfile" name="memberProfile" accept='image/x-png,image/gif,image/jpeg'>
@@ -54,24 +54,24 @@
                             <div class="row mb-3">
                                 <div class="">
                                     <div class="form-group">
-                                        <label for="name">Name</label>
-                                        <input class="form-control" id="name" name="=name" type="text" placeholder="Name" required value="${sessionScope.memberName}">
+                                        <label for="memberName">Name</label>
+                                        <input class="form-control" id="memberName" name="memberName" type="text" placeholder="Name" required value="${memberName}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="">
                                     <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input class="form-control" id="email" name="email" type="email" placeholder="example@gmail.com" required value="${sessionScope.memberEmail}">
+                                        <label for="memberEmail">Email</label>
+                                        <input class="form-control" id="memberEmail" name="memberEmail" type="email" placeholder="example@gmail.com" readonly required value="${memberEmail}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <div class="">
                                     <div class="form-group">
-                                        <label for="password">Password</label>
-                                        <input class="form-control" id="password" name="password" type="password" placeholder="Password" required value="${memberPassword}">
+                                        <label for="memberPassword">Password</label>
+                                        <input class="form-control" id="memberPassword" name="memberPassword" type="password" placeholder="Password" required value="${memberPassword}">
                                     </div>
                                 </div>
                             </div>

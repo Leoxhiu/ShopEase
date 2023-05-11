@@ -20,20 +20,16 @@ public class ImageUpload {
         return byteArrayOutputStream.toByteArray();
     }
 
-    public static byte[] getImageAsByte(HttpServletRequest request, String partName) throws IOException, ServletException {
+    public static byte[] getImageAsByte(Part filePart) throws IOException, ServletException {
         InputStream inputStream = null;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
-        Part filePart = request.getPart(partName);
-        if (filePart != null) {
-            inputStream = filePart.getInputStream();
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = inputStream.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);
-            }
+        inputStream = filePart.getInputStream();
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
         }
-
         return outputStream.toByteArray();
     }
 }

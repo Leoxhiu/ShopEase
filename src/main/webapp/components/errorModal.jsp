@@ -14,7 +14,7 @@
                         <i class="bi bi-x-circle-fill text-danger" style="font-size: 9.5rem;"></i>
                     </div>
 
-                    <div class="message mt-2 font-primary text-center">
+                    <div class="message mt-5 font-primary text-center">
                         ${errorMessage}
                     </div>
                 </div>
