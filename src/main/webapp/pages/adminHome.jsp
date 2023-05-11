@@ -22,8 +22,6 @@
 
 </head>
 <body>
-    <jsp:include page="/components/adminNavBar.jsp"/>
-
-
+<jsp:include page="/components/adminNavBar.jsp"/>
 </body>
 </html>

@@ -1,7 +1,8 @@
+<%@ page import="utility.JspPage" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="../components/mainHeader.jsp"%>
+    <%@ include file="../components/mainHeader.jsp" %>
     <title>ShopEase - Seller Home</title>
 
     <%--    main css file--%>
@@ -23,7 +24,15 @@
 
 </head>
 <body>
-    <jsp:include page="/components/sellerNavBar.jsp" />
-
+<jsp:include page="/components/sellerNavBar.jsp"/>
+<main id="content" class="content">
+    <section>
+        <div class="container">
+            <a href="<%= JspPage.SELLER_PUBLISH_PRODUCT.getUrl() %>" class="btn btn-primary">
+                <span class="bi bi-plus"></span> Publish new product
+            </a>
+        </div>
+    </section>
+</main>
 </body>
 </html>

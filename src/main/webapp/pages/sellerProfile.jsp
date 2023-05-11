@@ -47,7 +47,7 @@
                                     <label for="memberProfile">
                                         <img src="/shopease/images?memberId=${sessionScope.memberId}" class="avatar rounded-circle" alt="Avatar" />
                                     </label>
-                                    <input type="file" id="memberProfile" name="memberProfile" accept='image/x-png,image/gif,image/jpeg'>
+                                    <input class="form-control mt-3" type="file" id="memberProfile" name="memberProfile" accept="image/*">
                                 </div>
                             </div>
                             <h2 class="h5 mb-4 font-bold font-primary">Account information</h2>
@@ -110,9 +110,8 @@
                                     <div class="form-group">
                                         <label for="state">State</label>
                                         <select class="form-select" id="state" name="state" aria-label="State select example" required>
-                                            <option value="" ${state eq '' ? 'selected' : ''}></option>
+                                            <option value="" ${state eq '' ? 'selected' : ''}>Select State</option>
                                             <option value="JHR" ${state eq 'JHR' ? 'selected' : ''}>Johor</option>
-                                            <!-- Add remaining options for the state select dropdown -->
                                             <option value="KDH" ${state eq 'KDH' ? 'selected' : ''}>Kedah</option>
                                             <option value="KTN" ${state eq 'KTN' ? 'selected' : ''}>Kelantan</option>
                                             <option value="MLK" ${state eq 'MLK' ? 'selected' : ''}>Melaka</option>

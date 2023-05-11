@@ -5,6 +5,11 @@
     <title>ShopEase - Market</title>
 </head>
 <body>
-
+<main id="content" class="content">
+    <section>
+        <div class="container">
+        </div>
+    </section>
+</main>
 </body>
 </html>

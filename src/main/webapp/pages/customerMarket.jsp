@@ -6,7 +6,7 @@
 
     <!--    main css-->
     <style>
-      <%@ include file="../css/market.css"%>
+      <%@ include file="../css/customerMarket.css"%>
     </style>
 
     <!--    vendor css-->

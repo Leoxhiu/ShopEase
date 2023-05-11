@@ -10,7 +10,6 @@
         <class>model.Admin</class>
         <class>model.Cart</class>
         <class>model.Customer</class>
-        <class>model.Discount</class>
         <class>model.Member</class>
         <class>model.CustomerOrder</class>
         <class>model.OrderCart</class>

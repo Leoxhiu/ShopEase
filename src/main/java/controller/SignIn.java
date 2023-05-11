@@ -75,6 +75,7 @@ public class SignIn extends HttpServlet {
             // customer details
             Customer customer = customerFacade.getCustomerByMemberId(member.getId());
             session.setAttribute("customerId", customer.getId());        // get customerId from database
+            session.setAttribute("customerBalance", customer.getBalance()); // get customerBalance from database
             // address details
             session.setAttribute("addressId", customer.getAddress().getId());   // get addressId from database
             // cart details

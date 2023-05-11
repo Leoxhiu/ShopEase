@@ -13,26 +13,26 @@ public class Product {
     @OneToOne // A member can be a seller
     @JoinColumn(name = "sellerId", referencedColumnName = "id")
     private Seller seller;
-    private int category;
     private byte[] image;
     private String name;
     private String description;
     private double price;
     private int quantity;
-    private boolean discount; // got discount or not
+    private String category;
+    private int discount; //percentage
     private boolean isDeleted; // is deleted or not
 
     public Product() {
     }
 
-    public Product(Seller seller, int category, byte[] image, String name, String description, double price, int quantity, boolean discount, boolean isDeleted) {
+    public Product(Seller seller, byte[] image, String name, String description, double price, int quantity, String category, int discount, boolean isDeleted) {
         this.seller = seller;
-        this.category = category;
         this.image = image;
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
+        this.category = category;
         this.discount = discount;
         this.isDeleted = isDeleted;
     }
@@ -51,14 +51,6 @@ public class Product {
 
     public void setSeller(Seller seller) {
         this.seller = seller;
-    }
-
-    public int getCategory() {
-        return category;
-    }
-
-    public void setCategory(int category) {
-        this.category = category;
     }
 
     public byte[] getImage() {
@@ -101,11 +93,19 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public boolean isDiscount() {
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public int isDiscount() {
         return discount;
     }
 
-    public void setDiscount(boolean discount) {
+    public void setDiscount(int discount) {
         this.discount = discount;
     }
 

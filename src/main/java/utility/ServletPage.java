@@ -17,6 +17,7 @@ public enum ServletPage {
     // Seller
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
     SELLER_PROFILE("/shopease/seller/s/profile"),
+    SELLER_PUBLISH_PRODUCT("/shopease/seller/s/publish/product"),
 
     // Admin
     ADMIN_SIGN_IN("/shopease/s/auth/admin"),

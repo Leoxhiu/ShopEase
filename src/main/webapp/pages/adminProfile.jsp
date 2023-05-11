@@ -47,7 +47,7 @@
                                     <label for="memberProfile">
                                         <img src="/shopease/images?memberId=${sessionScope.memberId}" class="avatar rounded-circle" alt="Avatar" />
                                     </label>
-                                    <input type="file" id="memberProfile" name="memberProfile" accept='image/x-png,image/gif,image/jpeg'>
+                                    <input class="form-control mt-3" type="file" id="memberProfile" name="memberProfile" accept="image/*">
                                 </div>
                             </div>
                             <h2 class="h5 mb-4 font-bold font-primary">Account information</h2>
