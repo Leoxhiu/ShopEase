@@ -5,6 +5,7 @@ public enum JspPage {
     // Error pages
     PAGE_NOT_FOUND("/shopease/page/not/found","/pages/pageNotFound.jsp"),
     ACCESS_DENIED("/shopease/access/denied","/pages/accessDenied.jsp"),
+    SERVER_ERROR("/shopease/server/error","/pages/serverError.jsp"),
 
     // Guest pages
     INDEX("/shopease/","/pages/index.jsp"),

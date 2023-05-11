@@ -20,6 +20,7 @@ public class Navigation extends HttpServlet {
         // Error pages
         pathToJspMap.put(JspPage.PAGE_NOT_FOUND.getUrl(), JspPage.PAGE_NOT_FOUND.getPath());
         pathToJspMap.put(JspPage.ACCESS_DENIED.getUrl(), JspPage.ACCESS_DENIED.getPath());
+        pathToJspMap.put(JspPage.SERVER_ERROR.getUrl(), JspPage.SERVER_ERROR.getPath());
 
         // Guest pages
         pathToJspMap.put(JspPage.INDEX.getUrl(), JspPage.INDEX.getPath());

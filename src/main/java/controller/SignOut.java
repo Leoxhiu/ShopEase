@@ -16,18 +16,22 @@ public class SignOut extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-        HttpSession session = request.getSession();
-        char userType = (char) session.getAttribute("userType");
+        try{
+            HttpSession session = request.getSession();
+            char userType = (char) session.getAttribute("userType");
 
-        session.invalidate();
+            session.invalidate();
 
-        if(userType == 'a'){
-            response.sendRedirect(JspPage.ADMIN_SIGN_IN.getUrl());
-            return;
+            if(userType == 'a'){
+                response.sendRedirect(JspPage.ADMIN_SIGN_IN.getUrl());
+                return;
+            }
+
+            response.sendRedirect(JspPage.LANDING.getUrl());
+        } catch (Exception e){
+            HttpSession session = request.getSession();
+            session.invalidate();
+            response.sendRedirect(JspPage.SERVER_ERROR.getUrl());
         }
-
-        response.sendRedirect(JspPage.LANDING.getUrl());
-
     }
-
 }
