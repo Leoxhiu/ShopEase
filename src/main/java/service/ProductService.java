@@ -22,7 +22,7 @@ public class ProductService implements ProductServiceI {
     public boolean publish(String sellerId, byte[] image, String name, String description, double price, int quantity, String category, int discount) {
         Seller seller = sellerFacade.getSellerById(sellerId);
 
-        Product product = new Product(seller,image,name,description,price,quantity,category,discount,false);
+        Product product = new Product(seller,image,name,description,price,quantity,category,discount,0, false);
         return productFacade.createProduct(product);
     }
 

@@ -16,6 +16,8 @@ public enum Message{
     SIGN_IN_FAILED("Sign in failed", MessageType.ERROR),
     RESET_PASSWORD_FAILED("Reset password failed, please try again", MessageType.ERROR),
     UPDATE_FAILED("Update failed, please try again.", MessageType.ERROR),
+    BANK_ACCOUNT_BLANK("You are unable to publish product without a bank account, kindly go to your profile to set it up.", MessageType.ERROR),
+    ADDRESS_BLANK("Please complete your address under profile to proceed with your action", MessageType.ERROR),
 
     // PRODUCT ERROR
     PRODUCT_NAME_LENGTH_INVALID("Product name should in between 2 and 100 characters.", MessageType.ERROR),

@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import service.ProductService;
+import service.SellerService;
 import utility.*;
 
 import java.io.IOException;
@@ -13,6 +14,9 @@ import java.io.IOException;
 @WebServlet(name = "SellerPublishProduct", value = "/seller/s/publish/product")
 @MultipartConfig(maxFileSize = 16177215)
 public class SellerPublishProduct extends HttpServlet {
+
+    @EJB
+    private SellerService sellerService;
 
     @EJB
     private ProductService productService;
@@ -38,55 +42,66 @@ public class SellerPublishProduct extends HttpServlet {
         request.setAttribute("productCategory", productCategory);
         request.setAttribute("productDiscount", productDiscount);
 
+        // get the user
+        HttpSession session = request.getSession();
+        String sellerId = (String) session.getAttribute("sellerId");
+
         // perform validation
-        if(!productService.isValidNameLength(productName)){
+        if (!sellerService.isBankAccountExist(sellerId)) {
+            MessageHandler.setMessage(request, Message.BANK_ACCOUNT_BLANK, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
+            return;
+        }
+        if (!sellerService.isAddressExists(sellerId)) {
+            MessageHandler.setMessage(request, Message.ADDRESS_BLANK, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
+            return;
+        }
+
+        if (!productService.isValidNameLength(productName)) {
             request.setAttribute("productName", "");
             MessageHandler.setMessage(request, Message.PRODUCT_NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
-        if(!productService.isValidDescription(productDescription)){
+        if (!productService.isValidDescription(productDescription)) {
             request.setAttribute("productDescription", "");
             MessageHandler.setMessage(request, Message.PRODUCT_DESCRIPTION_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
         double price = 0;
-        try{
+        try {
             price = Double.parseDouble(productPrice);
-        } catch(Exception e){
+        } catch (Exception e) {
             request.setAttribute("productPrice", "");
             MessageHandler.setMessage(request, Message.PRODUCT_PRICE_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
         }
-        if(!productService.isValidPrice(price)){
+        if (!productService.isValidPrice(price)) {
             request.setAttribute("productPrice", "");
             MessageHandler.setMessage(request, Message.PRODUCT_PRICE_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
-        if(!productService.isValidQuantity(Integer.parseInt(productQuantity))){
+        if (!productService.isValidQuantity(Integer.parseInt(productQuantity))) {
             request.setAttribute("productQuantity", "");
             MessageHandler.setMessage(request, Message.PRODUCT_QUANTITY_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
-        if(!productService.isValidDiscount(Integer.parseInt(productDiscount))){
+        if (!productService.isValidDiscount(Integer.parseInt(productDiscount))) {
             request.setAttribute("productDiscount", "");
             MessageHandler.setMessage(request, Message.PRODUCT_DISCOUNT_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
 
-        // get the user
-        HttpSession session = request.getSession();
-        String sellerId = (String) session.getAttribute("sellerId");
-
-        if(productService.publish(
+        if (productService.publish(
                 sellerId, productImage, productName, productDescription,
-                Double.parseDouble(productPrice), Integer.parseInt(productQuantity),productCategory,
+                Double.parseDouble(productPrice), Integer.parseInt(productQuantity), productCategory,
                 Integer.parseInt(productDiscount)
-        )){
+        )) {
             MessageHandler.setMessage(request, Message.PRODUCT_PUBLISH_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_PUBLISH_PRODUCT.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
         } else {

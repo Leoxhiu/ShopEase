@@ -20,6 +20,19 @@ public class SellerService implements SellerServiceI {
     private AddressFacade addressFacade;
 
     @Override
+    public boolean isBankAccountExist(String id) {
+        Seller seller = sellerFacade.getSellerById(id);
+        return seller != null && !seller.getBankAccount().equals("");
+    }
+
+    @Override
+    public boolean isAddressExists(String id) {
+        Seller seller = sellerFacade.getSellerById(id);
+        Address address = addressFacade.getAddressById(seller.getAddress().getId());
+        return !address.getUnit().equals("") && !address.getAddress().equals("") && !address.getCity().equals("");
+    }
+
+    @Override
     public boolean signUp(Member member) {
         Address address = new Address("", "","", "", "");
         Seller seller = new Seller(member, address, "", 0, false);

@@ -7,4 +7,5 @@ import model.Member;
 public interface CustomerServiceI {
 
     boolean signUp(Member member);
+    boolean isAddressExists(String id);
 }

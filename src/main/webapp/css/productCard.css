@@ -11,6 +11,10 @@ a.stretched-link:before {
     width: 100%;
 }
 
+.star-icon{
+    font-size: 20px;
+    margin-right: 5px;
+}
 
 .card-footer{
     position: relative;

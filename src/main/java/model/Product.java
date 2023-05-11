@@ -20,12 +20,13 @@ public class Product {
     private int quantity;
     private String category;
     private int discount; //percentage
+    private int rating; // total rating
     private boolean isDeleted; // is deleted or not
 
     public Product() {
     }
 
-    public Product(Seller seller, byte[] image, String name, String description, double price, int quantity, String category, int discount, boolean isDeleted) {
+    public Product(Seller seller, byte[] image, String name, String description, double price, int quantity, String category, int discount, int rating, boolean isDeleted) {
         this.seller = seller;
         this.image = image;
         this.name = name;
@@ -34,6 +35,7 @@ public class Product {
         this.quantity = quantity;
         this.category = category;
         this.discount = discount;
+        this.rating = rating;
         this.isDeleted = isDeleted;
     }
 
@@ -101,12 +103,20 @@ public class Product {
         this.category = category;
     }
 
-    public int isDiscount() {
+    public int getDiscount() {
         return discount;
     }
 
     public void setDiscount(int discount) {
         this.discount = discount;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
     }
 
     public boolean isDeleted() {

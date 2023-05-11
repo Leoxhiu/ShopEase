@@ -2,6 +2,7 @@ package facade;
 
 import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.Product;
 
 import java.util.List;
@@ -58,5 +59,12 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
     @Override
     public int countProduct() {
         return this.count();
+    }
+
+    @Override
+    public List<Product> getAllActiveProduct() {
+        TypedQuery<Product> query = em.createQuery(
+                "SELECT p FROM Product p WHERE p.isDeleted = false", Product.class);
+        return query.getResultList();
     }
 }

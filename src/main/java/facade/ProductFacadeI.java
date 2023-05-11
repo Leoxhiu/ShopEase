@@ -15,4 +15,5 @@ public interface ProductFacadeI {
     List<Product> getRangeProduct(int[] range);
     Product getProductById(String id);
     int countProduct();
+    List<Product> getAllActiveProduct();
 }
