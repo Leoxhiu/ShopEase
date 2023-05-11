@@ -4,11 +4,11 @@
 <html>
 <head>
     <%@ include file="../components/mainHeader.jsp"%>
-    <title>ShopEase - Customer Profile</title>
+    <title>ShopEase - Seller Profile</title>
 
     <%--    main css file--%>
     <style>
-        <%@ include file="../css/customerProfile.css"%>
+        <%@ include file="../css/sellerProfile.css"%>
     </style>
 
     <%--    vendor css--%>
@@ -20,7 +20,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-<jsp:include page="/components/customerNavBar.jsp" />
+<jsp:include page="/components/sellerNavBar.jsp" />
 <main>
     <div class="container">
         <div class="row justify-content-center">
@@ -41,7 +41,7 @@
                                 });
                             </script>
                         </c:if>
-                        <form action="<%= ServletPage.CUSTOMER_PROFILE.getUrl() %>" method="post" enctype="multipart/form-data">
+                        <form action="<%= ServletPage.SELLER_PROFILE.getUrl() %>" method="post" enctype="multipart/form-data">
                             <div class="text-center mb-4">
                                 <div class="avatar-upload">
                                     <label for="memberProfile">
@@ -67,12 +67,20 @@
                                     </div>
                                 </div>
                             </div>
-                            <h2 class="h5 mb-4 font-bold font-primary">Personal information</h2>
+                            <h2 class="h5 my-4 mt-5 font-bold font-primary">Personal information</h2>
                             <div class="row mb-3">
                                 <div class="">
                                     <div class="form-group">
                                         <label for="memberName">Name</label>
                                         <input class="form-control" id="memberName" name="memberName" type="text" placeholder="Name" required value="${memberName}">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="">
+                                    <div class="form-group">
+                                        <label for="sellerBankAccount">Bank account</label>
+                                        <input class="form-control" id="sellerBankAccount" name="sellerBankAccount" type="text" placeholder="Bank account" required value="${sellerBankAccount}">
                                     </div>
                                 </div>
                             </div>

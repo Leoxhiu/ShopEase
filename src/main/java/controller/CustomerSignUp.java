@@ -36,8 +36,8 @@ public class CustomerSignUp extends HttpServlet {
             return;
         }
 
-        if(password.length() < 8) {
-            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_ERROR, ButtonText.UNDERSTAND, "");
+        if(!memberService.isValidPasswordLength(password)) {
+            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_SIGN_UP.getPath());
             return;
         }

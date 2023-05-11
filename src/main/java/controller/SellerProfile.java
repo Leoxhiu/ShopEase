@@ -1,34 +1,38 @@
 package controller;
 
 import facade.AddressFacade;
-import facade.CustomerFacade;
 import facade.MemberFacade;
+import facade.SellerFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.Address;
-import model.Customer;
 import model.Member;
+import model.Seller;
 import service.AddressService;
 import service.MemberService;
+import service.SellerService;
 import utility.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "CustomerProfile", value = {"/customer/profile", "/customer/s/profile"})
+@WebServlet(name = "SellerProfile", value = {"/seller/profile", "/seller/s/profile"})
 @MultipartConfig(maxFileSize = 16177215)
-public class CustomerProfile extends HttpServlet {
+public class SellerProfile extends HttpServlet {
 
     @EJB
     private MemberFacade memberFacade;
 
     @EJB
-    private CustomerFacade customerFacade;
+    private MemberService memberService;
 
     @EJB
-    private MemberService memberService;
+    private SellerFacade sellerFacade;
+
+    @EJB
+    private SellerService sellerService;
 
     @EJB
     private AddressFacade addressFacade;
@@ -41,16 +45,17 @@ public class CustomerProfile extends HttpServlet {
 
         HttpSession session = request.getSession();
         String memberId = (String) session.getAttribute("memberId");
-        String customerId = (String) session.getAttribute("customerId");
+        String sellerId = (String) session.getAttribute("sellerId");
         String addressId = (String) session.getAttribute("addressId");
 
         Member member = memberFacade.getMemberById(memberId);
-        Customer customer = customerFacade.getCustomerById(customerId);
+        Seller seller = sellerFacade.getSellerById(sellerId);
         Address memberAddress = addressFacade.getAddressById(addressId);
 
         String memberName = member.getName();
         String memberEmail = member.getEmail();
         String memberPassword = member.getPassword();
+        String sellerBankAccount = seller.getBankAccount();
         String unit = memberAddress.getUnit();
         String address = memberAddress.getAddress();
         String city = memberAddress.getCity();
@@ -60,13 +65,14 @@ public class CustomerProfile extends HttpServlet {
         request.setAttribute("memberName", memberName);
         request.setAttribute("memberEmail", memberEmail);
         request.setAttribute("memberPassword", memberPassword);
+        request.setAttribute("sellerBankAccount", sellerBankAccount);
         request.setAttribute("unit", unit);
         request.setAttribute("address", address);
         request.setAttribute("city", city);
         request.setAttribute("state", state);
         request.setAttribute("postal", postal);
 
-        ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PROFILE.getPath());
+        ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
     }
 
     @Override
@@ -79,6 +85,8 @@ public class CustomerProfile extends HttpServlet {
         String memberEmail = request.getParameter("memberEmail");
         String memberPassword = request.getParameter("memberPassword");
 
+        String sellerBankAccount = request.getParameter("sellerBankAccount");
+
         String unit = request.getParameter("unit");
         String address = request.getParameter("address");
         String city = request.getParameter("city");
@@ -88,6 +96,7 @@ public class CustomerProfile extends HttpServlet {
         request.setAttribute("memberName", memberName);
         request.setAttribute("memberEmail", memberEmail);
         request.setAttribute("memberPassword", memberPassword);
+        request.setAttribute("sellerBankAccount", sellerBankAccount);
         request.setAttribute("unit", unit);
         request.setAttribute("address", address);
         request.setAttribute("city", city);
@@ -98,20 +107,27 @@ public class CustomerProfile extends HttpServlet {
         if(!memberService.isValidPasswordLength(memberPassword)) {
             request.setAttribute("memberPassword", null);
             MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PROFILE.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
             return;
         }
 
         if(!memberService.isValidName(memberName)) {
             request.setAttribute("memberName", "");
             MessageHandler.setMessage(request, Message.NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PROFILE.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
+            return;
+        }
+
+        if(!BankAccountValidator.isValidBankAccount(sellerBankAccount)){
+            request.setAttribute("sellerBankAccount", "");
+            MessageHandler.setMessage(request, Message.BANK_ACCOUNT_INVALID, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
             return;
         }
 
         // get the user
         HttpSession session = request.getSession();
-        String customerId = (String) session.getAttribute("customerId");
+        String sellerId = (String) session.getAttribute("sellerId");
         String addressId = (String) session.getAttribute("addressId");
 
         // perform validation on profile
@@ -122,13 +138,13 @@ public class CustomerProfile extends HttpServlet {
             memberProfile = member.getProfile();
         }
 
-        if(memberService.update(memberProfile, memberName, memberEmail, memberPassword) && addressService.update(addressId, unit, address, city, state, postal)){
+        if(memberService.update(memberProfile, memberName, memberEmail, memberPassword) && sellerService.updateBankAccount(sellerId, sellerBankAccount) && addressService.update(addressId, unit, address, city, state, postal)){
             session.setAttribute("memberName", memberName);
-            MessageHandler.setMessage(request, Message.UPDATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.CUSTOMER_PROFILE.getUrl());
-            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PROFILE.getPath());
+            MessageHandler.setMessage(request, Message.UPDATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_PROFILE.getUrl());
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
         } else {
             MessageHandler.setMessage(request, Message.UPDATE_FAILED, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PROFILE.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
         }
     }
 }

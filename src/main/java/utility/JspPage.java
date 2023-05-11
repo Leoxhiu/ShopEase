@@ -26,6 +26,7 @@ public enum JspPage {
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),
     SELLER_MARKET("/shopease/seller/market","pages/sellerMarket.jsp"),
     SELLER_PRODUCT_DETAIL("/shopease/seller/product/detail/comments","/pages/sellerProductDetail.jsp"),
+    SELLER_PROFILE("/shopease/seller/profile", "/pages/sellerProfile.jsp"),
 
     // Admin pages
     ADMIN_SIGN_IN("/shopease/auth/admin","/pages/adminSignIn.jsp"),

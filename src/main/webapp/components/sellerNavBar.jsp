@@ -38,7 +38,7 @@
                                         ${sessionScope.memberName}
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
-                                        <li><a class="dropdown-item" href="#profile">Profile</a></li>
+                                        <li><a class="dropdown-item" href="<%= JspPage.SELLER_PROFILE.getUrl() %>">Profile</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
                                         <li><a class="dropdown-item" href="#transaction">Transaction</a></li>

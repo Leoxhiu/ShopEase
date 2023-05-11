@@ -7,4 +7,5 @@ import model.Member;
 public interface SellerServiceI {
 
     boolean signUp(Member member);
+    boolean updateBankAccount(String sellerId, String bankAccount);
 }

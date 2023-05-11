@@ -25,4 +25,12 @@ public class SellerService implements SellerServiceI {
         Seller seller = new Seller(member, address, "", 0, false);
         return addressFacade.createAddress(address) && sellerFacade.createSeller(seller);
     }
+
+    @Override
+    public boolean updateBankAccount(String sellerId, String bankAccount) {
+
+        Seller seller = sellerFacade.getSellerById(sellerId);
+        seller.setBankAccount(bankAccount);
+        return sellerFacade.editSeller(seller);
+    }
 }

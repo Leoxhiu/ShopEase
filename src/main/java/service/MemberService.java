@@ -28,6 +28,16 @@ public class MemberService implements MemberServiceI{
     }
 
     @Override
+    public boolean isValidPasswordLength(String password) {
+        return password.length() >= 8;
+    }
+
+    @Override
+    public boolean isValidName(String name){
+        return name.length() >= 2;
+    }
+
+    @Override
     public boolean signUp(Member member) {
 
         if(memberFacade.createMember(member)){
@@ -64,6 +74,4 @@ public class MemberService implements MemberServiceI{
         member.setPassword(password);
         return memberFacade.editMember(member);
     }
-
-
 }

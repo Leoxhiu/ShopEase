@@ -28,8 +28,8 @@ public class ResetPassword extends HttpServlet {
         HttpSession session = request.getSession();
         String email = (String) session.getAttribute("email");
 
-        if(password.length() < 8) {
-            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_ERROR, ButtonText.UNDERSTAND, "");
+        if(!memberService.isValidPasswordLength(password)) {
+            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.RESET_PASSWORD.getPath());
             return;
         }
