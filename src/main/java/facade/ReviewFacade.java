@@ -1,20 +1,17 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import model.Review;
 
 import java.util.List;
 
-@Stateless (name = "ReviewFacade")
-@LocalBean
-public class ReviewFacade extends AbstractFacade<Review> implements ReviewFacadeI {
+@Stateless
+public class ReviewFacade extends AbstractFacade<Review>{
 
     public ReviewFacade() {
         super(Review.class);
     }
 
-    @Override
     public boolean createReview(Review review) {
         try{
             this.create(review);
@@ -25,7 +22,6 @@ public class ReviewFacade extends AbstractFacade<Review> implements ReviewFacade
         }
     }
 
-    @Override
     public boolean editReview(Review review) {
         try{
             this.edit(review);
@@ -36,27 +32,22 @@ public class ReviewFacade extends AbstractFacade<Review> implements ReviewFacade
         }
     }
 
-    @Override
     public void removeReview(Review review) {
         this.remove(review);
     }
 
-    @Override
     public List<Review> getAllReview() {
         return this.findAll();
     }
 
-    @Override
     public List<Review> getRangeReview(int[] range) {
         return this.findRange(range);
     }
 
-    @Override
     public Review getReviewById(String id) {
         return this.find(id);
     }
 
-    @Override
     public int countReview() {
         return this.count();
     }

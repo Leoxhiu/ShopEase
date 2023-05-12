@@ -1,15 +1,13 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Customer;
 
 import java.util.List;
 
-@Stateless(name = "CustomerFacade")
-@LocalBean
-public class CustomerFacade extends AbstractFacade<Customer> implements CustomerFacadeI{
+@Stateless
+public class CustomerFacade extends AbstractFacade<Customer>{
 
     public CustomerFacade() {
         super(Customer.class);
@@ -60,4 +58,5 @@ public class CustomerFacade extends AbstractFacade<Customer> implements Customer
         List<Customer> customers = query.getResultList();
         return customers.isEmpty() ? null : customers.get(0);
     }
+
 }

@@ -11,9 +11,6 @@ import jakarta.servlet.http.*;
 import model.Address;
 import model.Member;
 import model.Seller;
-import service.AddressService;
-import service.MemberService;
-import service.SellerService;
 import utility.*;
 
 import java.io.IOException;
@@ -26,19 +23,11 @@ public class SellerProfile extends HttpServlet {
     private MemberFacade memberFacade;
 
     @EJB
-    private MemberService memberService;
-
-    @EJB
     private SellerFacade sellerFacade;
-
-    @EJB
-    private SellerService sellerService;
 
     @EJB
     private AddressFacade addressFacade;
 
-    @EJB
-    private AddressService addressService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -104,14 +93,14 @@ public class SellerProfile extends HttpServlet {
         request.setAttribute("postal", postal);
 
         // perform validation
-        if(!memberService.isValidPasswordLength(memberPassword)) {
+        if(!memberFacade.isValidPasswordLength(memberPassword)) {
             request.setAttribute("memberPassword", null);
             MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
             return;
         }
 
-        if(!memberService.isValidName(memberName)) {
+        if(!memberFacade.isValidName(memberName)) {
             request.setAttribute("memberName", "");
             MessageHandler.setMessage(request, Message.NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());
@@ -138,7 +127,7 @@ public class SellerProfile extends HttpServlet {
             memberProfile = member.getProfile();
         }
 
-        if(memberService.update(memberProfile, memberName, memberEmail, memberPassword) && sellerService.updateBankAccount(sellerId, sellerBankAccount) && addressService.update(addressId, unit, address, city, state, postal)){
+        if(memberFacade.update(memberProfile, memberName, memberEmail, memberPassword) && sellerFacade.updateBankAccount(sellerId, sellerBankAccount) && addressFacade.update(addressId, unit, address, city, state, postal)){
             session.setAttribute("memberName", memberName);
             MessageHandler.setMessage(request, Message.UPDATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_PROFILE.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PROFILE.getPath());

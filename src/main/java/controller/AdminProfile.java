@@ -9,7 +9,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import model.Admin;
 import model.Member;
-import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
@@ -20,9 +19,6 @@ public class AdminProfile extends HttpServlet {
 
     @EJB
     private MemberFacade memberFacade;
-
-    @EJB
-    private MemberService memberService;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,14 +53,14 @@ public class AdminProfile extends HttpServlet {
         request.setAttribute("memberPassword", memberPassword);
 
         // perform validation
-        if(!memberService.isValidPasswordLength(memberPassword)) {
+        if(!memberFacade.isValidPasswordLength(memberPassword)) {
             request.setAttribute("memberPassword", null);
             MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_PROFILE.getPath());
             return;
         }
 
-        if(!memberService.isValidName(memberName)) {
+        if(!memberFacade.isValidName(memberName)) {
             request.setAttribute("memberName", "");
             MessageHandler.setMessage(request, Message.NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_PROFILE.getPath());
@@ -82,7 +78,7 @@ public class AdminProfile extends HttpServlet {
             memberProfile = member.getProfile();
         }
 
-        if(memberService.update(memberProfile, memberName, memberEmail, memberPassword)){
+        if(memberFacade.update(memberProfile, memberName, memberEmail, memberPassword)){
             session.setAttribute("memberEmail", memberEmail);
             session.setAttribute("memberName", memberName);
             MessageHandler.setMessage(request, Message.UPDATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.ADMIN_PROFILE.getUrl());

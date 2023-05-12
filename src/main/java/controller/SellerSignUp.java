@@ -1,5 +1,6 @@
 package controller;
 
+import facade.MemberFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class SellerSignUp extends HttpServlet {
 
     @EJB
-    private MemberService memberService;
+    private MemberFacade memberFacade;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -30,13 +30,13 @@ public class SellerSignUp extends HttpServlet {
         String actualCode;
 
         // perform validation checks on the form data
-        if(memberService.isExist(email)){
+        if(memberFacade.isExist(email)){
             MessageHandler.setMessage(request, Message.ACCOUNT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_SIGN_UP.getPath());
             return;
         }
 
-        if(!memberService.isValidPasswordLength(password)) {
+        if(!memberFacade.isValidPasswordLength(password)) {
             MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_SIGN_UP.getPath());
             return;

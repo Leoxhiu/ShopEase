@@ -1,20 +1,17 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Seller;
 
 import java.util.List;
 
-@Stateless(name = "SellerFacade")
-@LocalBean
-public class SellerFacade extends AbstractFacade<Seller> implements SellerFacadeI{
+@Stateless
+public class SellerFacade extends AbstractFacade<Seller>{
     public SellerFacade() {
         super(Seller.class);
     }
 
-    @Override
     public boolean createSeller(Seller seller) {
         try{
             this.create(seller);
@@ -25,7 +22,6 @@ public class SellerFacade extends AbstractFacade<Seller> implements SellerFacade
         }
     }
 
-    @Override
     public boolean editSeller(Seller seller) {
         try{
             this.edit(seller);
@@ -36,32 +32,26 @@ public class SellerFacade extends AbstractFacade<Seller> implements SellerFacade
         }
     }
 
-    @Override
     public void removeSeller(Seller seller) {
         this.remove(seller);
     }
 
-    @Override
     public List<Seller> getAllSeller() {
         return this.findAll();
     }
 
-    @Override
     public List<Seller> getRangeSeller(int[] range) {
         return this.findRange(range);
     }
 
-    @Override
     public Seller getSellerById(String id) {
         return this.find(id);
     }
 
-    @Override
     public int countSeller() {
         return this.count();
     }
 
-    @Override
     public Seller getSellerByMemberId(String memberId) {
         TypedQuery<Seller> query = em.createQuery(
                 "SELECT s FROM Seller s WHERE s.member.id = :memberId", Seller.class);
@@ -69,4 +59,17 @@ public class SellerFacade extends AbstractFacade<Seller> implements SellerFacade
         List<Seller> sellers = query.getResultList();
         return sellers.isEmpty() ? null : sellers.get(0);
     }
+
+    public boolean isBankAccountExist(String id) {
+        Seller seller = getSellerById(id);
+        return seller != null && !seller.getBankAccount().equals("");
+    }
+
+    public boolean updateBankAccount(String sellerId, String bankAccount) {
+
+        Seller seller = getSellerById(sellerId);
+        seller.setBankAccount(bankAccount);
+        return editSeller(seller);
+    }
+
 }

@@ -1,14 +1,12 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import model.Address;
 
 import java.util.List;
 
-@Stateless(name = "AddressFacade")
-@LocalBean
-public class AddressFacade extends AbstractFacade<Address> implements AddressFacadeI{
+@Stateless
+public class AddressFacade extends AbstractFacade<Address>{
 
     public AddressFacade() {
         super(Address.class);
@@ -49,8 +47,17 @@ public class AddressFacade extends AbstractFacade<Address> implements AddressFac
         return this.find(id);
     }
 
-    @Override
     public int countAddress() {
         return this.count();
+    }
+
+    public boolean update(String addressId, String unit, String address, String city, String state, String postal) {
+        Address memberAddress = getAddressById(addressId);
+        memberAddress.setUnit(unit);
+        memberAddress.setAddress(address);
+        memberAddress.setCity(city);
+        memberAddress.setState(state);
+        memberAddress.setPostal(postal);
+        return editAddress(memberAddress);
     }
 }

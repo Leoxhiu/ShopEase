@@ -12,7 +12,6 @@ import model.Address;
 import model.Customer;
 import model.Member;
 import model.Seller;
-import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
@@ -22,9 +21,6 @@ public class SignIn extends HttpServlet {
 
     @EJB
     private MemberFacade memberFacade;
-
-    @EJB
-    private MemberService memberService;
 
     @EJB
     private CustomerFacade customerFacade;
@@ -45,7 +41,7 @@ public class SignIn extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if (!memberService.isExist(email)) {
+        if (!memberFacade.isExist(email)) {
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;

@@ -1,6 +1,7 @@
 package controller;
 
 import facade.ProductFacade;
+import facade.SellerFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -9,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Product;
+import model.Seller;
 import utility.JspPage;
 import utility.ServletNavigation;
 
@@ -21,6 +23,9 @@ public class SellerMarket extends HttpServlet {
     @EJB
     private ProductFacade productFacade;
 
+    @EJB
+    private SellerFacade sellerFacade;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -32,8 +37,8 @@ public class SellerMarket extends HttpServlet {
         String sellerId = (String) session.getAttribute("sellerId");
 
         if(isSearch == null && isFilter == null){
-
-            List<Product> productList = productFacade.getAllActiveProductBySellerId(sellerId);
+            Seller seller = sellerFacade.getSellerById(sellerId);
+            List<Product> productList = productFacade.getAllActiveProductBySeller(seller);
             request.setAttribute("productList", productList);
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_MARKET.getPath());
             return;

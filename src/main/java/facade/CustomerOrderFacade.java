@@ -1,19 +1,16 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import model.CustomerOrder;
 
 import java.util.List;
 
-@Stateless(name = "CustomerOrderFacade")
-@LocalBean
-public class CustomerOrderFacade extends AbstractFacade<CustomerOrder> implements CustomerOrderFacadeI{
+@Stateless
+public class CustomerOrderFacade extends AbstractFacade<CustomerOrder>{
     public CustomerOrderFacade() {
         super(CustomerOrder.class);
     }
 
-    @Override
     public boolean createCustomerOrder(CustomerOrder customerOrder) {
         try{
             this.create(customerOrder);
@@ -24,7 +21,6 @@ public class CustomerOrderFacade extends AbstractFacade<CustomerOrder> implement
         }
     }
 
-    @Override
     public boolean editCustomerOrder(CustomerOrder customerOrder) {
         try{
             this.edit(customerOrder);
@@ -35,27 +31,22 @@ public class CustomerOrderFacade extends AbstractFacade<CustomerOrder> implement
         }
     }
 
-    @Override
     public void removeCustomerOrder(CustomerOrder customerOrder) {
         this.remove(customerOrder);
     }
 
-    @Override
     public List<CustomerOrder> getAllCustomerOrder() {
         return this.findAll();
     }
 
-    @Override
     public List<CustomerOrder> getRangeCustomerOrder(int[] range) {
         return this.findRange(range);
     }
 
-    @Override
     public CustomerOrder getCustomerOrderById(String id) {
         return this.find(id);
     }
 
-    @Override
     public int countCustomerOrder() {
         return this.count();
     }

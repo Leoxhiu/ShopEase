@@ -1,15 +1,13 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Member;
 
 import java.util.List;
 
-@Stateless(name = "MemberFacade")
-@LocalBean
-public class MemberFacade extends AbstractFacade<Member> implements MemberFacadeI{
+@Stateless
+public class MemberFacade extends AbstractFacade<Member>{
     public MemberFacade() {
         super(Member.class);
     }
@@ -61,4 +59,32 @@ public class MemberFacade extends AbstractFacade<Member> implements MemberFacade
         return members.isEmpty() ? null : members.get(0);
     }
 
+    public boolean isExist(String email) {
+
+        Member member = getMemberByEmail(email);
+        return member != null;
+    }
+
+    public boolean isValidPasswordLength(String password) {
+        return password.length() >= 8;
+    }
+
+    public boolean isValidName(String name){
+        return name.length() >= 2;
+    }
+
+    public boolean update(byte[] profile, String name, String email, String password) {
+        Member member = getMemberByEmail(email);
+        member.setProfile(profile);
+        member.setName(name);
+        member.setEmail(email);
+        member.setPassword(password);
+        return editMember(member);
+    }
+
+    public boolean updatePassword(String email, String password) {
+        Member member = getMemberByEmail(email);
+        member.setPassword(password);
+        return editMember(member);
+    }
 }

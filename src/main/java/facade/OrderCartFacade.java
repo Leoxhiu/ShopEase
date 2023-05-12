@@ -1,19 +1,16 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import model.OrderCart;
 
 import java.util.List;
 
-@Stateless(name = "OrderCartFacade")
-@LocalBean
-public class OrderCartFacade extends AbstractFacade<OrderCart> implements OrderCartFacadeI {
+@Stateless
+public class OrderCartFacade extends AbstractFacade<OrderCart>{
     public OrderCartFacade() {
         super(OrderCart.class);
     }
 
-    @Override
     public boolean createOrderCart(OrderCart orderCart) {
         try{
             this.create(orderCart);
@@ -24,7 +21,6 @@ public class OrderCartFacade extends AbstractFacade<OrderCart> implements OrderC
         }
     }
 
-    @Override
     public boolean editOrderCart(OrderCart orderCart) {
         try{
             this.edit(orderCart);
@@ -35,27 +31,22 @@ public class OrderCartFacade extends AbstractFacade<OrderCart> implements OrderC
         }
     }
 
-    @Override
     public void removeOrderCart(OrderCart orderCart) {
         this.remove(orderCart);
     }
 
-    @Override
     public List<OrderCart> getAllOrderCart() {
         return this.findAll();
     }
 
-    @Override
     public List<OrderCart> getRangeOrderCart(int[] range) {
         return this.findRange(range);
     }
 
-    @Override
     public OrderCart getOrderCartById(String id) {
         return this.find(id);
     }
 
-    @Override
     public int countOrderCart() {
         return this.count();
     }

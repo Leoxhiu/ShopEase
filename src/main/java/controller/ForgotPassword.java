@@ -1,5 +1,6 @@
 package controller;
 
+import facade.MemberFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -7,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
@@ -16,7 +16,7 @@ import java.io.IOException;
 public class ForgotPassword extends HttpServlet {
 
     @EJB
-    private MemberService memberService;
+    private MemberFacade memberFacade;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -26,7 +26,7 @@ public class ForgotPassword extends HttpServlet {
 
         String actualCode;
 
-        if(!memberService.isExist(email)){
+        if(!memberFacade.isExist(email)){
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.FORGOT_PASSWORD.getPath());
             return;

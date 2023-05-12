@@ -11,16 +11,12 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Admin;
 import model.Member;
-import service.MemberService;
 import utility.*;
 
 import java.io.IOException;
 
 @WebServlet(name = "AdminSignIn", value = "/s/auth/admin")
 public class AdminSignIn extends HttpServlet {
-
-    @EJB
-    private MemberService memberService;
 
     @EJB
     private MemberFacade memberFacade;
@@ -35,7 +31,7 @@ public class AdminSignIn extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        if (!memberService.isExist(email)) {
+        if (!memberFacade.isExist(email)) {
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SIGN_IN.getPath());
             return;

@@ -1,20 +1,20 @@
 package facade;
 
-import jakarta.ejb.LocalBean;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Product;
+import model.Seller;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
-@Stateless (name = "ProductFacade")
-@LocalBean
-public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeI {
+@Stateless
+public class ProductFacade extends AbstractFacade<Product> {
+
     public ProductFacade() {
         super(Product.class);
     }
 
-    @Override
     public boolean createProduct(Product product) {
         try{
             this.create(product);
@@ -25,7 +25,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         }
     }
 
-    @Override
     public boolean editProduct(Product product) {
         try{
             this.edit(product);
@@ -36,47 +35,39 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         }
     }
 
-    @Override
     public void removeProduct(Product product) {
         this.remove(product);
     }
 
-    @Override
     public List<Product> getAllProduct() {
         return this.findAll();
     }
 
-    @Override
     public List<Product> getRangeProduct(int[] range) {
         return this.findRange(range);
     }
 
-    @Override
     public Product getProductById(String id) {
         return this.find(id);
     }
 
-    @Override
     public int countProduct() {
         return this.count();
     }
 
-    @Override
     public List<Product> getAllActiveProduct() {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = false", Product.class);
         return query.getResultList();
     }
 
-    @Override
-    public List<Product> getAllActiveProductBySellerId(String sellerId) {
+    public List<Product> getAllActiveProductBySeller(Seller seller) {
         TypedQuery<Product> query = em.createQuery(
-                "SELECT p FROM Product p WHERE p.isDeleted = false AND p.seller.id = :sellerId", Product.class);
-        query.setParameter("sellerId", sellerId);
+                "SELECT p FROM Product p WHERE p.isDeleted = false AND p.seller = :seller", Product.class);
+        query.setParameter("seller", seller);
         return query.getResultList();
     }
 
-    @Override
     public List<Product> getAllActiveProductBySellerIdANDSearchTerm(String sellerId, String searchTerm) {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
@@ -87,7 +78,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         return query.getResultList();
     }
 
-    @Override
     public List<Product> getAllActiveProductBySellerIdANDFilter(String sellerId, String[] selectedCategories, String priceOrder, String[] selectedDiscounts, String[] selectedRatings) {
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("SELECT p FROM Product p WHERE p.isDeleted = false AND p.seller.id = :sellerId");
@@ -167,14 +157,12 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         return query.getResultList();
     }
 
-    @Override
     public List<Product> getAllAvailableProduct() {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = false AND p.quantity > 0", Product.class);
         return query.getResultList();
     }
 
-    @Override
     public List<Product> getAllAvailableProductWithSearchTerm(String searchTerm) {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
@@ -184,7 +172,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         return query.getResultList();
     }
 
-    @Override
     public List<Product> getAllAvailableProductByFilter(String[] selectedCategories, String priceOrder, String[] selectedDiscounts, String[] selectedRatings) {
         StringBuilder queryBuilder = new StringBuilder();
         queryBuilder.append("SELECT p FROM Product p WHERE p.isDeleted = false AND p.quantity > 0");
@@ -260,5 +247,52 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         }
 
         return query.getResultList();
+    }
+
+    public double findDiscountedPrice(double price, int discount) {
+        double discountedPrice = price - (price * discount / 100);
+
+        // Format the discounted price to two decimal places
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String formattedDiscountedPrice = decimalFormat.format(discountedPrice);
+
+        // Parse the formatted string back to double
+        discountedPrice = Double.parseDouble(formattedDiscountedPrice);
+
+        return discountedPrice;
+    }
+
+    public boolean delete(String id) {
+        Product product = getProductById(id);
+        product.setDeleted(true);
+        return editProduct(product);
+    }
+
+    public boolean isValidNameLength(String name) {
+        int minLength = 2;
+        int maxLength = 100;
+
+        return name.length() >= minLength && name.length() <= maxLength;
+    }
+
+    public boolean isValidDescription(String description) {
+        int minLength = 10;
+
+        return description.length() >= minLength;
+    }
+
+    public boolean isValidPrice(double price) {
+        return price > 0 ;
+    }
+
+    public boolean isValidQuantity(int quantity) {
+        return quantity > 0;
+    }
+
+    public boolean isValidDiscount(int discount) {
+        int minDiscount = 0;
+        int maxDiscount = 95;
+
+        return discount >= minDiscount && discount <= maxDiscount;
     }
 }
