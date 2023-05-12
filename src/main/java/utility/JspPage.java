@@ -20,14 +20,14 @@ public enum JspPage {
     // Customer pages
     CUSTOMER_HOME("/shopease/customer/home","/pages/customerHome.jsp"),
     CUSTOMER_MARKET("/shopease/customer/market","/pages/customerMarket.jsp"),
-    CUSTOMER_PRODUCT_DETAIL("/shopease/customer/product/detail/comments","/pages/customerProductDetail.jsp"),
+    CUSTOMER_PRODUCT_DETAIL("/shopease/customer/product/detail","/pages/customerProductDetail.jsp"),
     CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
 
     // Seller pages
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),
     SELLER_PUBLISH_PRODUCT("/shopease/seller/publish/product","/pages/sellerPublishProduct.jsp"),
-    SELLER_MARKET("/shopease/seller/market","pages/sellerMarket.jsp"),
-    SELLER_PRODUCT_DETAIL("/shopease/seller/product/detail/comments","/pages/sellerProductDetail.jsp"),
+    SELLER_MARKET("/shopease/seller/market","/pages/sellerMarket.jsp"),
+    SELLER_PRODUCT_DETAIL("/shopease/seller/product/detail","/pages/sellerProductDetail.jsp"),
     SELLER_PROFILE("/shopease/seller/profile", "/pages/sellerProfile.jsp"),
 
     // Admin pages

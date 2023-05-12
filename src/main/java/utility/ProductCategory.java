@@ -1,10 +1,10 @@
 package utility;
 
 public enum ProductCategory {
-    ELECTRONICS,
-    CLOTHING,
-    BEAUTY,
-    HOME_AND_KITCHEN,
-    SPORTS_AND_OUTDOORS,
-    BOOKS_AND_MEDIA
+    ELECTRONICS, //ETR
+    CLOTHING,  // CLT
+    BEAUTY,  //BTY
+    HOME_AND_KITCHEN,  //HAK
+    SPORTS_AND_OUTDOORS,  // SAO
+    BOOKS_AND_MEDIA  // BAM
 }

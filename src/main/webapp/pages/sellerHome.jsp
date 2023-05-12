@@ -21,18 +21,8 @@
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
 </head>
 <body>
 <jsp:include page="/components/sellerNavBar.jsp"/>
-<main id="content" class="content">
-    <section>
-        <div class="container">
-            <a href="<%= JspPage.SELLER_PUBLISH_PRODUCT.getUrl() %>" class="btn btn-primary">
-                <span class="bi bi-plus"></span> Publish new product
-            </a>
-        </div>
-    </section>
-</main>
 </body>
 </html>

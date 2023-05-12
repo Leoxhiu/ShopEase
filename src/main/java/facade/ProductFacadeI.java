@@ -15,5 +15,13 @@ public interface ProductFacadeI {
     List<Product> getRangeProduct(int[] range);
     Product getProductById(String id);
     int countProduct();
-    List<Product> getAllActiveProduct();
+    List<Product> getAllActiveProduct(); // not deleted
+    List<Product> getAllActiveProductBySellerId(String sellerId);
+    List<Product> getAllActiveProductBySellerIdANDSearchTerm(String sellerId, String searchTerm);
+    List<Product> getAllActiveProductBySellerIdANDFilter(String sellerId, String[] selectedCategories, String priceOrder, String[] selectedDiscounts, String[] selectedRatings);
+
+    List<Product> getAllAvailableProduct(); // not deleted and >0
+    List<Product> getAllAvailableProductWithSearchTerm(String searchTerm);
+    List<Product> getAllAvailableProductByFilter(String[] selectedCategories, String priceOrder, String[] selectedDiscounts, String[] selectedRatings);
+
 }

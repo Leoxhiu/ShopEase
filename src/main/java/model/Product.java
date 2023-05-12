@@ -22,7 +22,7 @@ public class Product {
     private int discount; //percentage
     private int rating; // total rating
     private boolean isDeleted; // is deleted or not
-
+    //TODO add discountedPrice
     public Product() {
     }
 

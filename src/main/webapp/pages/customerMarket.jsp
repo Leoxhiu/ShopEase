@@ -1,3 +1,5 @@
+<%@ page import="utility.JspPage" %>
+<%@ page import="utility.ServletPage" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -34,13 +36,17 @@
         <div class="container">
             <div class="row justify-content-evenly">
                 <div class="col-6">
-                    <form class="navbar-search" id="search-bar" action="#" method="get">
+                    <form class="navbar-search" id="search-bar" action="<%= ServletPage.CUSTOMER_MARKET.getUrl() %>"
+                          method="get">
+                        <input hidden name="isSearch" value="true">
                         <div class="input-group search-bar">
-                                <span class="input-group-text" id="topbar-addon">
-                                  <i class="bi bi-search"></i>
-                                </span>
-                            <input type="text" class="form-control" id="searchBar" placeholder="Search"
+                            <span class="input-group-text" id="topbar-addon">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" class="form-control" id="searchTerm" name="searchTerm"
+                                   placeholder="Search"
                                    aria-label="Search" aria-describedby="topbar-addon">
+                            <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </form>
                 </div>
@@ -51,7 +57,6 @@
                     </button>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -69,9 +74,8 @@
                                 <jsp:param name="price" value="${product.price}"/>
                                 <jsp:param name="discount" value="${product.discount}"/>
                                 <jsp:param name="quantity" value="${product.quantity}"/>
-                                <jsp:param name="checkProduct"
-                                           value="/shopease/product/detail?productId=${product.id}"/>
-                                <jsp:param name="addToCart" value="/shopease/add/to/cart?productId=${product.id}"/>
+                                <jsp:param name="category" value="${product.category}"/>
+                                <jsp:param name="checkProduct" value="/shopease/customer/product/detail?productId=${product.id}"/>
                             </jsp:include>
                         </c:forEach>
                     </c:when>
@@ -82,7 +86,10 @@
             </div>
         </div>
     </section>
-    <jsp:include page="../components/productFilter.jsp"/>
+    <jsp:include page="/components/productFilter.jsp">
+        <jsp:param name="formDirect" value="<%= ServletPage.CUSTOMER_MARKET.getUrl() %>"/>
+        <jsp:param name="clearDirect" value="<%= JspPage.CUSTOMER_MARKET.getUrl() %>"/>
+    </jsp:include>
 </main>
 </body>
 </html>

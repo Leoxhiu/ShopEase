@@ -1,3 +1,5 @@
-.content{
+.control{
+    background-color: white;
     padding-top: 10vh;
+    z-index: 2 !important;
 }

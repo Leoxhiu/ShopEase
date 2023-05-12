@@ -7,6 +7,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Product;
 import utility.JspPage;
 import utility.ServletNavigation;
@@ -23,17 +24,35 @@ public class CustomerMarket extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        // TODO Generate product list
-        List<Product> productList = productFacade.getAllActiveProduct();
-        request.setAttribute("productList", productList);
-        ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_MARKET.getPath());
+        String isSearch = request.getParameter("isSearch");
+        String isFilter = request.getParameter("isFilter");
+
+        if(isSearch == null && isFilter == null){
+            List<Product> productList = productFacade.getAllAvailableProduct();
+            request.setAttribute("productList", productList);
+            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_MARKET.getPath());
+            return;
+        }
+
+        if(!(isSearch == null)){
+            String searchTerm = request.getParameter("searchTerm");
+            List<Product> productList = productFacade.getAllAvailableProductWithSearchTerm(searchTerm);
+            request.setAttribute("productList", productList);
+            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_MARKET.getPath());
+            return;
+        }
+
+        if(!(isFilter == null)){
+            // Retrieve the selected filters
+            String[] selectedCategories = request.getParameterValues("selectedCategories");
+            String priceOrder = request.getParameter("priceOrder");
+            String[] selectedDiscounts = request.getParameterValues("selectedDiscounts");
+            String[] selectedRatings = request.getParameterValues("selectedRatings");
+
+            List<Product> productList = productFacade.getAllAvailableProductByFilter(selectedCategories, priceOrder, selectedDiscounts, selectedRatings);
+            request.setAttribute("productList", productList);
+            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_MARKET.getPath());
+            return;
+        }
     }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-        // TODO Filter product list
-
-    }
-
 }

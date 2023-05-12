@@ -48,18 +48,20 @@
             </div>
             <a href="${param.checkProduct}" class="stretched-link"></a>
         </div>
-        <!-- Quantity available -->
+        <!-- Product quantity -->
         <div class="text-center mt-3">
             <p>Quantity Available: ${param.quantity}</p>
         </div>
+        <!-- Product category -->
+        <p hidden>${param.category}</p>
         <!-- Product actions -->
-        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-            <form action="${param.addToCart}" method="post">
-                <div class="text-center">
-                    <button type="submit" class="btn btn-outline-primary mt-auto">Add to cart</button>
-                </div>
-            </form>
-        </div>
+<%--        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">--%>
+<%--            <form action="${param.addToCart}" method="post">--%>
+<%--                <div class="text-center">--%>
+<%--                    <button type="submit" class="btn btn-outline-primary mt-auto">Add to cart</button>--%>
+<%--                </div>--%>
+<%--            </form>--%>
+<%--        </div>--%>
     </div>
 </div>
 </body>

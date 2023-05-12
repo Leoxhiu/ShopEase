@@ -71,6 +71,10 @@ public class SignIn extends HttpServlet {
         session.setAttribute("memberEmail", member.getEmail());
         session.setAttribute("userType", member.getUserType());
 
+        if(!CookieUtils.cookieExists(request, "isUser")){
+            CookieUtils.addCookie(response, "isUser", "true", -1, "/");
+        }
+
         if (member.getUserType() == 'c') {
             // customer details
             Customer customer = customerFacade.getCustomerByMemberId(member.getId());

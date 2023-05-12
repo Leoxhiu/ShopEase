@@ -12,10 +12,12 @@ public enum ServletPage {
     // Customer
     CUSTOMER_SIGN_UP("/shopease/guest/s/customer/sign/up"),
     CUSTOMER_MARKET("/shopease/customer/s/market"),
+    CUSTOMER_PRODUCT_DETAIL("/shopease/customer/s/product/detail/"),
     CUSTOMER_PROFILE("/shopease/customer/s/profile"),
 
     // Seller
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
+    SELLER_MARKET("/shopease/seller/s/market"),
     SELLER_PROFILE("/shopease/seller/s/profile"),
     SELLER_PUBLISH_PRODUCT("/shopease/seller/s/publish/product"),
 
