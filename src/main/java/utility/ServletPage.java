@@ -25,6 +25,7 @@ public enum ServletPage {
 
     // Admin
     ADMIN_SIGN_IN("/shopease/s/auth/admin"),
+    ADMIN_MEMBER_PAGE("/shopease/admin/s/member"),
     ADMIN_PROFILE("/shopease/admin/s/profile"),
     ;
 

@@ -60,11 +60,11 @@ public class CodeVerification extends HttpServlet {
             InputStream userFileStream = application.getResourceAsStream("/images/profile/profile.png");
             byte[] profile = ImageUpload.getImageAsByte(userFileStream);
 
-            Member member = new Member(profile, Email.getFront(email), email, password, userType.charAt(0), false);
+            Member member = new Member(profile, Email.getFront(email), email, password, userType, 0);
 
 
             if(memberFacade.createMember(member)){
-                if(member.getUserType() == 'c'){
+                if(member.getUserType().equals("c")){
                     // perform customer registration
                     Address address = new Address("","", "", "", "");
                     Customer customer = new Customer(member, address, 0);
@@ -74,17 +74,17 @@ public class CodeVerification extends HttpServlet {
                     MessageHandler.setMessage(request, Message.SIGN_UP_SUCCESS, ButtonText.LOGIN_NOW, JspPage.SIGN_IN.getUrl());
                     CookieUtils.addCookie(response, "isUser", "true", -1, "/");
 
-                } else if (member.getUserType() == 's'){
+                } else if (member.getUserType().equals("s")){
                     // perform seller registration
                     Address address = new Address("", "","", "", "");
-                    Seller seller = new Seller(member, address, "", 0, false);
+                    Seller seller = new Seller(member, address, "", 0, 0);
                     addressFacade.createAddress(address);
                     sellerFacade.createSeller(seller);
 
                     MessageHandler.setMessage(request, Message.SELLER_SIGN_UP_SUCCESS, ButtonText.UNDERSTAND, JspPage.LANDING.getUrl());
                     CookieUtils.addCookie(response, "isUser", "true", -1, "/");
 
-                } else if (member.getUserType() == 'a'){
+                } else if (member.getUserType().equals("a")){
                     // perform admin registration
                     //return isSuccess;
                 }

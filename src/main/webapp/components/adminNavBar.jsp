@@ -26,13 +26,7 @@
                         <a class="nav-link nav-direct" aria-current="page" href="<%= JspPage.ADMIN_HOME.getUrl() %>">Home</a>
                     </li>
                     <li class="nav-item main-item">
-                        <a class="nav-link nav-direct" href="#customer">Customer</a>
-                    </li>
-                    <li class="nav-item main-item">
-                        <a class="nav-link nav-direct" href="#seller">Seller</a>
-                    </li>
-                    <li class="nav-item main-item">
-                        <a class="nav-link nav-direct" href="#admin">Admin</a>
+                        <a class="nav-link nav-direct" href="<%= JspPage.ADMIN_MEMBER_PAGE.getUrl() %>">User</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav mb-2 mb-lg-0 right-items">

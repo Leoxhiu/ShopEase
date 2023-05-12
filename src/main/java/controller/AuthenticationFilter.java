@@ -24,17 +24,17 @@ public class AuthenticationFilter implements Filter {
         }
 
         // Check if the user has the required role
-        char userType = (char) session.getAttribute("userType");
+        String userType = (String) session.getAttribute("userType");
         String requestedPath = httpRequest.getRequestURI().substring(httpRequest.getContextPath().length());
-        if (requestedPath.startsWith("/customer") && !(userType == 'c')) {
+        if (requestedPath.startsWith("/customer") && !(userType.equals("c"))) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
-        } else if (requestedPath.startsWith("/seller") && !(userType == 's')) {
+        } else if (requestedPath.startsWith("/seller") && !(userType.equals("s"))) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
-        } else if (requestedPath.startsWith("/admin") && !(userType == 'a')) {
+        } else if (requestedPath.startsWith("/admin") && !(userType.equals("a"))) {
             // User is not authorized, redirect to access denied page
             httpResponse.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;

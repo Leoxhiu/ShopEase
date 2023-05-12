@@ -15,13 +15,13 @@ public class Member {
     private String name;
     private String email;
     private String password;
-    private char userType;
-    private boolean isDeleted;
+    private String userType;
+    private int isDeleted;
 
     public Member() {
     }
 
-    public Member(byte[] profile, String name, String email, String password, char userType, boolean isDeleted) {
+    public Member(byte[] profile, String name, String email, String password, String userType, int isDeleted) {
         this.profile = profile;
         this.name = name;
         this.email = email;
@@ -70,19 +70,19 @@ public class Member {
         this.password = password;
     }
 
-    public char getUserType() {
+    public String getUserType() {
         return userType;
     }
 
-    public void setUserType(char userType) {
+    public void setUserType(String userType) {
         this.userType = userType;
     }
 
-    public boolean isDeleted() {
+    public int getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(int deleted) {
         isDeleted = deleted;
     }
 }

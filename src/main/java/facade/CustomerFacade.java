@@ -1,8 +1,10 @@
 package facade;
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Customer;
+import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -52,11 +54,19 @@ public class CustomerFacade extends AbstractFacade<Customer>{
     }
 
     public Customer getCustomerByMemberId(String memberId) {
-        TypedQuery<Customer> query = em.createQuery(
-                "SELECT c FROM Customer c WHERE c.member.id = :memberId", Customer.class);
-        query.setParameter("memberId", memberId);
-        List<Customer> customers = query.getResultList();
-        return customers.isEmpty() ? null : customers.get(0);
-    }
+        EntityManager em = JpaEntityManagerFactory.getEntityManager();
+        try {
+            TypedQuery<Customer> query = em.createQuery(
+                    "SELECT c FROM Customer c WHERE c.member.id = :memberId", Customer.class);
+            query.setParameter("memberId", memberId);
+            List<Customer> customers = query.getResultList();
 
+            return customers.isEmpty() ? null : customers.get(0);
+
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
 }

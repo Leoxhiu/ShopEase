@@ -22,12 +22,12 @@ public class Product {
     private int discount; //percentage
     private double discountedPrice;
     private int rating; // total rating
-    private boolean isDeleted; // is deleted or not
+    private int isDeleted; // is deleted or not
 
     public Product() {
     }
 
-    public Product(Seller seller, byte[] image, String name, String description, double price, int quantity, String category, int discount, double discountedPrice, int rating, boolean isDeleted) {
+    public Product(Seller seller, byte[] image, String name, String description, double price, int quantity, String category, int discount, double discountedPrice, int rating, int isDeleted) {
         this.seller = seller;
         this.image = image;
         this.name = name;
@@ -129,11 +129,11 @@ public class Product {
         this.rating = rating;
     }
 
-    public boolean isDeleted() {
+    public int getIsDeleted() {
         return isDeleted;
     }
 
-    public void setDeleted(boolean deleted) {
+    public void setDeleted(int deleted) {
         isDeleted = deleted;
     }
 }

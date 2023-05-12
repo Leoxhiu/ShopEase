@@ -8,7 +8,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.Address;
 import model.Customer;
 import model.Member;
 import model.Seller;
@@ -48,7 +47,7 @@ public class SignIn extends HttpServlet {
         }
 
         Member member = memberFacade.getMemberByEmail(email);
-        if (member.isDeleted()) {
+        if (member.getIsDeleted() == 1) {
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
             return;
@@ -71,7 +70,7 @@ public class SignIn extends HttpServlet {
             CookieUtils.addCookie(response, "isUser", "true", -1, "/");
         }
 
-        if (member.getUserType() == 'c') {
+        if (member.getUserType().equals("c")) {
             // customer details
             Customer customer = customerFacade.getCustomerByMemberId(member.getId());
             session.setAttribute("customerId", customer.getId());        // get customerId from database
@@ -84,11 +83,11 @@ public class SignIn extends HttpServlet {
 
             response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
 
-        } else if (member.getUserType() == 's') {
+        } else if (member.getUserType().equals("s")){
             // seller details
             Seller seller = sellerFacade.getSellerByMemberId(member.getId());
             // check if seller is approved
-            if (!seller.isApproved()) {
+            if (!(seller.getIsApproved() == 1)) {
                 session.invalidate();
                 MessageHandler.setMessage(request, Message.ACCOUNT_NOT_APPROVED, ButtonText.UNDERSTAND, "");
                 ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
@@ -98,7 +97,7 @@ public class SignIn extends HttpServlet {
             // address details
             session.setAttribute("addressId", seller.getAddress().getId());   // get addressId from database
             response.sendRedirect(JspPage.SELLER_HOME.getUrl());
-        } else if (member.getUserType() == 'a') {
+        } else if (member.getUserType() == "a") {
             session.invalidate();
             response.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
         }

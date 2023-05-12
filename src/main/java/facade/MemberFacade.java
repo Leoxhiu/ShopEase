@@ -1,8 +1,10 @@
 package facade;
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Member;
+import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -52,11 +54,33 @@ public class MemberFacade extends AbstractFacade<Member>{
     }
 
     public Member getMemberByEmail(String email) {
-        TypedQuery<Member> query = super.em.createQuery(
-                "SELECT m FROM Member m WHERE m.email = :email", Member.class);
-        query.setParameter("email", email);
-        List<Member> members = query.getResultList();
-        return members.isEmpty() ? null : members.get(0);
+        EntityManager em = JpaEntityManagerFactory.getEntityManager();
+        try {
+            TypedQuery<Member> query = super.em.createQuery(
+                    "SELECT m FROM Member m WHERE m.email = :email", Member.class);
+            query.setParameter("email", email);
+            List<Member> members = query.getResultList();
+
+            return members.isEmpty() ? null : members.get(0);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
+    public List<Member> getAllMemberByUserType(char userType) {
+        EntityManager em = JpaEntityManagerFactory.getEntityManager();
+        try {
+            TypedQuery<Member> query = super.em.createQuery(
+                    "SELECT m FROM Member m WHERE m.userType = :userType", Member.class);
+            query.setParameter("userType", userType);
+            return query.getResultList();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
     }
 
     public boolean isExist(String email) {

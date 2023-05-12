@@ -38,20 +38,20 @@ public class AdminSignIn extends HttpServlet {
         }
 
         Member member = memberFacade.getMemberByEmail(email);
-        if (member.isDeleted()) {
+        if (member.getIsDeleted() == 1) {
             MessageHandler.setMessage(request, Message.ACCOUNT_NOT_EXIST, ButtonText.UNDERSTAND, "");
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SIGN_IN.getPath());
             return;
         }
 
-        if (!(member.getUserType() == 'a')) {
+        if (!(member.getUserType().equals("a"))) {
             response.sendRedirect(JspPage.ACCESS_DENIED.getUrl());
             return;
         }
 
         if (!password.equals(member.getPassword())) {
             MessageHandler.setMessage(request, Message.SIGN_IN_FAILED, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.SIGN_IN.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SIGN_IN.getPath());
             return;
         }
 

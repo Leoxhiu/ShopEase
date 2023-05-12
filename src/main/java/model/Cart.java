@@ -18,12 +18,12 @@ public class Cart {
     private int quantity;
     private double price;
 
-    private boolean isPurchased; // is the cart purchased
+    private int isPurchased; // is the cart purchased
 
     public Cart() {
     }
 
-    public Cart(Customer customer, Product product, int quantity, double price, boolean isPurchased) {
+    public Cart(Customer customer, Product product, int quantity, double price, int isPurchased) {
         this.customer = customer;
         this.product = product;
         this.quantity = quantity;
@@ -71,11 +71,11 @@ public class Cart {
         this.price = price;
     }
 
-    public boolean isPurchased() {
+    public int getIsPurchased() {
         return isPurchased;
     }
 
-    public void setPurchased(boolean purchased) {
+    public void setPurchased(int purchased) {
         isPurchased = purchased;
     }
 }

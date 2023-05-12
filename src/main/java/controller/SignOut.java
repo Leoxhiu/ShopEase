@@ -18,11 +18,11 @@ public class SignOut extends HttpServlet {
 
         try{
             HttpSession session = request.getSession();
-            char userType = (char) session.getAttribute("userType");
+            String userType = (String) session.getAttribute("userType");
 
             session.invalidate();
 
-            if(userType == 'a'){
+            if(userType.equals("a")){
                 response.sendRedirect(JspPage.ADMIN_SIGN_IN.getUrl());
                 return;
             }

@@ -41,15 +41,15 @@ public class MemberService implements MemberServiceI{
     public boolean signUp(Member member) {
 
         if(memberFacade.createMember(member)){
-            if(member.getUserType() == 'c'){
+            if(member.getUserType() == "c"){
                 // perform customer registration
                 return customerService.signUp(member);
 
-            } else if (member.getUserType() == 's'){
+            } else if (member.getUserType() == "s"){
                 // perform seller registration
                 return sellerService.signUp(member);
 
-            } else if (member.getUserType() == 'a'){
+            } else if (member.getUserType() == "a"){
                 // perform admin registration
                 //return isSuccess;
             }

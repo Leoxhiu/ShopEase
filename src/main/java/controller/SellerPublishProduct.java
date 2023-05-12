@@ -105,7 +105,7 @@ public class SellerPublishProduct extends HttpServlet {
 
         Product product = new Product(
                 seller,productImage,productName,productDescription, Double.parseDouble(productPrice), Integer.parseInt(productQuantity)
-                , productCategory, Integer.parseInt(productDiscount), discountedPrice, 0, false);
+                , productCategory, Integer.parseInt(productDiscount), discountedPrice, 0, 0);
 
         if (productFacade.createProduct(product)) {
             MessageHandler.setMessage(request, Message.PRODUCT_PUBLISH_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_PUBLISH_PRODUCT.getUrl());

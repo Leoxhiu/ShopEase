@@ -41,7 +41,7 @@ public class ProductService implements ProductServiceI {
 
         double discountedPrice = findDiscountedPrice(price, discount);
 
-        Product product = new Product(seller,image,name,description,price,quantity,category,discount, discountedPrice,0, false);
+        Product product = new Product(seller,image,name,description,price,quantity,category,discount, discountedPrice,0, 0);
         return productFacade.createProduct(product);
     }
 
