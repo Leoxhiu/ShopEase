@@ -8,6 +8,8 @@ import jakarta.ejb.Stateless;
 import model.Product;
 import model.Seller;
 
+import java.text.DecimalFormat;
+
 @Stateless(name = "ProductService")
 @LocalBean
 public class ProductService implements ProductServiceI {
@@ -18,11 +20,28 @@ public class ProductService implements ProductServiceI {
     @EJB
     private ProductFacade productFacade;
 
+
+    @Override
+    public double findDiscountedPrice(double price, int discount) {
+        double discountedPrice = price - (price * discount / 100);
+
+        // Format the discounted price to two decimal places
+        DecimalFormat decimalFormat = new DecimalFormat("#.00");
+        String formattedDiscountedPrice = decimalFormat.format(discountedPrice);
+
+        // Parse the formatted string back to double
+        discountedPrice = Double.parseDouble(formattedDiscountedPrice);
+
+        return discountedPrice;
+    }
+
     @Override
     public boolean publish(String sellerId, byte[] image, String name, String description, double price, int quantity, String category, int discount) {
         Seller seller = sellerFacade.getSellerById(sellerId);
 
-        Product product = new Product(seller,image,name,description,price,quantity,category,discount,0, false);
+        double discountedPrice = findDiscountedPrice(price, discount);
+
+        Product product = new Product(seller,image,name,description,price,quantity,category,discount, discountedPrice,0, false);
         return productFacade.createProduct(product);
     }
 

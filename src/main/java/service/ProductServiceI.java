@@ -6,6 +6,7 @@ import model.Product;
 @Local
 public interface ProductServiceI {
 
+    double findDiscountedPrice(double price, int discount);
     boolean publish(String sellerId, byte[] image, String name, String description, double price, int quantity, String category, int discount);
     boolean isValidNameLength(String name);
     boolean isValidDescription(String description);

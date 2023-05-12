@@ -73,6 +73,7 @@
                                 <jsp:param name="rating" value="${product.rating}"/>
                                 <jsp:param name="price" value="${product.price}"/>
                                 <jsp:param name="discount" value="${product.discount}"/>
+                                <jsp:param name="discountedPrice" value="${product.discountedPrice}"/>
                                 <jsp:param name="quantity" value="${product.quantity}"/>
                                 <jsp:param name="category" value="${product.category}"/>
                                 <jsp:param name="checkProduct" value="/shopease/customer/product/detail?productId=${product.id}"/>

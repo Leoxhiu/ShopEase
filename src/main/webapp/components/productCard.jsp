@@ -39,7 +39,7 @@
                 <c:choose>
                     <c:when test="${param.discount > 0}">
                         <span class="text-muted text-decoration-line-through">RM ${param.price}</span>
-                        RM ${String.format("%.2f", param.price - (param.price * param.discount / 100))}
+                        RM ${param.discountedPrice}
                     </c:when>
                     <c:otherwise>
                         RM ${param.price}

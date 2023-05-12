@@ -104,15 +104,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
             queryBuilder.append(")");
         }
 
-        // Add the price ordering condition
-        if (priceOrder != null && !priceOrder.isEmpty()) {
-            if (priceOrder.equals("lowToHigh")) {
-                queryBuilder.append(" ORDER BY p.price ASC");
-            } else if (priceOrder.equals("highToLow")) {
-                queryBuilder.append(" ORDER BY p.price DESC");
-            }
-        }
-
         // Add the selected discounts condition
         if (selectedDiscounts != null && selectedDiscounts.length > 0) {
             queryBuilder.append(" AND (");
@@ -135,6 +126,15 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
                 queryBuilder.append(" p.rating >= :rating").append(i);
             }
             queryBuilder.append(")");
+        }
+
+        // Add the price ordering condition
+        if (priceOrder != null && !priceOrder.isEmpty()) {
+            if (priceOrder.equals("lowToHigh")) {
+                queryBuilder.append(" ORDER BY p.discountedPrice ASC");
+            } else if (priceOrder.equals("highToLow")) {
+                queryBuilder.append(" ORDER BY p.discountedPrice DESC");
+            }
         }
 
         TypedQuery<Product> query = em.createQuery(queryBuilder.toString(), Product.class);
@@ -166,7 +166,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
 
         return query.getResultList();
     }
-
 
     @Override
     public List<Product> getAllAvailableProduct() {
@@ -202,15 +201,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
             queryBuilder.append(")");
         }
 
-        // Add the price ordering condition
-        if (priceOrder != null && !priceOrder.isEmpty()) {
-            if (priceOrder.equals("lowToHigh")) {
-                queryBuilder.append(" ORDER BY p.price ASC");
-            } else if (priceOrder.equals("highToLow")) {
-                queryBuilder.append(" ORDER BY p.price DESC");
-            }
-        }
-
         // Add the selected discounts condition
         if (selectedDiscounts != null && selectedDiscounts.length > 0) {
             queryBuilder.append(" AND (");
@@ -233,6 +223,15 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
                 queryBuilder.append(" p.rating >= :rating").append(i);
             }
             queryBuilder.append(")");
+        }
+
+        // Add the price ordering condition
+        if (priceOrder != null && !priceOrder.isEmpty()) {
+            if (priceOrder.equals("lowToHigh")) {
+                queryBuilder.append(" ORDER BY p.discountedPrice ASC");
+            } else if (priceOrder.equals("highToLow")) {
+                queryBuilder.append(" ORDER BY p.discountedPrice DESC");
+            }
         }
 
         TypedQuery<Product> query = em.createQuery(queryBuilder.toString(), Product.class);
