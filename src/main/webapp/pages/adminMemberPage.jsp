@@ -33,6 +33,15 @@
 
     <section id="control" class="control sticky-top">
         <div class="container">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                </div>
+                <div class="col-auto">
+                    <a href="<%= JspPage.ADMIN_ADD_ADMIN.getUrl() %>" class="btn btn-primary">
+                        <span class="bi bi-plus"></span> Add new admin
+                    </a>
+                </div>
+            </div>
             <div class="row justify-content-evenly">
                 <div class="col-6">
                     <form class="navbar-search" id="search-bar" action="<%= ServletPage.ADMIN_MEMBER_PAGE.getUrl() %>"
