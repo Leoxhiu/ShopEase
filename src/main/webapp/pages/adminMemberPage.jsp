@@ -35,7 +35,7 @@
         <div class="container">
             <div class="row justify-content-evenly">
                 <div class="col-6">
-                    <form class="navbar-search" id="search-bar" action="<%= ServletPage.CUSTOMER_MARKET.getUrl() %>"
+                    <form class="navbar-search" id="search-bar" action="<%= ServletPage.ADMIN_MEMBER_PAGE.getUrl() %>"
                           method="get">
                         <input hidden name="isSearch" value="true">
                         <div class="input-group search-bar">

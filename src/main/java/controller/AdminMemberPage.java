@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.Admin;
 import model.Customer;
 import model.Member;
@@ -39,16 +40,42 @@ public class AdminMemberPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<Member> memberList = memberFacade.getAllMember();
+        String isSearch = request.getParameter("isSearch");
+        String isFilter = request.getParameter("isFilter");
+
         List<Admin> adminList = adminFacade.getAllAdmin();
         List<Customer> customerList = customerFacade.getAllCustomer();
         List<Seller> sellerList = sellerFacade.getAllSeller();
 
-        request.setAttribute("memberList", memberList);
         request.setAttribute("adminList", adminList);
         request.setAttribute("customerList", customerList);
         request.setAttribute("sellerList", sellerList);
 
-        ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_MEMBER_PAGE.getPath());
+        if(isSearch == null && isFilter == null){
+            List<Member> memberList = memberFacade.getAllMember();
+            request.setAttribute("memberList", memberList);
+
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_MEMBER_PAGE.getPath());
+            return;
+        }
+
+        if(!(isSearch == null)){
+            String searchTerm = request.getParameter("searchTerm");
+            List<Member> memberList = memberFacade.getAllActiveMemberBySearchTerm(searchTerm);
+            request.setAttribute("memberList", memberList);
+
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_MEMBER_PAGE.getPath());
+            return;
+        }
+
+        if(!(isFilter == null)){
+            String[] selectedUserTypes = request.getParameterValues("selectedUserTypes");
+            List<Member> memberList = memberFacade.filterMembersByUserType(selectedUserTypes);
+            request.setAttribute("memberList", memberList);
+
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_MEMBER_PAGE.getPath());
+            return;
+        }
+
     }
 }
