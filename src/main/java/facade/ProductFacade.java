@@ -255,6 +255,32 @@ public class ProductFacade extends AbstractFacade<Product> {
         return query.getResultList();
     }
 
+    public boolean update(String id, byte[] image, String name, String description, double price, int quantity, String category, int discount){
+
+        Product product = getProductById(id);
+
+        product.setImage(image);
+        product.setName(name);
+        product.setDescription(description);
+        product.setPrice(price);
+        product.setQuantity(quantity);
+        product.setCategory(category);
+        product.setDiscount(discount);
+        double discountedPrice = findDiscountedPrice(price, discount);
+        product.setDiscountedPrice(discountedPrice);
+
+        return editProduct(product);
+    }
+
+    public boolean minusQuantity(String id, int quantity){
+
+        Product product = getProductById(id);
+        int newQuantity = product.getQuantity() - quantity;
+
+        product.setQuantity(newQuantity);
+        return editProduct(product);
+    }
+
     public double findDiscountedPrice(double price, int discount) {
         double discountedPrice = price - (price * discount / 100);
 

@@ -31,7 +31,7 @@
                     </ul>
                     <ul class="navbar-nav mb-2 mb-lg-0 right-items">
                         <li class="nav-item">
-                            <a class="nav-link" href="#cart">
+                            <a class="nav-link" href="<%= JspPage.CUSTOMER_CART.getUrl() %>">
                                 <i class="bi bi-cart-fill" style="font-size: 1.5rem"></i>
                                 <span class="position-absolute top-5 start-5 translate-middle badge rounded-pill bg-danger">
                                     ${sessionScope.cartTotal}

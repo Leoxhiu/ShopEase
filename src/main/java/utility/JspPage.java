@@ -22,6 +22,7 @@ public enum JspPage {
     CUSTOMER_MARKET("/shopease/customer/market","/pages/customerMarket.jsp"),
     CUSTOMER_PRODUCT_DETAIL("/shopease/customer/product/detail","/pages/customerProductDetail.jsp"),
     CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
+    CUSTOMER_CART("/shopease/customer/cart", "/pages/customerCart.jsp"),
 
     // Seller pages
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),

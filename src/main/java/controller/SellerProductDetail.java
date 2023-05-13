@@ -112,17 +112,8 @@ public class SellerProductDetail extends HttpServlet {
             productImage = product.getImage();
         }
 
-        product.setImage(productImage);
-        product.setName(productName);
-        product.setDescription(productDescription);
-        product.setPrice(price);
-        product.setQuantity(Integer.parseInt(productQuantity));
-        product.setCategory(productCategory);
-        product.setDiscount(Integer.parseInt(productDiscount));
-        double discountedPrice = productFacade.findDiscountedPrice(price, Integer.parseInt(productDiscount));
-        product.setDiscountedPrice(discountedPrice);
-
-        if(productFacade.editProduct(product)){
+        if(productFacade.update(productId, productImage, productName, productDescription,
+                price, Integer.parseInt(productQuantity), productCategory, Integer.parseInt(productDiscount))){
             MessageHandler.setMessage(request, Message.PRODUCT_UDPATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_MARKET.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PRODUCT_DETAIL.getPath());
         } else{

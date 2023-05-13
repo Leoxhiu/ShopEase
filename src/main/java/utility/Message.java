@@ -29,6 +29,7 @@ public enum Message{
     PRODUCT_PUBLISH_FAILED("Product failed to be published, please try again.", MessageType.ERROR),
     PRODUCT_UDPATE_FAILED("Product update failed, please try again.", MessageType.ERROR),
     PRODUCT_DELETE_FAILED("Product delete failed, please try again.", MessageType.ERROR),
+    PRODUCT_NOT_ENOUGH("Quantity of product is not enough, please insert valid quantity.", MessageType.ERROR),
 
     // ACCOUNT SUCCESS
     SIGN_UP_SUCCESS("Sign up successful", MessageType.SUCCESS),
@@ -42,6 +43,12 @@ public enum Message{
     PRODUCT_PUBLISH_SUCCESS("Product publish successful", MessageType.SUCCESS),
     PRODUCT_UDPATE_SUCCESS("Product update successful", MessageType.SUCCESS),
     PRODUCT_DELETE_SUCCESS("Product deleted succesful", MessageType.SUCCESS),
+
+    // CART SUCCESS
+    CART_ADD_SUCCESS("Product is added to cart successful", MessageType.SUCCESS),
+
+    // CART FAILED
+    CART_ADD_FAILED("Failed to add the product to cart, please try againn.", MessageType.ERROR),
     ;
 
     private final String message;

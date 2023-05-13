@@ -14,6 +14,7 @@ public enum ServletPage {
     CUSTOMER_MARKET("/shopease/customer/s/market"),
     CUSTOMER_PRODUCT_DETAIL("/shopease/customer/s/product/detail"),
     CUSTOMER_PROFILE("/shopease/customer/s/profile"),
+    CUSTOMER_CART("/shopease/customer/s/cart"),
 
     // Seller
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
