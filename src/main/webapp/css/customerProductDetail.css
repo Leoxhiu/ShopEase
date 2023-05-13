@@ -1,0 +1,18 @@
+main{
+    margin-top: 5rem;
+}
+
+.avatar{
+    width: 22vw;
+    height: 40vh;
+    object-fit: cover;
+}
+
+#productImage{
+    display: block;
+    margin: 0 auto;
+}
+
+textarea{
+    resize: none;
+}
