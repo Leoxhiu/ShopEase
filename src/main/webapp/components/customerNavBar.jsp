@@ -49,9 +49,9 @@
                                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuOffset">
                                             <li><a class="dropdown-item" href="<%= JspPage.CUSTOMER_PROFILE.getUrl() %>">Profile</a></li>
                                             <li><hr class="dropdown-divider"></li>
-                                            <li><a class="dropdown-item" href="#wallet">Wallet</a></li>
-                                            <li><a class="dropdown-item" href="#history">Transaction</a></li>
-                                            <li><a class="dropdown-item" href="#review">Review</a></li>
+                                            <li><a class="dropdown-item" href="<%= JspPage.CUSTOMER_WALLET.getUrl() %>">Wallet</a></li>
+                                            <li><a class="dropdown-item" href="<%= JspPage.CUSTOMER_TRANSACTION.getUrl() %>">Transaction</a></li>
+                                            <li><a class="dropdown-item" href="<%= JspPage.CUSTOMER_REVIEW.getUrl() %>">Review</a></li>
                                             <li>
                                                 <form action="<%= ServletPage.SIGN_OUT.getUrl() %>" method="post" class="logout">
                                                     <button class="dropdown-item" type="submit">Logout</button>

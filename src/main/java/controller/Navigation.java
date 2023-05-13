@@ -37,6 +37,9 @@ public class Navigation extends HttpServlet {
         pathToJspMap.put(JspPage.CUSTOMER_MARKET.getUrl(), JspPage.CUSTOMER_MARKET.getPath());
         pathToJspMap.put(JspPage.CUSTOMER_PRODUCT_DETAIL.getUrl(), JspPage.CUSTOMER_PRODUCT_DETAIL.getPath());
         pathToJspMap.put(JspPage.CUSTOMER_PROFILE.getUrl(), JspPage.CUSTOMER_PROFILE.getPath());
+        pathToJspMap.put(JspPage.CUSTOMER_WALLET.getUrl(), JspPage.CUSTOMER_WALLET.getPath());
+        pathToJspMap.put(JspPage.CUSTOMER_TRANSACTION.getUrl(), JspPage.CUSTOMER_TRANSACTION.getPath());
+        pathToJspMap.put(JspPage.CUSTOMER_REVIEW.getUrl(), JspPage.CUSTOMER_REVIEW.getPath());
 
         // Seller pages
         pathToJspMap.put(JspPage.SELLER_HOME.getUrl(), JspPage.SELLER_HOME.getPath());
@@ -44,6 +47,9 @@ public class Navigation extends HttpServlet {
         pathToJspMap.put(JspPage.SELLER_PUBLISH_PRODUCT.getUrl(), JspPage.SELLER_PUBLISH_PRODUCT.getPath());
         pathToJspMap.put(JspPage.SELLER_PRODUCT_DETAIL.getUrl(), JspPage.SELLER_PRODUCT_DETAIL.getPath());
         pathToJspMap.put(JspPage.SELLER_PROFILE.getUrl(), JspPage.SELLER_PROFILE.getPath());
+        pathToJspMap.put(JspPage.SELLER_WALLET.getUrl(), JspPage.SELLER_WALLET.getPath());
+        pathToJspMap.put(JspPage.SELLER_TRANSACTION.getUrl(), JspPage.SELLER_TRANSACTION.getPath());
+        pathToJspMap.put(JspPage.SELLER_REVIEW.getUrl(), JspPage.SELLER_REVIEW.getPath());
 
         // Admin pages
         pathToJspMap.put(JspPage.ADMIN_SIGN_IN.getUrl(), JspPage.ADMIN_SIGN_IN.getPath());

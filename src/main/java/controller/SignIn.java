@@ -78,7 +78,7 @@ public class SignIn extends HttpServlet {
             // address details
             session.setAttribute("addressId", customer.getAddress().getId());   // get addressId from database
             // cart details
-            int cartTotal = cartFacade.countCartByCustomerId(customer.getId());
+            int cartTotal = cartFacade.countActiveCartByCustomerId(customer.getId());
             session.setAttribute("cartTotal", cartTotal);         // get cartTotal from database
 
             response.sendRedirect(JspPage.CUSTOMER_HOME.getUrl());
@@ -96,6 +96,7 @@ public class SignIn extends HttpServlet {
             session.setAttribute("sellerId", seller.getId());        // get sellerId from database
             // address details
             session.setAttribute("addressId", seller.getAddress().getId());   // get addressId from database
+            session.setAttribute("sellerBalance", seller.getBalance());
             response.sendRedirect(JspPage.SELLER_HOME.getUrl());
         } else if (member.getUserType() == "a") {
             session.invalidate();

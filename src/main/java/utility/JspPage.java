@@ -21,8 +21,11 @@ public enum JspPage {
     CUSTOMER_HOME("/shopease/customer/home","/pages/customerHome.jsp"),
     CUSTOMER_MARKET("/shopease/customer/market","/pages/customerMarket.jsp"),
     CUSTOMER_PRODUCT_DETAIL("/shopease/customer/product/detail","/pages/customerProductDetail.jsp"),
-    CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
     CUSTOMER_CART("/shopease/customer/cart", "/pages/customerCart.jsp"),
+    CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
+    CUSTOMER_WALLET("/shopease/customer/wallet", "/pages/customerWallet.jsp"),
+    CUSTOMER_TRANSACTION("/shopease/customer/transaction", "/pages/customerTransaction.jsp"),
+    CUSTOMER_REVIEW("/shopease/customer/review", "/pages/customerReview.jsp"),
 
     // Seller pages
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),
@@ -30,6 +33,9 @@ public enum JspPage {
     SELLER_MARKET("/shopease/seller/market","/pages/sellerMarket.jsp"),
     SELLER_PRODUCT_DETAIL("/shopease/seller/product/detail","/pages/sellerProductDetail.jsp"),
     SELLER_PROFILE("/shopease/seller/profile", "/pages/sellerProfile.jsp"),
+    SELLER_WALLET("/shopease/seller/wallet", "/pages/sellerWallet.jsp"),
+    SELLER_TRANSACTION("/shopease/seller/transaction","/pages/sellerTransaction.jsp"),
+    SELLER_REVIEW("/shopease/seller/review","/pages/sellerReview.jsp"),
 
     // Admin pages
     ADMIN_SIGN_IN("/shopease/auth/admin","/pages/adminSignIn.jsp"),

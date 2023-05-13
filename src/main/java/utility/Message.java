@@ -21,17 +21,6 @@ public enum Message{
     ACCOUNT_DELETED_FAILED("Account deleted failed", MessageType.ERROR),
     ACCOUNT_NOT_ENOUGH_BALANCE("Your wallet doesn't have enough balance, please kindly reload.", MessageType.ERROR),
 
-    // PRODUCT ERROR
-    PRODUCT_NAME_LENGTH_INVALID("Product name should in between 2 and 100 characters.", MessageType.ERROR),
-    PRODUCT_DESCRIPTION_LENGTH_INVALID("Product description should have a minimum length of 10 characters.", MessageType.ERROR),
-    PRODUCT_PRICE_INVALID("Please insert valid product price.", MessageType.ERROR),
-    PRODUCT_QUANTITY_INVALID("Please insert valid product quantity.", MessageType.ERROR),
-    PRODUCT_DISCOUNT_INVALID("Product discount should in between 0% - 95%", MessageType.ERROR),
-    PRODUCT_PUBLISH_FAILED("Product failed to be published, please try again.", MessageType.ERROR),
-    PRODUCT_UDPATE_FAILED("Product update failed, please try again.", MessageType.ERROR),
-    PRODUCT_DELETE_FAILED("Product delete failed, please try again.", MessageType.ERROR),
-    PRODUCT_NOT_ENOUGH("Quantity of product is not enough, please insert valid quantity.", MessageType.ERROR),
-
     // ACCOUNT SUCCESS
     SIGN_UP_SUCCESS("Sign up successful", MessageType.SUCCESS),
     SELLER_SIGN_UP_SUCCESS("Sign up successful, you will be able to login after obtaining approval from admin (5-7 working days).", MessageType.SUCCESS),
@@ -45,15 +34,36 @@ public enum Message{
     PRODUCT_UDPATE_SUCCESS("Product update successful", MessageType.SUCCESS),
     PRODUCT_DELETE_SUCCESS("Product deleted succesful", MessageType.SUCCESS),
 
+    // PRODUCT ERROR
+    PRODUCT_NAME_LENGTH_INVALID("Product name should in between 2 and 100 characters.", MessageType.ERROR),
+    PRODUCT_DESCRIPTION_LENGTH_INVALID("Product description should have a minimum length of 10 characters.", MessageType.ERROR),
+    PRODUCT_PRICE_INVALID("Please insert valid product price.", MessageType.ERROR),
+    PRODUCT_QUANTITY_INVALID("Please insert valid product quantity.", MessageType.ERROR),
+    PRODUCT_DISCOUNT_INVALID("Product discount should in between 0% - 95%", MessageType.ERROR),
+    PRODUCT_PUBLISH_FAILED("Product failed to be published, please try again.", MessageType.ERROR),
+    PRODUCT_UDPATE_FAILED("Product update failed, please try again.", MessageType.ERROR),
+    PRODUCT_DELETE_FAILED("Product delete failed, please try again.", MessageType.ERROR),
+    PRODUCT_NOT_ENOUGH("Quantity of product is not enough, please insert valid quantity.", MessageType.ERROR),
+
     // CART SUCCESS
     CART_ADD_SUCCESS("Product is added to cart successful", MessageType.SUCCESS),
     CART_DELETE_SUCCESS("Cart is deleted successful.", MessageType.SUCCESS),
     CART_CHECK_OUT_SUCCESS("Cart check out succesful.", MessageType.SUCCESS),
 
-    // CART FAILED
+    // CART ERROR
     CART_ADD_FAILED("Failed to add the product to cart, please try againn.", MessageType.ERROR),
     CART_DELETE_FAILED("Failed to delete the cart, please try again.", MessageType.ERROR),
     CART_CHECK_OUT_FAILED("Failed to check out cart, please try again", MessageType.ERROR),
+
+    // WALLET SUCCESS
+    RELOAD_SUCCESS("Reload wallet successful, enjoy your shopping!", MessageType.SUCCESS),
+    WITHDRAW_SUCCESS("Withdraw successful", MessageType.SUCCESS),
+
+    // WALLET FAILED
+    RELOAD_AMOUNT_INVALID("Please insert valid reload amount.", MessageType.ERROR),
+    RELOAD_FAILED("Reload wallet failed, please try again.", MessageType.ERROR),
+    WITHDRAW_AMOUNT_INVALID("Please insert valid withdraw amount.", MessageType.ERROR),
+    WITHDRAW_FAILED("Withdraw process failed, please try again.", MessageType.ERROR),
     ;
 
     private final String message;

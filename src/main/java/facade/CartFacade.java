@@ -61,6 +61,15 @@ public class CartFacade extends AbstractFacade<Cart> {
         return count.intValue();
     }
 
+    public int countActiveCartByCustomerId(String customerId) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(c) FROM Cart c WHERE c.isPurchased = 0 AND c.customer.id = :customerId", Long.class);
+        query.setParameter("customerId", customerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        Long count = query.getSingleResult();
+        return count.intValue();
+    }
+
     public List<Cart> getActiveCartByProductId(String productId) {
         TypedQuery<Cart> query = em.createQuery(
                 "SELECT c FROM Cart c WHERE c.isPurchased = 0 AND c.product.id = :productId", Cart.class);

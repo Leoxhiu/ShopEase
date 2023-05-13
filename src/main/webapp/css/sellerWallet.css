@@ -1,0 +1,26 @@
+main{
+    margin-top: 5rem;
+}
+
+.wallet-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.balance {
+    font-size: 48px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.reload-form {
+    display: flex;
+    align-items: center;
+}
+
+.reload-form input[type="text"],
+.reload-form input[type="number"] {
+    flex: 1;
+    margin-right: 10px;
+}
