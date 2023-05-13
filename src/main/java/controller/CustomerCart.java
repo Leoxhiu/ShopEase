@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import model.Cart;
 import utility.JspPage;
+import utility.ServletNavigation;
 
 import java.io.IOException;
 import java.util.List;
@@ -24,12 +25,19 @@ public class CustomerCart extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         String customerId = (String) session.getAttribute("customerId");
-        ///List<Cart> cartList = cartFacade.getCartByCustomerId(customerId);
-        response.sendRedirect(JspPage.CUSTOMER_MARKET.getUrl());
+        List<Cart> cartList = cartFacade.getActiveCartByCustomerId(customerId);
+        request.setAttribute("cartList", cartList);
+
+        ServletNavigation.forwardRequest(request,response,JspPage.CUSTOMER_CART.getPath());
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String[] selectedCarts = request.getParameterValues("selectedCarts");
+        if (selectedCarts != null) {
+            for (String cart : selectedCarts) {
+                System.out.println(cart);
+            }
+        }
     }
 }

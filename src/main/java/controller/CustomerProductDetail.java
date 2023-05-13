@@ -72,14 +72,6 @@ public class CustomerProductDetail extends HttpServlet {
             ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PRODUCT_DETAIL.getPath());
             return;
         }
-        if(Integer.parseInt(desiredQuantity) > product.getQuantity()){
-            MessageHandler.setMessage(request, Message.PRODUCT_NOT_ENOUGH, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_PRODUCT_DETAIL.getPath());
-            return;
-        }
-
-        // minus total product quantity
-        productFacade.minusQuantity(product.getId(), Integer.parseInt(desiredQuantity));
 
         // Get customer and his cart
         HttpSession session = request.getSession();

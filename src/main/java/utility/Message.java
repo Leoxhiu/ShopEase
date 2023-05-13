@@ -46,9 +46,11 @@ public enum Message{
 
     // CART SUCCESS
     CART_ADD_SUCCESS("Product is added to cart successful", MessageType.SUCCESS),
+    CART_DELETE_SUCCESS("Cart is deleted successful.", MessageType.SUCCESS),
 
     // CART FAILED
     CART_ADD_FAILED("Failed to add the product to cart, please try againn.", MessageType.ERROR),
+    CART_DELETE_FAILED("Failed to delete the cart, please try again.", MessageType.ERROR),
     ;
 
     private final String message;
