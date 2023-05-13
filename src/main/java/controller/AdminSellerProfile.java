@@ -92,6 +92,21 @@ public class AdminSellerProfile extends HttpServlet {
         Seller seller = sellerFacade.getSellerByMemberId(memberId);
         Address memberAddress = addressFacade.getAddressById(seller.getAddress().getId());
 
+        // perform validation
+        if(!memberFacade.isValidPasswordLength(memberPassword)) {
+            request.setAttribute("password", null);
+            MessageHandler.setMessage(request, Message.PASSWORD_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SELLER_PROFILE.getPath());
+            return;
+        }
+
+        if(!memberFacade.isValidName(memberName)) {
+            request.setAttribute("name", "");
+            MessageHandler.setMessage(request, Message.NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SELLER_PROFILE.getPath());
+            return;
+        }
+
         // perform validation on profile
         if (filePart != null && filePart.getSize() > 0) {
             memberProfile = ImageUpload.getImageAsByte(filePart);
