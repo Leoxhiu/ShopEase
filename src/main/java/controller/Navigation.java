@@ -50,6 +50,9 @@ public class Navigation extends HttpServlet {
         pathToJspMap.put(JspPage.ADMIN_HOME.getUrl(), JspPage.ADMIN_HOME.getPath());
         pathToJspMap.put(JspPage.ADMIN_MEMBER_PAGE.getUrl(), JspPage.ADMIN_MEMBER_PAGE.getPath());
         pathToJspMap.put(JspPage.ADMIN_ADD_ADMIN.getUrl(), JspPage.ADMIN_ADD_ADMIN.getPath());
+        pathToJspMap.put(JspPage.ADMIN_ADMIN_PROFILE.getUrl(), JspPage.ADMIN_ADMIN_PROFILE.getPath());
+        pathToJspMap.put(JspPage.ADMIN_SELLER_PROFILE.getUrl(), JspPage.ADMIN_SELLER_PROFILE.getPath());
+        pathToJspMap.put(JspPage.ADMIN_CUSTOMER_PROFILE.getUrl(), JspPage.ADMIN_CUSTOMER_PROFILE.getPath());
         pathToJspMap.put(JspPage.ADMIN_PROFILE.getUrl(), JspPage.ADMIN_PROFILE.getPath());
 
         // Get the requested URL path

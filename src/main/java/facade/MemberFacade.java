@@ -84,6 +84,19 @@ public class MemberFacade extends AbstractFacade<Member>{
         }
     }
 
+    public List<Member> getAllActiveMember() {
+        EntityManager em = JpaEntityManagerFactory.getEntityManager();
+        try {
+            TypedQuery<Member> query = em.createQuery(
+                    "SELECT m FROM Member m WHERE m.isDeleted = 0", Member.class);
+            return query.getResultList();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
+    }
+
     public List<Member> getAllActiveMemberBySearchTerm(String searchTerm) {
         EntityManager em = JpaEntityManagerFactory.getEntityManager();
         try {
@@ -167,6 +180,12 @@ public class MemberFacade extends AbstractFacade<Member>{
     public boolean updatePassword(String email, String password) {
         Member member = getMemberByEmail(email);
         member.setPassword(password);
+        return editMember(member);
+    }
+
+    public boolean delete(String id){
+        Member member = getMemberById(id);
+        member.setDeleted(1);
         return editMember(member);
     }
 }

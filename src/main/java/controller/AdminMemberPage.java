@@ -40,24 +40,6 @@ public class AdminMemberPage extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String memberId = request.getParameter("memberId");
-        if(!(memberId == null)){
-
-            Member member = memberFacade.getMemberById(memberId);
-//            request.setAttribute("memberId", memberId);
-//
-//            if(member.getUserType().equals("c")){
-//                ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_CUSTOMER_PROFILE.getPath());
-//            } else if(member.getUserType().equals("s")){
-//                ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_APPROVE_SELLER.getPath());
-//                ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SELLER_PROFILE.getPath());
-//            } else if (member.getUserType().equals("a")){
-//                ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_ADMIN_PROFILE.getPath());
-//                ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_PROFILE.getPath());
-//            }
-            return;
-        }
-
         String isSearch = request.getParameter("isSearch");
         String isFilter = request.getParameter("isFilter");
 
@@ -70,7 +52,7 @@ public class AdminMemberPage extends HttpServlet {
         request.setAttribute("sellerList", sellerList);
 
         if(isSearch == null && isFilter == null){
-            List<Member> memberList = memberFacade.getAllMember();
+            List<Member> memberList = memberFacade.getAllActiveMember();
             request.setAttribute("memberList", memberList);
 
             ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_MEMBER_PAGE.getPath());

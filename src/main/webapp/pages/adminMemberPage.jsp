@@ -80,10 +80,11 @@
                             <c:set var="userType" value="${member.userType}" />
                             <c:set var="balance" value="" />
                             <c:set var="isApproved" value="" />
-                            <c:set var="checkMember" value="/shopease/admin/member?memberId=${member.id}" />
+                            <c:set var="checkMember" value="" />
 
                             <c:choose>
                                 <c:when test="${userType == 'c'}">
+                                    <c:set var="checkMember" value="/shopease/admin/seller/profile?memberId=${member.id}" />
                                     <c:forEach items="${customerList}" var="customer">
                                         <c:if test="${customer.member.id eq member.id}">
                                             <c:set var="balance" value="${customer.balance}" />
@@ -91,12 +92,16 @@
                                     </c:forEach>
                                 </c:when>
                                 <c:when test="${userType == 's'}">
+                                    <c:set var="checkMember" value="/shopease/admin/customer/profile?memberId=${member.id}" />
                                     <c:forEach items="${sellerList}" var="seller">
                                         <c:if test="${seller.member.id eq member.id}">
                                             <c:set var="balance" value="${seller.balance}" />
                                             <c:set var="isApproved" value="${seller.isApproved}" />
                                         </c:if>
                                     </c:forEach>
+                                </c:when>
+                                <c:when test="${userType == 'a'}">
+                                    <c:set var="checkMember" value="/shopease/admin/admin/profile?memberId=${member.id}" />
                                 </c:when>
                             </c:choose>
 

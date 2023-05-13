@@ -58,9 +58,16 @@ public class ProductFacade extends AbstractFacade<Product> {
     }
 
     public List<Product> getAllActiveProduct() {
+        EntityManager em = JpaEntityManagerFactory.getEntityManager();
+        try {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = 0", Product.class);
         return query.getResultList();
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
+        }
     }
 
     public List<Product> getAllActiveProductBySeller(Seller seller) {

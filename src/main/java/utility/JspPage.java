@@ -34,7 +34,10 @@ public enum JspPage {
     ADMIN_SIGN_IN("/shopease/auth/admin","/pages/adminSignIn.jsp"),
     ADMIN_HOME("/shopease/admin/home", "/pages/adminHome.jsp"),
     ADMIN_MEMBER_PAGE("/shopease/admin/member", "/pages/adminMemberPage.jsp"),
-    ADMIN_ADD_ADMIN("/shopease/add/admin","/pages/adminAddAdmin.jsp"),
+    ADMIN_ADD_ADMIN("/shopease/admin/add/admin","/pages/adminAddAdmin.jsp"),
+    ADMIN_ADMIN_PROFILE("/shopease/admin/admin/profile", "/pages/adminAdminProfile.jsp"),
+    ADMIN_SELLER_PROFILE("/shopease/admin/seller/profile", "/pages/adminSellerProfile.jsp"),
+    ADMIN_CUSTOMER_PROFILE("/shopease/admin/customer/profile", "/pages/adminCustomerProfile.jsp"),
     ADMIN_PROFILE("/shopease/admin/profile", "/pages/adminProfile.jsp"),
     ;
 
