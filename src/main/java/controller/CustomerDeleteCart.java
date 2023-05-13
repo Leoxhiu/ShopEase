@@ -23,6 +23,9 @@ public class CustomerDeleteCart extends HttpServlet {
         String cartId = request.getParameter("cartId");
 
         if(cartFacade.delete(cartId)){
+            int cartTotal = (int) request.getSession().getAttribute("cartTotal");
+            cartTotal--;
+            request.getSession().setAttribute("cartTotal", cartTotal);
             MessageHandler.setMessage(request, Message.CART_DELETE_SUCCESS, ButtonText.UNDERSTAND, JspPage.CUSTOMER_CART.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_CART.getPath());
         } else {
