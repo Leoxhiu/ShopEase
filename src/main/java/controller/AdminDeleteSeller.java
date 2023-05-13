@@ -11,8 +11,8 @@ import utility.*;
 
 import java.io.IOException;
 
-@WebServlet(name = "AdminDeleteAdmin", value = "/admin/s/delete/admin")
-public class AdminDeleteAdmin extends HttpServlet{
+@WebServlet(name = "AdminDeleteSeller", value = "/admin/s/delete/seller")
+public class AdminDeleteSeller extends HttpServlet {
 
     @EJB
     private MemberFacade memberFacade;
@@ -23,10 +23,10 @@ public class AdminDeleteAdmin extends HttpServlet{
 
         if(memberFacade.delete(memberId)){
             MessageHandler.setMessage(request, Message.ACCOUNT_DELETED_SUCCESS, ButtonText.UNDERSTAND, JspPage.ADMIN_MEMBER_PAGE.getUrl());
-            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_ADMIN_PROFILE.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SELLER_PROFILE.getPath());
         } else {
             MessageHandler.setMessage(request, Message.ACCOUNT_DELETED_FAILED, ButtonText.UNDERSTAND, "");
-            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_ADMIN_PROFILE.getPath());
+            ServletNavigation.forwardRequest(request, response, JspPage.ADMIN_SELLER_PROFILE.getPath());
         }
     }
 }

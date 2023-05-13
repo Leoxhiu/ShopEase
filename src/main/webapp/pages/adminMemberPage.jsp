@@ -5,7 +5,7 @@
 <html>
 <head>
     <%@ include file="../components/mainHeader.jsp" %>
-    <title>ShopeEase - Admin Home</title>
+    <title>ShopeEase - User</title>
 
     <%--    main css file--%>
     <style>
@@ -78,24 +78,17 @@
                             <c:set var="name" value="${member.name}" />
                             <c:set var="email" value="${member.email}" />
                             <c:set var="userType" value="${member.userType}" />
-                            <c:set var="balance" value="" />
                             <c:set var="isApproved" value="" />
                             <c:set var="checkMember" value="" />
 
                             <c:choose>
                                 <c:when test="${userType == 'c'}">
-                                    <c:set var="checkMember" value="/shopease/admin/seller/profile?memberId=${member.id}" />
-                                    <c:forEach items="${customerList}" var="customer">
-                                        <c:if test="${customer.member.id eq member.id}">
-                                            <c:set var="balance" value="${customer.balance}" />
-                                        </c:if>
-                                    </c:forEach>
+                                    <c:set var="checkMember" value="/shopease/admin/customer/profile?memberId=${member.id}" />
                                 </c:when>
                                 <c:when test="${userType == 's'}">
-                                    <c:set var="checkMember" value="/shopease/admin/customer/profile?memberId=${member.id}" />
+                                    <c:set var="checkMember" value="/shopease/admin/seller/profile?memberId=${member.id}" />
                                     <c:forEach items="${sellerList}" var="seller">
                                         <c:if test="${seller.member.id eq member.id}">
-                                            <c:set var="balance" value="${seller.balance}" />
                                             <c:set var="isApproved" value="${seller.isApproved}" />
                                         </c:if>
                                     </c:forEach>
@@ -110,7 +103,6 @@
                                 <jsp:param name="name" value="${name}" />
                                 <jsp:param name="email" value="${email}" />
                                 <jsp:param name="userType" value="${userType}" />
-                                <jsp:param name="balance" value="${balance}" />
                                 <jsp:param name="isApproved" value="${isApproved}" />
                                 <jsp:param name="checkMember" value="${checkMember}" />
                             </jsp:include>

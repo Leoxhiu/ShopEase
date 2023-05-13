@@ -1,10 +1,8 @@
 package facade;
 
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Cart;
-import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -53,17 +51,10 @@ public class CartFacade extends AbstractFacade<Cart> {
     }
 
     public int countCartByCustomerId(String customerId) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Long> query = em.createQuery(
                     "SELECT COUNT(c) FROM Cart c WHERE c.customer.id = :customerId", Long.class);
             query.setParameter("customerId", customerId);
             Long count = query.getSingleResult();
             return count.intValue();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 }

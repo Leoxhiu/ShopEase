@@ -1,11 +1,8 @@
 package facade;
 
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Member;
-import model.Product;
-import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -55,62 +52,34 @@ public class MemberFacade extends AbstractFacade<Member>{
     }
 
     public Member getMemberByEmail(String email) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Member> query = super.em.createQuery(
                     "SELECT m FROM Member m WHERE m.email = :email", Member.class);
             query.setParameter("email", email);
             List<Member> members = query.getResultList();
 
             return members.isEmpty() ? null : members.get(0);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 
     public List<Member> getAllMemberByUserType(char userType) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Member> query = super.em.createQuery(
                     "SELECT m FROM Member m WHERE m.userType = :userType", Member.class);
             query.setParameter("userType", userType);
             return query.getResultList();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 
     public List<Member> getAllActiveMember() {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Member> query = em.createQuery(
                     "SELECT m FROM Member m WHERE m.isDeleted = 0", Member.class);
             return query.getResultList();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 
     public List<Member> getAllActiveMemberBySearchTerm(String searchTerm) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Member> query = em.createQuery(
                     "SELECT m FROM Member m WHERE (LOWER(m.name) LIKE LOWER(:searchTerm) " +
                             "OR LOWER(m.email) LIKE LOWER(:searchTerm)) " +
                             "AND m.isDeleted = 0", Member.class);
             query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
             return query.getResultList();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 
     public List<Member> filterMembersByUserType(String[] selectedUserTypes) {
@@ -133,24 +102,18 @@ public class MemberFacade extends AbstractFacade<Member>{
         queryBuilder.append(" AND m.isDeleted = 0");
 
         // Create and execute the query
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Member> query = em.createQuery(queryBuilder.toString(), Member.class);
 
-            // Set the parameter values for selected user types
-            if (selectedUserTypes != null && selectedUserTypes.length > 0) {
-                for (int i = 0; i < selectedUserTypes.length; i++) {
-                    query.setParameter("userType" + i, selectedUserTypes[i]);
-                }
-            }
-
-            // Return the query results
-            return query.getResultList();
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
+        // Set the parameter values for selected user types
+        if (selectedUserTypes != null && selectedUserTypes.length > 0) {
+            for (int i = 0; i < selectedUserTypes.length; i++) {
+                query.setParameter("userType" + i, selectedUserTypes[i]);
             }
         }
+
+        // Return the query results
+        return query.getResultList();
+
     }
 
 

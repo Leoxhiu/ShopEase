@@ -5,20 +5,24 @@ import jakarta.persistence.Persistence;
 
 public class JpaEntityManagerFactory {
 
+    private static JpaEntityManagerFactory instance;
     private static final String PERSISTENCE_UNIT_NAME = "postgres";
-    private static EntityManagerFactory emFactory;
+    private static EntityManagerFactory emf;
 
-    public static EntityManager getEntityManager() {
-        if (emFactory == null || !emFactory.isOpen()) {
-            emFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-        }
-        return emFactory.createEntityManager();
+    private JpaEntityManagerFactory(){
+        emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
     }
 
-    public static void closeEntityManagerFactory() {
-        if (emFactory != null && emFactory.isOpen()) {
-            emFactory.close();
+    public static synchronized JpaEntityManagerFactory getInstance(){
+        if(instance == null) {
+            instance = new JpaEntityManagerFactory();
         }
+        return instance;
     }
 
+    public EntityManager createEntityManager(){
+        return emf.createEntityManager();
+    }
+
+    public void close(){emf.close();}
 }

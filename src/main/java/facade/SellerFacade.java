@@ -1,10 +1,8 @@
 package facade;
 
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Seller;
-import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -55,18 +53,11 @@ public class SellerFacade extends AbstractFacade<Seller>{
     }
 
     public Seller getSellerByMemberId(String memberId) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Seller> query = em.createQuery(
                     "SELECT s FROM Seller s WHERE s.member.id = :memberId", Seller.class);
             query.setParameter("memberId", memberId);
             List<Seller> sellers = query.getResultList();
             return sellers.isEmpty() ? null : sellers.get(0);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 
     public boolean isBankAccountExist(String id) {
@@ -74,8 +65,14 @@ public class SellerFacade extends AbstractFacade<Seller>{
         return seller != null && !seller.getBankAccount().equals("");
     }
 
-    public boolean updateBankAccount(String sellerId, String bankAccount) {
+    public boolean update(String sellerId, String bankAccount, String isApproved){
+        Seller seller = getSellerById(sellerId);
+        seller.setBankAccount(bankAccount);
+        seller.setIsApproved(Integer.parseInt(isApproved));
+        return editSeller(seller);
+    }
 
+    public boolean updateBankAccount(String sellerId, String bankAccount) {
         Seller seller = getSellerById(sellerId);
         seller.setBankAccount(bankAccount);
         return editSeller(seller);

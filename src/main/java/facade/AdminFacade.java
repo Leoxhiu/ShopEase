@@ -1,10 +1,8 @@
 package facade;
 
 import jakarta.ejb.Stateless;
-import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import model.Admin;
-import utility.JpaEntityManagerFactory;
 
 import java.util.List;
 
@@ -54,17 +52,10 @@ public class AdminFacade extends AbstractFacade<Admin>{
     }
 
     public Admin getAdminByMemberId(String memberId) {
-        EntityManager em = JpaEntityManagerFactory.getEntityManager();
-        try {
             TypedQuery<Admin> query = em.createQuery(
                     "SELECT a FROM Admin a WHERE a.member.id = :memberId", Admin.class);
             query.setParameter("memberId", memberId);
             List<Admin> admins = query.getResultList();
             return admins.isEmpty() ? null : admins.get(0);
-        } finally {
-            if (em != null && em.isOpen()) {
-                em.close();
-            }
-        }
     }
 }

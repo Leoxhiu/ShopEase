@@ -21,11 +21,11 @@
                 <!-- User email -->
                 <p class="card-text text-truncate font-tertiary">${param.email}</p>
                 <c:choose>
-                    <c:when test="${param.userType == 'c'}">
-                        <p class="card-text font-tertiary">Balance: ${param.balance}</p>
+                    <c:when test="${param.userType == 'a'}">
+                        <p class="card-text text-primary">ADMIN</p>
                     </c:when>
                     <c:when test="${param.userType == 's'}">
-                        <p class="card-text font-tertiary">Balance: ${param.balance}</p>
+<%--                        <p class="card-text font-tertiary">Balance: ${param.balance}</p>--%>
                         <c:choose>
                             <c:when test="${param.isApproved == '0'}">
                                 <p class="card-text text-danger">Not Approved</p>
