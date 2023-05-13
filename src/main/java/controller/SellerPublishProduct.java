@@ -54,12 +54,6 @@ public class SellerPublishProduct extends HttpServlet {
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
             return;
         }
-//        if (!sellerFacade.isAddressExists(sellerId)) {
-//            MessageHandler.setMessage(request, Message.ADDRESS_BLANK, ButtonText.UNDERSTAND, "");
-//            ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PUBLISH_PRODUCT.getPath());
-//            return;
-//        }
-
         if (!productFacade.isValidNameLength(productName)) {
             request.setAttribute("productName", "");
             MessageHandler.setMessage(request, Message.PRODUCT_NAME_LENGTH_INVALID, ButtonText.UNDERSTAND, "");

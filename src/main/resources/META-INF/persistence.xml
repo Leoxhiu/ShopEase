@@ -13,7 +13,6 @@
         <class>model.Member</class>
         <class>model.CustomerOrder</class>
         <class>model.OrderCart</class>
-        <class>model.Payment</class>
         <class>model.Product</class>
         <class>model.Review</class>
         <class>model.ReviewReply</class>

@@ -11,17 +11,17 @@ public class Review {
     @Id
     @GeneratedValue(generator = "REVIEW_ID")
     private String id;
-    @ManyToOne // A product can have many review
-    @JoinColumn(name = "productId", referencedColumnName = "id")
-    private Product product;
+    @OneToOne // A cart can have a main review from customer
+    @JoinColumn(name = "cartId", referencedColumnName = "id")
+    private Cart cart;
     private int rating;
     private String feedback;
 
     public Review() {
     }
 
-    public Review(Product product, int rating, String feedback) {
-        this.product = product;
+    public Review(Cart cart, int rating, String feedback) {
+        this.cart = cart;
         this.rating = rating;
         this.feedback = feedback;
     }
@@ -34,12 +34,12 @@ public class Review {
         this.id = id;
     }
 
-    public Product getProduct() {
-        return product;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public int getRating() {

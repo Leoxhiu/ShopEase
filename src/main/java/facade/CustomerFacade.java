@@ -2,6 +2,7 @@ package facade;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
+import model.Address;
 import model.Customer;
 import org.eclipse.persistence.config.HintValues;
 import org.eclipse.persistence.config.QueryHints;
@@ -61,5 +62,19 @@ public class CustomerFacade extends AbstractFacade<Customer>{
         List<Customer> customers = query.getResultList();
 
         return customers.isEmpty() ? null : customers.get(0);
+    }
+
+    public boolean addBalance(String customerId, double balance){
+        Customer customer = getCustomerById(customerId);
+        double newBalance = customer.getBalance() + balance;
+        customer.setBalance(newBalance);
+        return editCustomer(customer);
+    }
+
+    public boolean minusBalance(String customerId, double balance){
+        Customer customer = getCustomerById(customerId);
+        double newBalance = customer.getBalance() - balance;
+        customer.setBalance(newBalance);
+        return editCustomer(customer);
     }
 }

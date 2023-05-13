@@ -3,6 +3,8 @@ package model;
 import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
+import java.time.LocalDateTime;
+
 @Entity
 @Cacheable(false)
 @UuidGenerator(name = "CUSTOMERORDER_ID")
@@ -14,17 +16,15 @@ public class CustomerOrder {
     @ManyToOne // A customer can have many order
     @JoinColumn(name = "customerId", referencedColumnName = "id")
     private Customer customer;
-    @OneToOne // An order can have only one payment
-    @JoinColumn(name = "paymentId", referencedColumnName = "id")
-    private Payment payment;
-    private String date;
+    private double amount;
+    private LocalDateTime date;
 
     public CustomerOrder() {
     }
 
-    public CustomerOrder(Customer customer, Payment payment, String date) {
+    public CustomerOrder(Customer customer, double amount, LocalDateTime date) {
         this.customer = customer;
-        this.payment = payment;
+        this.amount = amount;
         this.date = date;
     }
 
@@ -44,19 +44,19 @@ public class CustomerOrder {
         this.customer = customer;
     }
 
-    public Payment getPayment() {
-        return payment;
+    public double getAmount() {
+        return amount;
     }
 
-    public void setPayment(Payment payment) {
-        this.payment = payment;
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }

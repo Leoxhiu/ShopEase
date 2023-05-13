@@ -2,6 +2,7 @@ package facade;
 
 import jakarta.ejb.Stateless;
 import model.Address;
+import model.Customer;
 
 import java.util.List;
 
@@ -59,5 +60,10 @@ public class AddressFacade extends AbstractFacade<Address>{
         memberAddress.setState(state);
         memberAddress.setPostal(postal);
         return editAddress(memberAddress);
+    }
+
+    public boolean isFilled(String addressId) {
+        Address address = getAddressById(addressId);
+        return !address.getUnit().equals("") && !address.getAddress().equals("") && !address.getCity().equals("");
     }
 }

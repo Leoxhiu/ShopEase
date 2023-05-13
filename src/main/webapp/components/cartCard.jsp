@@ -15,10 +15,10 @@
                     <i class="bi bi-x"></i>
                 </a>
                 <h5 class="card-title">${param.name}</h5>
-                <p class="card-text">Total Price: ${param.price}</p>
+                <p class="card-text price">Total Price: ${param.price}</p>
                 <p class="card-text">Quantity: ${param.quantity}</p>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="selectedCarts" value="${param.id}">
+                    <input class="form-check-input" type="checkbox" name="selectedCarts" value="${param.id}" onchange="calculateTotal()">
                     <label class="form-check-label">Select</label>
                 </div>
             </div>

@@ -33,6 +33,13 @@
                 });
             </script>
         </c:if>
+        <c:if test="${not empty linkErrorMessage}">
+            <script>
+                $(function() {
+                    $('#link-error-modal').modal('show');
+                });
+            </script>
+        </c:if>
         <c:if test="${not empty successMessage}">
             <script>
                 $(function() {
@@ -60,13 +67,31 @@
                     </c:otherwise>
                 </c:choose>
                 <div class="checkout-button text-end">
+                    <span id="totalAmount">Total Amount: RM0.00</span>
                     <button type="submit" class="btn btn-primary">Proceed to Checkout</button>
                 </div>
             </div>
         </form>
     </div>
+
+    <script>
+        function calculateTotal() {
+            var selectedCarts = document.getElementsByName('selectedCarts');
+            var total = 0;
+            for (var i = 0; i < selectedCarts.length; i++) {
+                if (selectedCarts[i].checked) {
+                    var priceElement = selectedCarts[i].parentNode.parentNode.querySelector('.price');
+                    var price = parseFloat(priceElement.innerText.replace('Total Price: ', ''));
+                    total += price;
+                }
+            }
+            document.getElementById('totalAmount').innerText = 'Total Amount: RM' + total.toFixed(2); // Update the total amount element
+        }
+    </script>
+
 </main>
 <jsp:include page="../components/successModal.jsp" />
+<jsp:include page="../components/linkErrorModal.jsp" />
 <jsp:include page="../components/errorModal.jsp" />
 </body>
 </html>

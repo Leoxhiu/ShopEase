@@ -19,6 +19,7 @@ public enum Message{
     BANK_ACCOUNT_BLANK("You are unable to publish product without a bank account, kindly go to your profile to set it up.", MessageType.ERROR),
     ADDRESS_BLANK("Please complete your address under profile to proceed with your action", MessageType.ERROR),
     ACCOUNT_DELETED_FAILED("Account deleted failed", MessageType.ERROR),
+    ACCOUNT_NOT_ENOUGH_BALANCE("Your wallet doesn't have enough balance, please kindly reload.", MessageType.ERROR),
 
     // PRODUCT ERROR
     PRODUCT_NAME_LENGTH_INVALID("Product name should in between 2 and 100 characters.", MessageType.ERROR),
@@ -47,10 +48,12 @@ public enum Message{
     // CART SUCCESS
     CART_ADD_SUCCESS("Product is added to cart successful", MessageType.SUCCESS),
     CART_DELETE_SUCCESS("Cart is deleted successful.", MessageType.SUCCESS),
+    CART_CHECK_OUT_SUCCESS("Cart check out succesful.", MessageType.SUCCESS),
 
     // CART FAILED
     CART_ADD_FAILED("Failed to add the product to cart, please try againn.", MessageType.ERROR),
     CART_DELETE_FAILED("Failed to delete the cart, please try again.", MessageType.ERROR),
+    CART_CHECK_OUT_FAILED("Failed to check out cart, please try again", MessageType.ERROR),
     ;
 
     private final String message;

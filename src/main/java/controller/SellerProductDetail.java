@@ -1,16 +1,19 @@
 package controller;
 
+import facade.CartFacade;
 import facade.ProductFacade;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
+import model.Cart;
 import model.Member;
 import model.Product;
 import utility.*;
 
 import java.io.IOException;
+import java.util.List;
 
 
 @WebServlet(name = "SellerProductDetail", value = {"/seller/product/detail", "/seller/s/product/detail"})
@@ -19,6 +22,9 @@ public class SellerProductDetail extends HttpServlet {
 
     @EJB
     private ProductFacade productFacade;
+
+    @EJB
+    private CartFacade cartFacade;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -114,6 +120,15 @@ public class SellerProductDetail extends HttpServlet {
 
         if(productFacade.update(productId, productImage, productName, productDescription,
                 price, Integer.parseInt(productQuantity), productCategory, Integer.parseInt(productDiscount))){
+
+            List<Cart> cartList = cartFacade.getActiveCartByProductId(productId);
+            double discountedPrice = productFacade.findDiscountedPrice(price, Integer.parseInt(productDiscount));
+            for (Cart cart : cartList) {
+                double newPrice = cart.getQuantity() * discountedPrice;
+                cart.setPrice(newPrice);
+                cartFacade.editCart(cart);
+            }
+
             MessageHandler.setMessage(request, Message.PRODUCT_UDPATE_SUCCESS, ButtonText.UNDERSTAND, JspPage.SELLER_MARKET.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.SELLER_PRODUCT_DETAIL.getPath());
         } else{

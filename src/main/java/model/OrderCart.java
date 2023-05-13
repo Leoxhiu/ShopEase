@@ -17,11 +17,36 @@ public class OrderCart {
     @ManyToOne // A CustomerOrder can have many OrderCart (CustomerProduct)
     @JoinColumn(name = "orderId", referencedColumnName = "id")
     private CustomerOrder customerOrder;
-    private double price;
-    private int deliveryStatus;
 
     public OrderCart() {
     }
 
+    public OrderCart(Cart cart, CustomerOrder customerOrder) {
+        this.cart = cart;
+        this.customerOrder = customerOrder;
+    }
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public CustomerOrder getCustomerOrder() {
+        return customerOrder;
+    }
+
+    public void setCustomerOrder(CustomerOrder customerOrder) {
+        this.customerOrder = customerOrder;
+    }
 }

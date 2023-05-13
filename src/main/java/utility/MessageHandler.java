@@ -17,4 +17,23 @@ public class MessageHandler {
         request.setAttribute("buttonText", buttonText.getText());
     }
 
+    public static void setCustomSuccessMessage(HttpServletRequest request, String message, ButtonText buttonText, String url) {
+
+        request.setAttribute("successMessage", message);
+        request.setAttribute("url", url);
+        request.setAttribute("buttonText", buttonText.getText());
+    }
+
+    public static void setCustomErrorMessage(HttpServletRequest request, String message, ButtonText buttonText) {
+
+        request.setAttribute("errorMessage",message);
+        request.setAttribute("buttonText", buttonText.getText());
+    }
+
+    public static void setCustomLinkErrorMessage(HttpServletRequest request, String message, ButtonText buttonText, String url) {
+
+        request.setAttribute("linkErrorMessage",message);
+        request.setAttribute("url", url);
+        request.setAttribute("buttonText", buttonText.getText());
+    }
 }

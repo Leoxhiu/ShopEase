@@ -81,4 +81,18 @@ public class SellerFacade extends AbstractFacade<Seller>{
         return editSeller(seller);
     }
 
+    public boolean addBalance(String sellerId, double balance){
+        Seller seller = getSellerById(sellerId);
+        double newBalance = seller.getBalance() + balance;
+        seller.setBalance(newBalance);
+        return editSeller(seller);
+    }
+
+    public boolean minusBalance(String sellerId, double balance){
+        Seller seller = getSellerById(sellerId);
+        double newBalance = seller.getBalance() - balance;
+        seller.setBalance(newBalance);
+        return editSeller(seller);
+    }
+
 }
