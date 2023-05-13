@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
+@Cacheable(false)
 @UuidGenerator(name = "SELLER_ID")
 public class Seller {
 

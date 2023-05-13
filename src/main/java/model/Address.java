@@ -1,11 +1,13 @@
 package model;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import org.eclipse.persistence.annotations.UuidGenerator;
 
 @Entity
+@Cacheable(false)
 @UuidGenerator(name = "ADDRESS_ID")
 public class Address {
     @Id

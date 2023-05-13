@@ -24,7 +24,8 @@
             <property name="jakarta.persistence.jdbc.password" value="hiuwenxuan9611"/>
             <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
-<!--            drop-and-create-tables-->
+            <property name="eclipselink.query-results-cache" value="false"/>
+            <!--            drop-and-create-tables-->
 <!--            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>-->
 <!--            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>-->
 <!--            <property name="hibernate.show_sql" value="true"/>-->

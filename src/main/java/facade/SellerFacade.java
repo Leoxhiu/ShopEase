@@ -3,6 +3,8 @@ package facade;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Seller;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.List;
 
@@ -53,11 +55,12 @@ public class SellerFacade extends AbstractFacade<Seller>{
     }
 
     public Seller getSellerByMemberId(String memberId) {
-            TypedQuery<Seller> query = em.createQuery(
-                    "SELECT s FROM Seller s WHERE s.member.id = :memberId", Seller.class);
-            query.setParameter("memberId", memberId);
-            List<Seller> sellers = query.getResultList();
-            return sellers.isEmpty() ? null : sellers.get(0);
+        TypedQuery<Seller> query = em.createQuery(
+                "SELECT s FROM Seller s WHERE s.member.id = :memberId", Seller.class);
+        query.setParameter("memberId", memberId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        List<Seller> sellers = query.getResultList();
+        return sellers.isEmpty() ? null : sellers.get(0);
     }
 
     public boolean isBankAccountExist(String id) {

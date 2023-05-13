@@ -3,6 +3,8 @@ package facade;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Customer;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.List;
 
@@ -52,11 +54,12 @@ public class CustomerFacade extends AbstractFacade<Customer>{
     }
 
     public Customer getCustomerByMemberId(String memberId) {
-            TypedQuery<Customer> query = em.createQuery(
-                    "SELECT c FROM Customer c WHERE c.member.id = :memberId", Customer.class);
-            query.setParameter("memberId", memberId);
-            List<Customer> customers = query.getResultList();
+        TypedQuery<Customer> query = em.createQuery(
+                "SELECT c FROM Customer c WHERE c.member.id = :memberId", Customer.class);
+        query.setParameter("memberId", memberId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        List<Customer> customers = query.getResultList();
 
-            return customers.isEmpty() ? null : customers.get(0);
+        return customers.isEmpty() ? null : customers.get(0);
     }
 }

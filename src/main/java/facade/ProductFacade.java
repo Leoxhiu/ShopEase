@@ -4,6 +4,8 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Product;
 import model.Seller;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -58,23 +60,26 @@ public class ProductFacade extends AbstractFacade<Product> {
     public List<Product> getAllActiveProduct() {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = 0", Product.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
         return query.getResultList();
     }
 
     public List<Product> getAllActiveProductBySeller(Seller seller) {
-            TypedQuery<Product> query = em.createQuery(
-                    "SELECT p FROM Product p WHERE p.isDeleted = 0 AND p.seller = :seller", Product.class);
-            query.setParameter("seller", seller);
-            return query.getResultList();
+        TypedQuery<Product> query = em.createQuery(
+                "SELECT p FROM Product p WHERE p.isDeleted = 0 AND p.seller = :seller", Product.class);
+        query.setParameter("seller", seller);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<Product> getAllActiveProductBySellerIdANDSearchTerm(String sellerId, String searchTerm) {
-            TypedQuery<Product> query = em.createQuery(
-                    "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
-                            "OR LOWER(p.name) LIKE LOWER(:searchTerm) OR LOWER(p.description) LIKE LOWER(:searchTerm)) " +
-                            "AND p.isDeleted = 0 AND p.seller.id = :sellerId", Product.class);
-            query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
-            query.setParameter("sellerId", sellerId);
+        TypedQuery<Product> query = em.createQuery(
+                "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
+                        "OR LOWER(p.name) LIKE LOWER(:searchTerm) OR LOWER(p.description) LIKE LOWER(:searchTerm)) " +
+                        "AND p.isDeleted = 0 AND p.seller.id = :sellerId", Product.class);
+        query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
+        query.setParameter("sellerId", sellerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
         return query.getResultList();
     }
 
@@ -127,10 +132,9 @@ public class ProductFacade extends AbstractFacade<Product> {
             }
         }
 
-
         TypedQuery<Product> query = em.createQuery(queryBuilder.toString(), Product.class);
-
         query.setParameter("sellerId", sellerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
 
         // Set the parameter values for selected categories
         if (selectedCategories != null && selectedCategories.length > 0) {
@@ -160,16 +164,18 @@ public class ProductFacade extends AbstractFacade<Product> {
     public List<Product> getAllAvailableProduct() {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = 0 AND p.quantity > 0", Product.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
         return query.getResultList();
     }
 
     public List<Product> getAllAvailableProductWithSearchTerm(String searchTerm) {
-            TypedQuery<Product> query = em.createQuery(
-                    "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
-                            "OR LOWER(p.name) LIKE LOWER(:searchTerm) OR LOWER(p.description) LIKE LOWER(:searchTerm)) " +
-                            "AND p.isDeleted = 0 AND p.quantity > 0", Product.class);
-            query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
-            return query.getResultList();
+        TypedQuery<Product> query = em.createQuery(
+                "SELECT p FROM Product p WHERE (LOWER(p.category) LIKE LOWER(:searchTerm) " +
+                        "OR LOWER(p.name) LIKE LOWER(:searchTerm) OR LOWER(p.description) LIKE LOWER(:searchTerm)) " +
+                        "AND p.isDeleted = 0 AND p.quantity > 0", Product.class);
+        query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<Product> getAllAvailableProductByFilter(String[] selectedCategories, String priceOrder, String[] selectedDiscounts, String[] selectedRatings) {
@@ -221,31 +227,32 @@ public class ProductFacade extends AbstractFacade<Product> {
             }
         }
 
-            TypedQuery<Product> query = em.createQuery(queryBuilder.toString(), Product.class);
+        TypedQuery<Product> query = em.createQuery(queryBuilder.toString(), Product.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
 
-            // Set the parameter values for selected categories
-            if (selectedCategories != null && selectedCategories.length > 0) {
-                for (int i = 0; i < selectedCategories.length; i++) {
-                    query.setParameter("category" + i, selectedCategories[i]);
-                }
+        // Set the parameter values for selected categories
+        if (selectedCategories != null && selectedCategories.length > 0) {
+            for (int i = 0; i < selectedCategories.length; i++) {
+                query.setParameter("category" + i, selectedCategories[i]);
             }
+        }
 
-            // Set the parameter values for selected discounts
-            if (selectedDiscounts != null && selectedDiscounts.length > 0) {
-                for (int i = 0; i < selectedDiscounts.length; i++) {
-                    int discountValue = Integer.parseInt(selectedDiscounts[i]);
-                    query.setParameter("discount" + i, discountValue);
-                }
+        // Set the parameter values for selected discounts
+        if (selectedDiscounts != null && selectedDiscounts.length > 0) {
+            for (int i = 0; i < selectedDiscounts.length; i++) {
+                int discountValue = Integer.parseInt(selectedDiscounts[i]);
+                query.setParameter("discount" + i, discountValue);
             }
+        }
 
-            // Set the parameter values for selected ratings
-            if (selectedRatings != null && selectedRatings.length > 0) {
-                for (int i = 0; i < selectedRatings.length; i++) {
-                    int ratingValue = Integer.parseInt(selectedRatings[i]);
-                    query.setParameter("rating" + i, ratingValue);
-                }
+        // Set the parameter values for selected ratings
+        if (selectedRatings != null && selectedRatings.length > 0) {
+            for (int i = 0; i < selectedRatings.length; i++) {
+                int ratingValue = Integer.parseInt(selectedRatings[i]);
+                query.setParameter("rating" + i, ratingValue);
             }
-            return query.getResultList();
+        }
+        return query.getResultList();
     }
 
     public double findDiscountedPrice(double price, int discount) {

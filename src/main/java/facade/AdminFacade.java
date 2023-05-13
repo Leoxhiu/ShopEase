@@ -3,6 +3,8 @@ package facade;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Admin;
+import org.eclipse.persistence.config.QueryHints;
+import org.eclipse.persistence.config.HintValues;
 
 import java.util.List;
 
@@ -55,6 +57,7 @@ public class AdminFacade extends AbstractFacade<Admin>{
             TypedQuery<Admin> query = em.createQuery(
                     "SELECT a FROM Admin a WHERE a.member.id = :memberId", Admin.class);
             query.setParameter("memberId", memberId);
+            query.setHint(QueryHints.REFRESH, HintValues.TRUE);
             List<Admin> admins = query.getResultList();
             return admins.isEmpty() ? null : admins.get(0);
     }

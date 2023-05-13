@@ -3,6 +3,8 @@ package facade;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.TypedQuery;
 import model.Member;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.List;
 
@@ -52,34 +54,38 @@ public class MemberFacade extends AbstractFacade<Member>{
     }
 
     public Member getMemberByEmail(String email) {
-            TypedQuery<Member> query = super.em.createQuery(
-                    "SELECT m FROM Member m WHERE m.email = :email", Member.class);
-            query.setParameter("email", email);
-            List<Member> members = query.getResultList();
+        TypedQuery<Member> query = super.em.createQuery(
+                "SELECT m FROM Member m WHERE m.email = :email", Member.class);
+        query.setParameter("email", email);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        List<Member> members = query.getResultList();
 
-            return members.isEmpty() ? null : members.get(0);
+        return members.isEmpty() ? null : members.get(0);
     }
 
     public List<Member> getAllMemberByUserType(char userType) {
-            TypedQuery<Member> query = super.em.createQuery(
-                    "SELECT m FROM Member m WHERE m.userType = :userType", Member.class);
-            query.setParameter("userType", userType);
-            return query.getResultList();
+        TypedQuery<Member> query = super.em.createQuery(
+                "SELECT m FROM Member m WHERE m.userType = :userType", Member.class);
+        query.setParameter("userType", userType);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<Member> getAllActiveMember() {
-            TypedQuery<Member> query = em.createQuery(
-                    "SELECT m FROM Member m WHERE m.isDeleted = 0", Member.class);
-            return query.getResultList();
+        TypedQuery<Member> query = em.createQuery(
+                "SELECT m FROM Member m WHERE m.isDeleted = 0", Member.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<Member> getAllActiveMemberBySearchTerm(String searchTerm) {
-            TypedQuery<Member> query = em.createQuery(
-                    "SELECT m FROM Member m WHERE (LOWER(m.name) LIKE LOWER(:searchTerm) " +
-                            "OR LOWER(m.email) LIKE LOWER(:searchTerm)) " +
-                            "AND m.isDeleted = 0", Member.class);
-            query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
-            return query.getResultList();
+        TypedQuery<Member> query = em.createQuery(
+                "SELECT m FROM Member m WHERE (LOWER(m.name) LIKE LOWER(:searchTerm) " +
+                        "OR LOWER(m.email) LIKE LOWER(:searchTerm)) " +
+                        "AND m.isDeleted = 0", Member.class);
+        query.setParameter("searchTerm", "%" + searchTerm.toLowerCase() + "%");
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<Member> filterMembersByUserType(String[] selectedUserTypes) {
@@ -102,7 +108,8 @@ public class MemberFacade extends AbstractFacade<Member>{
         queryBuilder.append(" AND m.isDeleted = 0");
 
         // Create and execute the query
-            TypedQuery<Member> query = em.createQuery(queryBuilder.toString(), Member.class);
+        TypedQuery<Member> query = em.createQuery(queryBuilder.toString(), Member.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
 
         // Set the parameter values for selected user types
         if (selectedUserTypes != null && selectedUserTypes.length > 0) {
