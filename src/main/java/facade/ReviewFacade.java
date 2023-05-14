@@ -73,4 +73,14 @@ public class ReviewFacade extends AbstractFacade<Review>{
         }
         return reviews.get(0);
     }
+
+    public int countReviewsByRating(int rating) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(r) FROM Review r WHERE r.rating = :rating", Long.class);
+        query.setParameter("rating", rating);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        Long count = query.getSingleResult();
+        return count.intValue();
+    }
+
 }

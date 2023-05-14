@@ -42,14 +42,6 @@ public class CustomerOrderFacade extends AbstractFacade<CustomerOrder>{
         return this.findAll();
     }
 
-    public List<CustomerOrder> getAllCustomerOrderByCustomerIdDESC(String customerId){
-        TypedQuery<CustomerOrder> query = em.createQuery(
-                "SELECT c FROM CustomerOrder c WHERE c.customer.id = :customerId ORDER BY c.date DESC", CustomerOrder.class);
-        query.setParameter("customerId", customerId);
-        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
-        return query.getResultList();
-    }
-
     public List<CustomerOrder> getRangeCustomerOrder(int[] range) {
         return this.findRange(range);
     }
@@ -60,5 +52,21 @@ public class CustomerOrderFacade extends AbstractFacade<CustomerOrder>{
 
     public int countCustomerOrder() {
         return this.count();
+    }
+
+    public double getTotalSales() {
+        TypedQuery<Double> query = super.em.createQuery(
+                "SELECT SUM(co.amount) FROM CustomerOrder co", Double.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        Double result = query.getSingleResult();
+        return result != null ? result : 0.0;
+    }
+
+    public List<CustomerOrder> getAllCustomerOrderByCustomerIdDESC(String customerId){
+        TypedQuery<CustomerOrder> query = em.createQuery(
+                "SELECT c FROM CustomerOrder c WHERE c.customer.id = :customerId ORDER BY c.date DESC", CustomerOrder.class);
+        query.setParameter("customerId", customerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 }

@@ -34,6 +34,7 @@ public enum ServletPage {
 
     // Admin
     ADMIN_SIGN_IN("/shopease/s/auth/admin"),
+    ADMIN_HOME("/shopease/admin/s/home"),
     ADMIN_MEMBER_PAGE("/shopease/admin/s/member"),
     ADMIN_ADD_ADMIN("/shopease/admin/s/add/admin"),
     ADMIN_ADMIN_PROFILE("/shopease/admin/s/admin/profile"),
@@ -42,8 +43,9 @@ public enum ServletPage {
     ADMIN_DELETE_SELLER("/shopease/admin/s/delete/seller"),
     ADMIN_CUSTOMER_PROFILE("/shopease/admin/s/customer/profile"),
     ADMIN_DELETE_CUSTOMER("/shopease/admin/s/delete/customer"),
-
     ADMIN_PROFILE("/shopease/admin/s/profile"),
+
+    CSV_GENERATOR("/shopease/admin/s/csv")
     ;
 
     private final String url;

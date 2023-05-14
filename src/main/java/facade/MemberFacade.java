@@ -53,6 +53,20 @@ public class MemberFacade extends AbstractFacade<Member>{
         return this.count();
     }
 
+    public long getCustomerCount() {
+        TypedQuery<Long> query = super.em.createQuery(
+                "SELECT COUNT(c) FROM Customer c", Long.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getSingleResult();
+    }
+
+    public long getSellerCount() {
+        TypedQuery<Long> query = super.em.createQuery(
+                "SELECT COUNT(s) FROM Seller s", Long.class);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getSingleResult();
+    }
+
     public Member getMemberByEmail(String email) {
         TypedQuery<Member> query = super.em.createQuery(
                 "SELECT m FROM Member m WHERE m.email = :email", Member.class);

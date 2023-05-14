@@ -57,6 +57,25 @@ public class ProductFacade extends AbstractFacade<Product> {
         return this.count();
     }
 
+    public int countProductsByRating(int rating) {
+        TypedQuery<Long> query = em.createQuery(
+                "SELECT COUNT(p) FROM Product p WHERE p.rating = :rating", Long.class);
+        query.setParameter("rating", rating);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        Long count = query.getSingleResult();
+        return count.intValue();
+    }
+
+    public List<Product> getTopRatedProducts(int limit) {
+        TypedQuery<Product> query = super.em.createQuery(
+                "SELECT p " +
+                        "FROM Product p " +
+                        "ORDER BY p.rating DESC", Product.class);
+        query.setMaxResults(limit);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
+    }
+
     public List<Product> getAllActiveProduct() {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = 0", Product.class);
