@@ -42,7 +42,7 @@
             <c:choose>
                 <c:when test="${not empty cartList}">
                     <c:forEach var="cart" items="${cartList}">
-                        <jsp:include page="/components/cartCard.jsp">
+                        <jsp:include page="/components/cartTransactionCard.jsp">
                             <jsp:param name="image" value="/shopease/images?productId=${cart.product.id}"/>
                             <jsp:param name="id" value="${cart.id}"/>
                             <jsp:param name="name" value="${cart.product.name}"/>
