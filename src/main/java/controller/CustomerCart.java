@@ -103,6 +103,9 @@ public class CustomerCart extends HttpServlet {
             // minus balance of customer
             customerFacade.minusBalance(customerId, totalPrice);
 
+            // update in session of customerBalance
+            session.setAttribute("customerBalance", customerBalance - totalPrice);
+
             for (String cartId : selectedCarts) {
 
                 Cart cart = cartFacade.getCartById(cartId);

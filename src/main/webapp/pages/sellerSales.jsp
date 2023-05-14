@@ -40,7 +40,7 @@
                     </c:forEach>
                 </c:when>
                 <c:otherwise>
-                    <h2 class="font-tertiary">No item found.</h2>
+                    <h2 class="font-tertiary">No sales found.</h2>
                 </c:otherwise>
             </c:choose>
         </div>
