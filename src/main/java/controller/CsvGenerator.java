@@ -9,12 +9,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import model.Product;
 import utility.JspPage;
-import utility.ServletNavigation;
 
 import java.io.IOException;
-import java.io.OutputStream;
-import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.List;
+
+import com.opencsv.CSVWriter;
+
 
 @WebServlet(name = "CsvGenerator", value = "/admin/s/csv")
 public class CsvGenerator extends HttpServlet {
@@ -25,14 +26,23 @@ public class CsvGenerator extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            List<Product> productList = productFacade.getAllProduct();
+            // Retrieve product data from the database
+            List<Product> products = productFacade.getAllProduct();
 
-            // Convert the list of products to CSV format
-            StringBuilder csvData = new StringBuilder();
-            csvData.append("ID,Name,Description,Price,Quantity,Category,Discount,Discounted Price,Rating,Is Deleted\n");
+            // Set response headers
+            response.setContentType("text/csv");
+            response.setHeader("Content-Disposition", "attachment; filename=\"product_list.csv\"");
 
-            for (Product product : productList) {
+            // Write CSV data to the response
+            CSVWriter csvWriter = new CSVWriter(response.getWriter());
+
+            // Write CSV header
+            csvWriter.writeNext(new String[] { "ID", "Seller ID", "Name", "Description", "Price", "Quantity", "Category", "Discount", "Discounted Price", "Rating", "Is Deleted" });
+
+            // Write CSV data rows
+            for (Product product : products) {
                 String id = product.getId();
+                String sellerId = product.getSeller().getId();
                 String name = product.getName();
                 String description = product.getDescription();
                 double price = product.getPrice();
@@ -43,32 +53,14 @@ public class CsvGenerator extends HttpServlet {
                 int rating = product.getRating();
                 int isDeleted = product.getIsDeleted();
 
-                csvData.append(id).append(",")
-                        .append(name).append(",")
-                        .append(description).append(",")
-                        .append(price).append(",")
-                        .append(quantity).append(",")
-                        .append(category).append(",")
-                        .append(discount).append(",")
-                        .append(discountedPrice).append(",")
-                        .append(rating).append(",")
-                        .append(isDeleted).append("\n");
+                csvWriter.writeNext(new String[] { id, sellerId, name, description, String.valueOf(price), String.valueOf(quantity), category, String.valueOf(discount), String.valueOf(discountedPrice), String.valueOf(rating), String.valueOf(isDeleted) });
             }
 
-            response.setContentType("text/csv");
-            response.setHeader("Content-Disposition", "attachment; filename=\"products.csv\"");
-
-            // Write CSV data to the response
-            byte[] csvBytes = csvData.toString().getBytes();
-            response.setContentLength(csvBytes.length);
-
-            OutputStream outputStream = response.getOutputStream();
-            outputStream.write(csvBytes);
-            outputStream.flush();
+            csvWriter.close();
 
             response.sendRedirect(JspPage.ADMIN_HOME.getUrl());
 
-        } catch(Exception e){
+        } catch (Exception e) {
             response.sendRedirect(JspPage.SERVER_ERROR.getUrl());
         }
     }
