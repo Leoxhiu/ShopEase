@@ -136,7 +136,8 @@ public class CustomerCart extends HttpServlet {
             ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_CART.getPath());
 
         } else {
-            MessageHandler.setMessage(request, Message.CART_CHECK_OUT_FAILED, ButtonText.UNDERSTAND, "");
+            MessageHandler.setCustomLinkErrorMessage(request, Message.CART_CHECK_OUT_FAILED.getMessage(),
+                    ButtonText.UNDERSTAND, JspPage.CUSTOMER_MARKET.getUrl());
             ServletNavigation.forwardRequest(request, response, JspPage.CUSTOMER_CART.getPath());
             return;
         }
