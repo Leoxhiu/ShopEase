@@ -25,6 +25,7 @@ public enum JspPage {
     CUSTOMER_PROFILE("/shopease/customer/profile", "/pages/customerProfile.jsp"),
     CUSTOMER_WALLET("/shopease/customer/wallet", "/pages/customerWallet.jsp"),
     CUSTOMER_TRANSACTION("/shopease/customer/transaction", "/pages/customerTransaction.jsp"),
+    CUSTOMER_TRANSACTION_DETAIL("/shopease/customer/transaction/detail", "/pages/customerTransactionDetail.jsp"),
     CUSTOMER_REVIEW("/shopease/customer/review", "/pages/customerReview.jsp"),
 
     // Seller pages

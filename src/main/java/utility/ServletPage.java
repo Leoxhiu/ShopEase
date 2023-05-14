@@ -17,6 +17,7 @@ public enum ServletPage {
     CUSTOMER_PROFILE("/shopease/customer/s/profile"),
     CUSTOMER_WALLET("/shopease/customer/s/wallet"),
     CUSTOMER_TRANSACTION("/shopease/customer/s/transaction"),
+    CUSTOMER_TRANSACTION_DETAIL("/shopease/customer/s/transaction/detail"),
     CUSTOMER_REVIEW("/shopease/customer/s/review"),
 
     // Seller

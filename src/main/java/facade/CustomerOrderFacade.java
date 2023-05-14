@@ -1,7 +1,10 @@
 package facade;
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.CustomerOrder;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.List;
 
@@ -37,6 +40,14 @@ public class CustomerOrderFacade extends AbstractFacade<CustomerOrder>{
 
     public List<CustomerOrder> getAllCustomerOrder() {
         return this.findAll();
+    }
+
+    public List<CustomerOrder> getAllCustomerOrderByCustomerIdDESC(String customerId){
+        TypedQuery<CustomerOrder> query = em.createQuery(
+                "SELECT c FROM CustomerOrder c WHERE c.customer.id = :customerId ORDER BY c.date DESC", CustomerOrder.class);
+        query.setParameter("customerId", customerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 
     public List<CustomerOrder> getRangeCustomerOrder(int[] range) {
