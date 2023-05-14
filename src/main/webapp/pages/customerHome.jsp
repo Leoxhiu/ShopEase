@@ -72,36 +72,6 @@
             </div>
         </div>
     </section>
-
-    <section id="product" class="product">
-        <div class="container">
-            <div class="product-container">
-                <h2 class="font-secondary">For you</h2>
-                <h5 class="font-tertiary">
-                    Your Perfect Fit: Discover Products That Match Your Preferences
-                </h5>
-            </div>
-
-            <div class="product-cards row mt-4">
-                <jsp:include page="/components/productCard.jsp">
-                    <jsp:param name="image" value="/shopease/images/product/beauty1.jpg"/>
-                    <jsp:param name="name" value="First product"/>
-                    <jsp:param name="description"
-                               value="Some quick example text to build on the card title and make up the bulk of the card's content"/>
-                    <jsp:param name="rating" value="5"/>
-                    <jsp:param name="price" value="99"/>
-                    <jsp:param name="discount" value="50"/>
-                </jsp:include>
-            </div>
-
-        </div>
-    </section>
-
 </main>
-
-<footer>
-
-</footer>
-
 </body>
 </html>

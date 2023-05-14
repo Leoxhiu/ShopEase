@@ -14,21 +14,17 @@ public class ReviewReply {
     @ManyToOne // A review can have many reply
     @JoinColumn(name = "reviewId", referencedColumnName = "id")
     private Review review;
-    @OneToOne // A reply can from a customer
-    @JoinColumn(name = "customerId", referencedColumnName = "id")
-    private Customer customer;
-    @OneToOne // A reply can from a seller
-    @JoinColumn(name = "sellerId", referencedColumnName = "id")
-    private Seller seller;
+    @OneToOne // A reply can from a member
+    @JoinColumn(name = "memberId", referencedColumnName = "id")
+    private Member member;
     private String reply;
 
     public ReviewReply() {
     }
 
-    public ReviewReply(Review review, Customer customer, Seller seller, String reply) {
+    public ReviewReply(Review review, Member member, String reply) {
         this.review = review;
-        this.customer = customer;
-        this.seller = seller;
+        this.member = member;
         this.reply = reply;
     }
 
@@ -48,20 +44,12 @@ public class ReviewReply {
         this.review = review;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public Member getMember() {
+        return member;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
-    public Seller getSeller() {
-        return seller;
-    }
-
-    public void setSeller(Seller seller) {
-        this.seller = seller;
+    public void setMember(Member member) {
+        this.member = member;
     }
 
     public String getReply() {

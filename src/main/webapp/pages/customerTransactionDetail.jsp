@@ -42,12 +42,12 @@
             <c:choose>
                 <c:when test="${not empty cartList}">
                     <c:forEach var="cart" items="${cartList}">
-                        <jsp:include page="/components/cartTransactionCard.jsp">
+                        <jsp:include page="/components/cartDisplayCard.jsp">
                             <jsp:param name="image" value="/shopease/images?productId=${cart.product.id}"/>
-                            <jsp:param name="id" value="${cart.id}"/>
                             <jsp:param name="name" value="${cart.product.name}"/>
                             <jsp:param name="price" value="${cart.price}"/>
                             <jsp:param name="quantity" value="${cart.quantity}"/>
+                            <jsp:param name="reviewDirect" value="/shopease/customer/review/detail?cartId=${cart.id}"/>
                         </jsp:include>
                     </c:forEach>
                 </c:when>

@@ -1,0 +1,41 @@
+main{
+    margin-top: 5rem;
+}
+
+.star-rating {
+    direction: rtl;
+    display: inline-block;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.stars {
+    color: #bbb;
+    font-size: 2rem;
+    padding: 0;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+input[type="radio"]:checked ~ .stars,
+.stars:hover,
+.stars:hover ~ .stars {
+    color: #f2b600;
+}
+
+#comment-section{
+    margin-bottom: 7rem;
+}
+
+#comment-input-section {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+}

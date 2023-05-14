@@ -88,6 +88,24 @@ public class CartFacade extends AbstractFacade<Cart> {
         return carts;
     }
 
+    public List<Cart> getPurchasedCartByCustomerId(String customerId) {
+        TypedQuery<Cart> query = em.createQuery(
+                "SELECT c FROM Cart c WHERE c.isPurchased = 1 AND c.customer.id = :customerId", Cart.class);
+        query.setParameter("customerId", customerId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        List<Cart> carts = query.getResultList();
+        return carts;
+    }
+
+    public List<Cart> getPurchasedCartByProductId(String productId) {
+        TypedQuery<Cart> query = em.createQuery(
+                "SELECT c FROM Cart c WHERE c.isPurchased = 1 AND c.product.id = :productId", Cart.class);
+        query.setParameter("productId", productId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        List<Cart> carts = query.getResultList();
+        return carts;
+    }
+
     public boolean delete(String cartId) {
         Cart cart = getCartById(cartId);
         try{

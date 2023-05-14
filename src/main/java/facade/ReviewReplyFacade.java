@@ -1,7 +1,10 @@
 package facade;
 
 import jakarta.ejb.Stateless;
+import jakarta.persistence.TypedQuery;
 import model.ReviewReply;
+import org.eclipse.persistence.config.HintValues;
+import org.eclipse.persistence.config.QueryHints;
 
 import java.util.List;
 
@@ -49,5 +52,13 @@ public class ReviewReplyFacade extends AbstractFacade<ReviewReply>{
 
     public int countReviewReply() {
         return this.count();
+    }
+
+    public List<ReviewReply> getReviewReplyByReviewId(String reviewId){
+        TypedQuery<ReviewReply> query = em.createQuery(
+                "SELECT rr FROM ReviewReply rr WHERE rr.review.id = :reviewId", ReviewReply.class);
+        query.setParameter("reviewId", reviewId);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
     }
 }

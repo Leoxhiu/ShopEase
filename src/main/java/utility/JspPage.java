@@ -27,6 +27,7 @@ public enum JspPage {
     CUSTOMER_TRANSACTION("/shopease/customer/transaction", "/pages/customerTransaction.jsp"),
     CUSTOMER_TRANSACTION_DETAIL("/shopease/customer/transaction/detail", "/pages/customerTransactionDetail.jsp"),
     CUSTOMER_REVIEW("/shopease/customer/review", "/pages/customerReview.jsp"),
+    CUSTOMER_REVIEW_DETAIL("/shopease/customer/review/detail", "/pages/customerReviewDetail.jsp"),
 
     // Seller pages
     SELLER_HOME("/shopease/seller/home", "/pages/sellerHome.jsp"),

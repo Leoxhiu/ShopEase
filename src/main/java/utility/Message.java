@@ -64,6 +64,14 @@ public enum Message{
     RELOAD_FAILED("Reload wallet failed, please try again.", MessageType.ERROR),
     WITHDRAW_AMOUNT_INVALID("Please insert valid withdraw amount.", MessageType.ERROR),
     WITHDRAW_FAILED("Withdraw process failed, please try again.", MessageType.ERROR),
+
+    // REVIEW SUCCESS
+    FEEDBACK_SUCCESS("Feedback submitted successful", MessageType.SUCCESS),
+    COMMENT_SUCCESS("Your comment is sent successful", MessageType.SUCCESS),
+
+    // REVIEW FAILED
+    FEEDBACK_FAILED("Feedback failed to be sent, please try again", MessageType.ERROR),
+    COMMENT_FAILED("Failed to send, please try again", MessageType.ERROR),
     ;
 
     private final String message;
