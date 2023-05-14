@@ -4,7 +4,7 @@
 <head>
 </head>
 <body>
-<div class="card">
+<div class="card mb-2">
     <div class="card-body d-flex">
         <div class="user-profile">
             <img src="${param.image}" alt="User Profile" class="rounded-circle" style="width: 50px; height: 50px;">
