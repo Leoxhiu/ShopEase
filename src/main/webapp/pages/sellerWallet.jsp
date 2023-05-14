@@ -50,7 +50,7 @@
                 <span class="input-group-text">RM</span>
                 <input type="number" class="form-control" id="withDrawAmount" name="withDrawAmount" placeholder="Amount to Withdraw" required>
             </div>
-            <button type="submit" class="btn btn-primary d-block mx-auto">Reload</button>
+            <button type="submit" class="btn btn-primary d-block mx-auto">Withdraw</button>
         </form>
     </div>
 </main>

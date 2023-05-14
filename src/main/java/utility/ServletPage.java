@@ -29,8 +29,8 @@ public enum ServletPage {
     SELLER_PUBLISH_PRODUCT("/shopease/seller/s/publish/product"),
     SELLER_PROFILE("/shopease/seller/s/profile"),
     SELLER_WALLET("/shopease/seller/s/wallet"),
-    SELLER_TRANSACTION("/shopease/seller/s/transaction"),
-    SELLER_REVIEW("/shopease/seller/s/review"),
+    SELLER_SALES("/shopease/seller/s/sales"),
+    SELLER_SALES_REVIEW("/shopease/seller/s/sales/review"),
 
     // Admin
     ADMIN_SIGN_IN("/shopease/s/auth/admin"),

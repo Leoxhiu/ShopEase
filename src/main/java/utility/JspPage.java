@@ -36,8 +36,8 @@ public enum JspPage {
     SELLER_PRODUCT_DETAIL("/shopease/seller/product/detail","/pages/sellerProductDetail.jsp"),
     SELLER_PROFILE("/shopease/seller/profile", "/pages/sellerProfile.jsp"),
     SELLER_WALLET("/shopease/seller/wallet", "/pages/sellerWallet.jsp"),
-    SELLER_TRANSACTION("/shopease/seller/transaction","/pages/sellerTransaction.jsp"),
-    SELLER_REVIEW("/shopease/seller/review","/pages/sellerReview.jsp"),
+    SELLER_SALES("/shopease/seller/sales","/pages/sellerSales.jsp"),
+    SELLER_SALES_REVIEW("/shopease/seller/sales/review","/pages/sellerSalesReview.jsp"),
 
     // Admin pages
     ADMIN_SIGN_IN("/shopease/auth/admin","/pages/adminSignIn.jsp"),

@@ -41,8 +41,7 @@
                                         <li><a class="dropdown-item" href="<%= JspPage.SELLER_PROFILE.getUrl() %>">Profile</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="<%= JspPage.SELLER_WALLET.getUrl() %>">Wallet</a></li>
-                                        <li><a class="dropdown-item" href="<%= JspPage.SELLER_TRANSACTION.getUrl() %>">Transaction</a></li>
-                                        <li><a class="dropdown-item" href="<%= JspPage.SELLER_REVIEW.getUrl() %>">Sales</a></li>
+                                        <li><a class="dropdown-item" href="<%= JspPage.SELLER_SALES.getUrl() %>">Sales</a></li>
                                         <li>
                                             <form action="<%= ServletPage.SIGN_OUT.getUrl() %>" method="post" class="logout">
                                                 <button class="dropdown-item" type="submit">Logout</button>

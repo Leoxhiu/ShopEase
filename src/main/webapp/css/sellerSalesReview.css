@@ -1,0 +1,16 @@
+main{
+    margin-top: 5rem;
+}
+
+#comment-section{
+    margin-bottom: 7rem;
+}
+
+#comment-input-section {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+}

@@ -42,8 +42,8 @@
                 <jsp:param name="reviewDirect" value="/shopease/customer/review/detail?cartId=${cart.id}"/>
             </jsp:include>
         </div>
-
     </section>
+
     <section class="mt-5">
         <div class="container">
             <div class="row">
@@ -75,7 +75,7 @@
                                             <input id="star-5" type="radio" name="rating" value="5" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <label for="star-5" title="5 stars" class="stars">
+                                    <label for="star-5" title="5" class="stars">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </label>
 
@@ -87,7 +87,7 @@
                                             <input id="star-4" type="radio" name="rating" value="4" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <label for="star-4" title="4 stars" class="stars">
+                                    <label for="star-4" title="4" class="stars">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </label>
 
@@ -99,7 +99,7 @@
                                             <input id="star-3" type="radio" name="rating" value="3" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <label for="star-3" title="3 stars" class="stars">
+                                    <label for="star-3" title="3" class="stars">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </label>
 
@@ -111,7 +111,7 @@
                                             <input id="star-2" type="radio" name="rating" value="2" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <label for="star-2" title="2 stars" class="stars">
+                                    <label for="star-2" title="2" class="stars">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </label>
 
@@ -123,7 +123,7 @@
                                             <input id="star-1" type="radio" name="rating" value="1" />
                                         </c:otherwise>
                                     </c:choose>
-                                    <label for="star-1" title="1 star" class="stars">
+                                    <label for="star-1" title="1" class="stars">
                                         <i class="fa fa-star" aria-hidden="true"></i>
                                     </label>
                                 </div>
