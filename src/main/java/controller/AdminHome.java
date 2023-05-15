@@ -10,7 +10,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.Member;
 import model.Product;
 import utility.JspPage;
 import utility.ServletNavigation;
@@ -29,9 +28,6 @@ public class AdminHome extends HttpServlet {
 
     @EJB
     private CustomerOrderFacade customerOrderFacade;
-
-    @EJB
-    private ReviewFacade reviewFacade;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

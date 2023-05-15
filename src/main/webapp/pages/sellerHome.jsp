@@ -24,5 +24,94 @@
 </head>
 <body>
 <jsp:include page="/components/sellerNavBar.jsp"/>
+<main class="container">
+    <section class="row mt-5">
+        <h1 class="font-secondary">Rating insight</h1>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> 5 stars products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${fiveStar}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> 4 stars products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${fourStar}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> 3 stars products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${threeStar}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> 2 stars products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${twoStar}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-star-fill"></i> 1 star products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${oneStar}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="row mt-5">
+        <h1 class="font-secondary">Product insight</h1>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-grid-fill"></i> Total products</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${totalProduct}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-basket-fill"></i> Total orders</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">${totalOrder}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title"><i class="bi bi-currency-dollar"></i> Total sales</h5>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-text text-center">RM ${totalSales}</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
 </body>
 </html>

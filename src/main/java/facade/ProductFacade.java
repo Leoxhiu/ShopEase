@@ -83,6 +83,14 @@ public class ProductFacade extends AbstractFacade<Product> {
         return query.getResultList();
     }
 
+    public List<Product> getAllProductBySeller(Seller seller) {
+        TypedQuery<Product> query = em.createQuery(
+                "SELECT p FROM Product p WHERE p.seller = :seller", Product.class);
+        query.setParameter("seller", seller);
+        query.setHint(QueryHints.REFRESH, HintValues.TRUE);
+        return query.getResultList();
+    }
+
     public List<Product> getAllActiveProductBySeller(Seller seller) {
         TypedQuery<Product> query = em.createQuery(
                 "SELECT p FROM Product p WHERE p.isDeleted = 0 AND p.seller = :seller", Product.class);

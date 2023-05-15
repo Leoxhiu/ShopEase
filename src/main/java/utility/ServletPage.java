@@ -23,6 +23,7 @@ public enum ServletPage {
 
     // Seller
     SELLER_SIGN_UP("/shopease/guest/s/seller/sign/up"),
+    SELLER_HOME("/shopease/seller/s/home"),
     SELLER_MARKET("/shopease/seller/s/market"),
     SELLER_PRODUCT_DETAIL("/shopease/seller/s/product/detail"),
     SELLER_DELETE_PRODUCT("/shopease/seller/s/delete/product"),
