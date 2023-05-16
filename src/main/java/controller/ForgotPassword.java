@@ -33,7 +33,7 @@ public class ForgotPassword extends HttpServlet {
         }
 
         try {
-            actualCode = Email.sendCode(EmailSubject.REGISTRATION, email);
+            actualCode = Email.sendCode(EmailSubject.PASSWORD_RESET, email);
 
         } catch (Exception e) {
             MessageHandler.setMessage(request, Message.EMAIL_NOT_SEND, ButtonText.UNDERSTAND, "");
